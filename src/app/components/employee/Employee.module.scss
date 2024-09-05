@@ -1,0 +1,13 @@
+.employee {
+  gap: 10px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  .employee-info {
+    font-size: 14px;
+    .employee-title {
+      font-weight: bold;
+    }
+  }
+}
