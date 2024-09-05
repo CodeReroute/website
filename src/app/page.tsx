@@ -100,8 +100,8 @@ export default function Home() {
               src={assetUrl('/images/social-media/instagram.png')}
               alt="Instagram"
               title="Instagram"
-              width={20}
-              height={20}
+              width={22}
+              height={22}
               priority
             />
           </a>
@@ -111,8 +111,8 @@ export default function Home() {
               src={assetUrl('/images/social-media/tiktok.png')}
               alt="TikTok"
               title="TikTok"
-              width={20}
-              height={20}
+              width={22}
+              height={22}
               priority
             />
           </a>
@@ -125,8 +125,8 @@ export default function Home() {
               src={assetUrl('/images/social-media/linkedin.png')}
               alt="LinkedIn"
               title="LinkedIn"
-              width={20}
-              height={20}
+              width={22}
+              height={22}
               priority
             />
           </a>
@@ -137,7 +137,7 @@ export default function Home() {
           <h1>the dream team</h1>
           <div className={styles['sub-heading']}>
             Working together behind-the-scenes to build the foundational
-            architecture and systems needed for our app development.
+            architecture and systems needed for our app development
           </div>
         </div>
         <div className={styles.team}>
