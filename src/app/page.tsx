@@ -6,6 +6,9 @@ import { employees } from './components/employee/employees';
 import { assetUrl } from './components/utils';
 import React, { FormEvent, useCallback, useRef } from 'react';
 import { RequestState, useApi } from './components/utils/hooks/useApi';
+import ReCaptchaV3, {
+  requestRecaptchaV3Token,
+} from './components/utils/ReCaptchaV3';
 
 const style: React.CSSProperties = {
   backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.20), rgba(95, 93, 63, 0.20)), url('${assetUrl(
@@ -37,13 +40,16 @@ export default function Home() {
         inputRef.current?.focus();
         return;
       }
-      makeRequest({
-        email: value,
-        bipoc: '-',
-        city: '-',
-        name: '-',
-        skills: '-',
-        'work-with-us': '-',
+      requestRecaptchaV3Token((captchaToken: string | undefined) => {
+        makeRequest({
+          email: value,
+          bipoc: '-',
+          city: '-',
+          name: '-',
+          skills: '-',
+          'work-with-us': '-',
+          recaptcha: captchaToken,
+        });
       });
     },
     [makeRequest, inputRef],
@@ -90,6 +96,7 @@ export default function Home() {
               >
                 {getSubmitText(requestState)}
               </button>
+              <ReCaptchaV3 hideText={true} />
             </form>
           </div>
         </div>

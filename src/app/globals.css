@@ -34,3 +34,13 @@ input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.recaptcha {
+  font-size: 12px;
+  text-align: left;
+  letter-spacing: 0;
+}
+a {
+  color: inherit;
+  text-decoration: underline;
+}
