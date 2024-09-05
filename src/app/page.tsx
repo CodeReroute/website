@@ -5,6 +5,7 @@ import Employee from '@/app/components/employee/Employee';
 import { employees } from './components/employee/employees';
 import { assetUrl } from './components/utils';
 import React, { FormEvent, useCallback, useRef } from 'react';
+import { RequestState, useApi } from './components/utils/hooks/useApi';
 
 const style: React.CSSProperties = {
   backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.17), rgba(95, 93, 63, 0.17)), url('${assetUrl(
@@ -12,7 +13,21 @@ const style: React.CSSProperties = {
   )}')`,
 };
 
+const getSubmitText = (state: RequestState<unknown>) => {
+  switch (state.type) {
+    case 'REQUEST_INIT':
+      return <>submit</>;
+    case 'REQUEST_START':
+      return <>submitting...</>;
+    case 'REQUEST_ERROR':
+      return <>failed: click to try again!</>;
+    case 'REQUEST_SUCCESS':
+      return <>submitted!</>;
+  }
+};
+
 export default function Home() {
+  const [requestState, makeRequest] = useApi<unknown>();
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -22,7 +37,7 @@ export default function Home() {
         inputRef.current?.focus();
         return;
       }
-      console.log(value);
+      makeRequest({ email: value });
     },
     [inputRef],
   );
@@ -51,15 +66,19 @@ export default function Home() {
               type="email"
               required
               placeholder="email"
+              disabled={
+                requestState.type === 'REQUEST_START' ||
+                requestState.type === 'REQUEST_SUCCESS'
+              }
               className={`${styles.button} ${styles.email}`}
             />
             <button className={`${styles.button} ${styles.submit}`}>
-              submit
+              {getSubmitText(requestState)}
             </button>
           </form>
         </div>
         <div className={styles['social-media']}>
-          <a href="https://www.instagram.com/map.petizer">
+          <a target="_blank" href="https://www.instagram.com/map.petizer">
             <Image
               className={styles['social-media']}
               src={assetUrl('/images/social-media/instagram.png')}
@@ -70,7 +89,7 @@ export default function Home() {
               priority
             />
           </a>
-          <a href="https://www.tiktok.com/@mappetizer">
+          <a target="_blank" href="https://www.tiktok.com/@mappetizer">
             <Image
               className={styles['social-media']}
               src={assetUrl('/images/social-media/tiktok.png')}
@@ -81,7 +100,10 @@ export default function Home() {
               priority
             />
           </a>
-          <a href="https://www.linkedin.com/company/mappetizer/about">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/mappetizer/about"
+          >
             <Image
               className={styles['social-media']}
               src={assetUrl('/images/social-media/linkedin.png')}
