@@ -155,8 +155,11 @@
       grid-area: inherit;
     }
   }
-  @media (max-width: 425px) {
+  @media (max-width: 500px) {
     padding: 50px 20px;
+    text-align: center;
+  }
+  @media (max-width: 425px) {
     .team {
       grid-template-columns: 1fr;
     }
