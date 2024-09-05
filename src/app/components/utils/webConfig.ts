@@ -3,6 +3,7 @@ export const webConfig = {
   basePath: process.env.CODE_REROUTE_BASE_PATH || '',
   sendEmailBaseUrl:
     process.env.SEND_EMAIL_BASE_URL ||
-    'http://localhost:9000/.netlify/functions/api',
+    'https://temurih-mail.netlify.app/.netlify/functions/api',
+  // 'http://localhost:9000/.netlify/functions/api',
   gaTrackingId: process.env.GA_TRACKING_ID,
 };

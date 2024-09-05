@@ -6,22 +6,39 @@
   text-align: center;
   color: var(--white-base);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   gap: 50px;
+  .logo {
+    margin-bottom: 50px;
+  }
   .sub-heading {
     max-width: 365px;
     margin-top: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
+    font-weight: 300;
     color: var(--light-background);
   }
   .sign-up-text {
+    font-weight: 400;
+    margin-bottom: 25px;
+  }
+  .button.email,
+  .button.submit {
+    font-weight: 300;
+    margin-bottom: 18px;
+  }
+  .button.email,
+  .button.submit,
+  .sign-up-text {
     font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 16px;
+    letter-spacing: 1px;
+    font-family: var(--font-montserrat);
   }
   .button.email {
-    margin-bottom: 10px;
+    outline: none;
+    margin-bottom: 12px;
     &::placeholder {
       color: var(--light-background); /* Change this to your desired color */
     }
@@ -46,7 +63,6 @@
     }
     img {
       border-radius: 50px;
-      box-shadow: 0px 0px 5px grey;
     }
   }
 }
@@ -77,7 +93,7 @@
   .heading-wrapper {
     margin-bottom: 60px;
     .sub-heading {
-      max-width: 525px;
+      max-width: 550px;
       margin-top: 16px;
     }
   }

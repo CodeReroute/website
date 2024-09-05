@@ -1,12 +1,13 @@
 :root {
   --red: #a83a32;
-  --red-hover: #dc4b41;
+  --red-hover: #bc4138;
   --light-background: #efede1;
   --white-base: #ffffff;
   --gray: #909090;
 }
 
 body {
+  letter-spacing: 0.5px;
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
 }
 

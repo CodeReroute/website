@@ -10,13 +10,13 @@ export interface EmployeeDetails {
 export const employees: EmployeeDetails[] = [
   {
     name: 'Haseeb Khalid',
-    title: 'Intern UI Designer',
+    title: 'Jr. UI Designer',
     pictureUrl: assetUrl('/images/haseeb.png'),
   },
   {
     name: 'Danielle Dufour',
-    title: 'Founder & CEO',
-    subTitle: 'Business Development',
+    title: 'Business Development',
+    subTitle: 'Founder',
     pictureUrl: assetUrl('/images/danielle.png'),
   },
   {
