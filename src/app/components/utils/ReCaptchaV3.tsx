@@ -39,7 +39,6 @@ export const requestRecaptchaV3Token = (
 };
 
 const ReCaptchaV3: React.FC<{ className?: string; hideText?: boolean }> = ({
-  className,
   hideText,
 }) => {
   useEffect(() => {
