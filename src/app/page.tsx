@@ -37,10 +37,20 @@ export default function Home() {
         inputRef.current?.focus();
         return;
       }
-      makeRequest({ email: value });
+      makeRequest({
+        email: value,
+        bipoc: '-',
+        city: '-',
+        name: '-',
+        skills: '-',
+        'work-with-us': '-',
+      });
     },
     [makeRequest, inputRef],
   );
+  const disabled =
+    requestState.type === 'REQUEST_START' ||
+    requestState.type === 'REQUEST_SUCCESS';
   return (
     <div>
       <div className={styles.hero} style={style}>
@@ -71,13 +81,13 @@ export default function Home() {
                 type="email"
                 required
                 placeholder="email"
-                disabled={
-                  requestState.type === 'REQUEST_START' ||
-                  requestState.type === 'REQUEST_SUCCESS'
-                }
+                disabled={disabled}
                 className={`${styles.button} ${styles.email}`}
               />
-              <button className={`${styles.button} ${styles.submit}`}>
+              <button
+                disabled={disabled}
+                className={`${styles.button} ${styles.submit}`}
+              >
                 {getSubmitText(requestState)}
               </button>
             </form>
