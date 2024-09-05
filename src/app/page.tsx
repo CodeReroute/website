@@ -43,11 +43,6 @@ export default function Home() {
       requestRecaptchaV3Token((captchaToken: string | undefined) => {
         makeRequest({
           email: value,
-          bipoc: '-',
-          city: '-',
-          name: '-',
-          skills: '-',
-          'work-with-us': '-',
           recaptcha: captchaToken,
         });
       });
