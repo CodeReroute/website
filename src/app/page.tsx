@@ -100,8 +100,8 @@ export default function Home() {
               src={assetUrl('/images/social-media/instagram.png')}
               alt="Instagram"
               title="Instagram"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               priority
             />
           </a>
@@ -111,8 +111,8 @@ export default function Home() {
               src={assetUrl('/images/social-media/tiktok.png')}
               alt="TikTok"
               title="TikTok"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               priority
             />
           </a>
@@ -125,8 +125,8 @@ export default function Home() {
               src={assetUrl('/images/social-media/linkedin.png')}
               alt="LinkedIn"
               title="LinkedIn"
-              width={22}
-              height={22}
+              width={25}
+              height={25}
               priority
             />
           </a>
