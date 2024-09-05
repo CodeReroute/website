@@ -39,7 +39,7 @@ export default function Home() {
       }
       makeRequest({ email: value });
     },
-    [inputRef],
+    [makeRequest, inputRef],
   );
   return (
     <div>

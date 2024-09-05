@@ -43,6 +43,7 @@ export const useApi = <T>() => {
       setRequestState(requestStart());
       try {
         sendEmail({ onSuccess, onFailed, body });
+        // eslint-disable-next-line
       } catch (error: any) {
         setRequestState(requestError(error));
       }
