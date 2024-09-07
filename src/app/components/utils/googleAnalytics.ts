@@ -2,9 +2,9 @@ import { logInfo } from './logging';
 import { webConfig } from './webConfig';
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-export const pageView = (url: URL): void => {
+export const pageView = (url?: URL): void => {
   const eventData = {
-    page_path: url,
+    page_path: url || window.location.href,
   };
   if (webConfig.isProduction && webConfig.gaTrackingId && window.gtag) {
     window.gtag('config', webConfig.gaTrackingId, eventData);
