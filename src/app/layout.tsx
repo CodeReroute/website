@@ -3,8 +3,8 @@ import { montserrat, rocaTwo } from './fonts/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Mappetizer',
-  description: 'Restaurant reservation application',
+  title: 'mappetizer',
+  description: 'a restaurant discovery app— plan your next meal.',
 };
 
 export default function RootLayout({
