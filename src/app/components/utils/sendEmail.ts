@@ -6,6 +6,8 @@ interface SendEmailProps<T> {
   onSuccess: (data: T) => void;
 }
 
+// const localUrl =
+//   'localhost:9000/.netlify/functions/api/code-reroute/emails/beta-testers';
 export const sendEmail = <T>({
   onFailed,
   onSuccess,
@@ -24,7 +26,7 @@ export const sendEmail = <T>({
   };
   httpClient.open(
     'POST',
-    `${webConfig.sendEmailBaseUrl}/code-reroute/emails/form-submission`,
+    `${webConfig.sendEmailBaseUrl}/code-reroute/emails/beta-testers`,
     true,
   );
   httpClient.setRequestHeader('Content-type', 'application/json');
