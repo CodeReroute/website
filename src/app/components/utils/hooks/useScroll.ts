@@ -13,7 +13,7 @@ export const useScroll = () => {
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const viewportHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
+      // const documentHeight = document.documentElement.scrollHeight;
       if (scrollTop > lastScrollTop) {
         setTopSectionShown(false);
         setScrollDirection({ direction: 'down' });
