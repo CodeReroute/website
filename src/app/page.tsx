@@ -32,6 +32,9 @@ const getSubmitText = (state: RequestState<unknown>) => {
 export default function Home() {
   const [requestState, makeRequest] = useApi<unknown>();
   const inputRef = useRef<HTMLInputElement>(null);
+  const sectionTop = useRef<HTMLDivElement>(null);
+  const sectionBottom = useRef<HTMLDivElement>(null);
+
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -40,21 +43,22 @@ export default function Home() {
         inputRef.current?.focus();
         return;
       }
-      requestRecaptchaV3Token((captchaToken: string | undefined) => {
+      requestRecaptchaV3Token((token: string | undefined) => {
         makeRequest({
           email: value,
-          recaptcha: captchaToken,
+          recaptcha: token,
         });
       });
     },
     [makeRequest, inputRef],
   );
+
   const disabled =
     requestState.type === 'REQUEST_START' ||
     requestState.type === 'REQUEST_SUCCESS';
   return (
     <div>
-      <div className={styles.hero} style={style}>
+      <div ref={sectionTop} className={styles.hero} style={style}>
         <div>
           <a target="_blank" href="https://codereroute.com">
             <Image
@@ -134,7 +138,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-      <div className={styles['dream-team']}>
+      <div ref={sectionBottom} className={styles['dream-team']}>
         <div className={styles['heading-wrapper']}>
           <h1>the dream team</h1>
           <div className={styles['sub-heading']}>
