@@ -17,7 +17,7 @@ interface GTagEvent {
   action: string;
   category: string;
   label: string;
-  value: number;
+  value: number | string;
 }
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/events
@@ -32,7 +32,7 @@ export const trackEvent = ({
     event_label: label,
     value,
   };
-  if (webConfig.isProduction && window.gtag) {
+  if (window.gtag) {
     window.gtag('event', action, eventData);
   } else {
     logInfo(`event: ${action}`, eventData);

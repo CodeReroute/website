@@ -9,6 +9,7 @@ import { RequestState, useApi } from './components/utils/hooks/useApi';
 import ReCaptchaV3, {
   requestRecaptchaV3Token,
 } from './components/utils/ReCaptchaV3';
+import { trackEvent } from './components/utils/googleAnalytics';
 
 const style: React.CSSProperties = {
   backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.20), rgba(95, 93, 63, 0.20)), url('${assetUrl(
@@ -43,6 +44,12 @@ export default function Home() {
         inputRef.current?.focus();
         return;
       }
+      trackEvent({
+        action: 'submit',
+        category: 'mappetizer',
+        label: 'beta-testers',
+        value,
+      });
       requestRecaptchaV3Token((token: string | undefined) => {
         makeRequest({
           email: value,
