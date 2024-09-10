@@ -30,6 +30,7 @@ a {
 button:disabled {
   cursor: not-allowed !important;
 }
+
 input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -40,7 +41,12 @@ input:disabled {
   text-align: left;
   letter-spacing: 0;
 }
+
 a {
   color: inherit;
   text-decoration: underline;
+}
+
+.grecaptcha-badge {
+  display: none !important;
 }
