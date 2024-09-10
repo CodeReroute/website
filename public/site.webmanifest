@@ -1,6 +1,6 @@
 {
-  "name": "Mappetizer",
-  "short_name": "Mappetizer",
+  "name": "mappetizer",
+  "short_name": "mappetizer",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

@@ -107,7 +107,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles['social-media']}>
-          <a target="_blank" href="https://www.instagram.com/map.petizer">
+          <a target="_blank" href="https://www.instagram.com/_mappetizer">
             <Image
               className={styles['social-media']}
               src={assetUrl('/images/social-media/instagram.png')}
