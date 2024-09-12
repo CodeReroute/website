@@ -81,18 +81,18 @@ export default function Home() {
           <div>
             <h1>mappetizer</h1>
             <div className={styles['sub-heading']}>
-              discover + save restaurants into an interactive map &mdash; a
-              niche social media app
+              discover + save restaurants into an interactive map &mdash;
+              revolutionizing the way you experience restaurants
             </div>
             <div className={styles['sign-up-text']}>
-              sign up as a beta tester
+              beta testing link now closed.
             </div>
             <form onSubmit={handleSubmit}>
               <input
                 ref={inputRef}
                 type="email"
                 required
-                placeholder="email"
+                placeholder="waitlist signup"
                 disabled={disabled}
                 className={`${styles.button} ${styles.email}`}
               />

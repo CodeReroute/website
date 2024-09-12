@@ -26,7 +26,7 @@ export const sendEmail = <T>({
   };
   httpClient.open(
     'POST',
-    `${webConfig.sendEmailBaseUrl}/code-reroute/emails/beta-testers`,
+    `${webConfig.sendEmailBaseUrl}/code-reroute/emails/waitlist`,
     true,
   );
   httpClient.setRequestHeader('Content-type', 'application/json');
