@@ -75,7 +75,6 @@ export default function Home() {
               title="Code Reroute"
               width={138}
               height={19}
-              priority
             />
           </a>
           <div>
@@ -115,7 +114,6 @@ export default function Home() {
               title="Instagram"
               width={25}
               height={25}
-              priority
             />
           </a>
           <a target="_blank" href="https://www.tiktok.com/@mappetizer">
@@ -126,7 +124,6 @@ export default function Home() {
               title="TikTok"
               width={25}
               height={25}
-              priority
             />
           </a>
           <a
@@ -140,7 +137,6 @@ export default function Home() {
               title="LinkedIn"
               width={25}
               height={25}
-              priority
             />
           </a>
         </div>

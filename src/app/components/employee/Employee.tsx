@@ -19,7 +19,6 @@ const Employee: React.FC<EmployeeProps> = ({
         alt={name}
         width={165}
         height={165}
-        priority
       />
       <div className={styles['employee-info']}>
         <div className={styles['employee-title']}>{name}</div>
