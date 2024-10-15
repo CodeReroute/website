@@ -1,0 +1,13 @@
+.social-media {
+  gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s;
+  &:hover {
+    opacity: 0.8;
+  }
+  img {
+    border-radius: 50px;
+  }
+}

@@ -10,6 +10,7 @@ import ReCaptchaV3, {
   requestRecaptchaV3Token,
 } from './components/utils/ReCaptchaV3';
 import { trackEvent } from './components/utils/googleAnalytics';
+import SocialMedia from './components/SocialMedia';
 
 const style: React.CSSProperties = {
   backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.20), rgba(95, 93, 63, 0.20)), url('${assetUrl(
@@ -105,41 +106,7 @@ export default function Home() {
             </form>
           </div>
         </div>
-        <div className={styles['social-media']}>
-          <a target="_blank" href="https://www.instagram.com/_mappetizer">
-            <Image
-              className={styles['social-media']}
-              src={assetUrl('/images/social-media/instagram.png')}
-              alt="Instagram"
-              title="Instagram"
-              width={25}
-              height={25}
-            />
-          </a>
-          <a target="_blank" href="https://www.tiktok.com/@mappetizer">
-            <Image
-              className={styles['social-media']}
-              src={assetUrl('/images/social-media/tiktok.png')}
-              alt="TikTok"
-              title="TikTok"
-              width={25}
-              height={25}
-            />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/company/mappetizer/about"
-          >
-            <Image
-              className={styles['social-media']}
-              src={assetUrl('/images/social-media/linkedin.png')}
-              alt="LinkedIn"
-              title="LinkedIn"
-              width={25}
-              height={25}
-            />
-          </a>
-        </div>
+        <SocialMedia />
       </div>
       <div ref={sectionBottom} className={styles['dream-team']}>
         <div className={styles['heading-wrapper']}>

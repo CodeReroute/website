@@ -1,0 +1,75 @@
+.timeline {
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  .line {
+    height: 1px;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    background-color: var(--white-base);
+  }
+  .timeline-wrapper {
+    max-width: 1440px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    .dot-wrapper:nth-child(8) {
+      .text.below h6.bold {
+        margin-bottom: 0;
+      }
+    }
+    .dot-wrapper {
+      text-align: center;
+      position: relative;
+      .dot {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: var(--white-base);
+      }
+      .text {
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        transform: translate(-50%);
+        left: 50%;
+      }
+      .text.above {
+        bottom: 100%;
+        margin-bottom: 8px;
+      }
+      .text.below {
+        top: 100%;
+        margin-top: 8px;
+        .bold {
+          margin-bottom: 8px;
+        }
+      }
+      .arrow-icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('/android-chrome-192x192.png');
+      }
+      .icon-above {
+        bottom: -40px;
+      }
+      .icon-below {
+        top: -40px;
+      }
+    }
+  }
+  @media only screen and (max-width: 650px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
