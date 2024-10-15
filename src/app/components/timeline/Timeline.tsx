@@ -22,7 +22,7 @@ const Timeline: React.FC<TimelineProps> = ({ phases, className }) => {
     <div className={mergeClassNames(className, styles['timeline'])}>
       <div className={styles['line']} />
       <div className={styles['timeline-wrapper']}>
-        {phases.map((p, i) => (
+        {phases.map((p) => (
           <div key={p.id} id={p.id} className={styles['dot-wrapper']}>
             <div
               style={{ width: p.width, left: p.left }}
