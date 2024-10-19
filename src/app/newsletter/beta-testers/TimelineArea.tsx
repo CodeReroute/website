@@ -1,44 +1,43 @@
 import React from 'react';
 import styles from './page.module.scss';
-import { TimelinePhase } from '@/app/components/timeline/Timeline';
 
-const phases: TimelinePhase[] = [
-  {
-    id: '1',
-    title: 'September',
-    above: true,
-    description: undefined,
-    width: 100,
-  },
-  {
-    id: '2',
-    title: 'October',
-    above: false,
-    description: undefined,
-    width: 100,
-  },
-  {
-    id: '3',
-    title: 'November',
-    above: true,
-    description: undefined,
-    width: 100,
-  },
-  {
-    id: '4',
-    title: 'December',
-    above: false,
-    width: 100,
-    description: undefined,
-  },
-  {
-    id: '5',
-    title: 'January',
-    above: true,
-    description: undefined,
-    width: 100,
-  },
-];
+// const phases: TimelinePhase[] = [
+//   {
+//     id: '1',
+//     title: 'September',
+//     above: true,
+//     description: undefined,
+//     width: 100,
+//   },
+//   {
+//     id: '2',
+//     title: 'October',
+//     above: false,
+//     description: undefined,
+//     width: 100,
+//   },
+//   {
+//     id: '3',
+//     title: 'November',
+//     above: true,
+//     description: undefined,
+//     width: 100,
+//   },
+//   {
+//     id: '4',
+//     title: 'December',
+//     above: false,
+//     width: 100,
+//     description: undefined,
+//   },
+//   {
+//     id: '5',
+//     title: 'January',
+//     above: true,
+//     description: undefined,
+//     width: 100,
+//   },
+// ];
 
 const TimelineArea: React.FC = () => {
   return (
