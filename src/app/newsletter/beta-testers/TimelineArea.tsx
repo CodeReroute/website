@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './page.module.scss';
-import Timeline, { TimelinePhase } from '@/app/components/timeline/Timeline';
+import { TimelinePhase } from '@/app/components/timeline/Timeline';
 
 const phases: TimelinePhase[] = [
   {
