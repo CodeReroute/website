@@ -8,6 +8,9 @@ const year = new Date().getFullYear();
 const Footer: React.FC = () => {
   return (
     <footer className={styles['footer']}>
+      <div className={styles['footer-thank-you']}>
+        Thank you for being part of the journey!
+      </div>
       <Image
         alt="Logo"
         title="Logo"

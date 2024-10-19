@@ -10,14 +10,11 @@ const Meantime: React.FC = () => {
       <div className={styles['meantime-text-wrapper']}>
         <h1 className={styles['main-heading']}>In the meantime...</h1>
         <p className={styles['sub-heading']}>
-          WE'LL KEEP YOU UP TO DATE WITH EVERYTHING MAPPETIZER
+          WE’LL KEEP YOU UP TO DATE WITH EVERYTHING MAPPETIZER
         </p>
         <p className={styles['main-text']}>
-          You can expect the occasional email from us so we can let you know
-          about the features we’re building.
-          <br />
-          <br />
-          When we’re ready, we’ll send a link for all beta testers.
+          You can expect the occasional email from us (we promise not to spam
+          you). When we’re ready, we’ll send a link to all of you.
           <br />
           <br />
           If you’d like to opt out of receiving emails, no problem! There’s a

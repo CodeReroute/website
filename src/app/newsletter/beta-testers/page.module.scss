@@ -128,9 +128,12 @@
 }
 
 .footer {
-  padding: 50px;
+  padding: 150px 50px;
   color: var(--red);
   background-color: var(--light-background);
+  .footer-thank-you {
+    margin-bottom: 16px;
+  }
   .footer-logo {
     margin-bottom: 14px;
   }
@@ -155,7 +158,7 @@
     }
   }
   @media screen and (max-width: 800px) {
-    padding: 30px;
+    padding: 80px 30px;
     text-align: center;
     .footer-divide {
       flex-direction: column;
@@ -270,13 +273,12 @@
   background-image: url('/images/beta-testers/map-pattern.png');
   letter-spacing: var(--second-letter-spacing);
   background-color: var(--dark-background);
+  padding: 150px 10px;
   .timeline-text-wrapper {
     text-align: center;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
     .timeline-light {
       font-weight: 300;
       color: var(--light-background);
