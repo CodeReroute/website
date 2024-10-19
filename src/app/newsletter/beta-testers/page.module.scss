@@ -1,11 +1,16 @@
+.main-beta-testers {
+  h1 {
+    font-size: 40px;
+  }
+}
+
 .beta-hero-area {
-  display: flex;
-  min-height: 100vh;
+  display: grid;
+  min-height: 92vh;
   color: var(--red);
   grid-template-columns: 1fr 1fr;
   background-color: var(--light-background);
   .hero-left {
-    flex: 1;
     padding-left: 50px;
     padding-bottom: 50px;
     .hero-text-area {
@@ -17,33 +22,40 @@
       margin-left: auto;
       margin-right: auto;
       img {
-        margin-bottom: 80px;
-      }
-      .main-heading {
         margin-bottom: 8px;
       }
+      .main-heading {
+        margin-bottom: 40px;
+        @media screen and (min-width: 500px) {
+          font-size: 45px;
+        }
+      }
       .thank-you-text {
-        margin-bottom: 80px;
+        margin-bottom: 8px;
+        letter-spacing: var(--second-letter-spacing);
       }
       .hero-description {
+        font-weight: 300;
         max-width: 330px;
         margin-bottom: 30px;
+        letter-spacing: var(--second-letter-spacing);
       }
       .hero-total {
         display: flex;
         align-items: baseline;
         h1 {
-          margin-right: 8px;
+        }
+        p {
+          letter-spacing: var(--second-letter-spacing);
         }
       }
     }
   }
   .hero-right {
-    flex: 1;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    justify-content: flex-end;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/images/beta-testers/hero-full-image.png');
     img {
       display: block;
       max-width: 100%;
@@ -53,12 +65,17 @@
     }
   }
   @media screen and (max-width: 800px) {
-    display: block;
-    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     .hero-left {
       padding-top: 50px;
+      padding-bottom: 50px;
       padding-left: 30px;
       padding-right: 30px;
+    }
+    .hero-right {
+      flex: 1;
     }
   }
 }
@@ -73,9 +90,13 @@
   }
   .sub-heading {
     margin-bottom: 12px;
+    letter-spacing: var(--second-letter-spacing);
   }
   .main-text {
+    font-weight: 300;
+    max-width: 500px;
     margin-bottom: 40px;
+    letter-spacing: var(--second-letter-spacing);
   }
   .meantime-image {
     display: flex;
@@ -86,6 +107,23 @@
     flex: 1;
     max-width: 300px;
     height: auto;
+  }
+  @media screen and (max-width: 800px) {
+    .meantime-image-phone-third {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 80px;
+    .meantime-text-wrapper {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .meantime-image-phone {
+      max-width: 150px;
+    }
   }
 }
 
@@ -134,11 +172,17 @@
   display: flex;
   gap: 50px;
   min-height: 100vh;
+  align-items: center;
   color: var(--white-base);
   overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/images/beta-testers/map-pattern.png');
   background-color: var(--dark-background);
   .product-image-left {
     display: flex;
+    visibility: hidden;
     align-items: flex-end;
     img {
       display: block;
@@ -180,6 +224,7 @@
     }
   }
   .product-image-right {
+    visibility: hidden;
     img {
       top: 80px;
       height: auto;
@@ -190,8 +235,8 @@
     }
   }
   @media screen and (max-width: 1100px) {
-    display: block;
     .product-image-left {
+      display: none;
       justify-content: flex-end;
       img {
         display: block;
@@ -206,6 +251,7 @@
       padding-right: 30px;
     }
     .product-image-right {
+      display: none;
       img {
         right: 20px;
         top: -50px;
@@ -216,23 +262,32 @@
 }
 
 .timeline {
-  color: var(--white-base);
+  color: var(--light-background);
   overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/images/beta-testers/map-pattern.png');
+  letter-spacing: var(--second-letter-spacing);
   background-color: var(--dark-background);
   .timeline-text-wrapper {
     text-align: center;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 100px;
     margin-bottom: 100px;
     .timeline-light {
-      color: var(--light-green);
+      font-weight: 300;
+      color: var(--light-background);
       margin-bottom: 16px;
     }
     .timeline-point-1 {
+      font-weight: 300;
       margin-bottom: 16px;
     }
     .timeline-point-2 {
+      font-weight: 300;
       margin-bottom: 16px;
     }
   }

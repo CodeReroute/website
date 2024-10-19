@@ -2,13 +2,14 @@
   position: relative;
   padding-top: 120px;
   padding-bottom: 120px;
+  font-weight: 300;
   .line {
     height: 1px;
-    width: 100vw;
+    width: 100%;
     position: absolute;
     left: 0;
     top: 50%;
-    background-color: var(--white-base);
+    background-color: var(--light-background);
   }
   .timeline-wrapper {
     max-width: 1440px;
@@ -31,7 +32,7 @@
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background-color: var(--white-base);
+        background-color: var(--light-background);
       }
       .text {
         width: 100%;
@@ -39,15 +40,20 @@
         text-align: center;
         transform: translate(-50%);
         left: 50%;
+        letter-spacing: var(--second-letter-spacing);
       }
       .text.above {
         bottom: 100%;
         margin-bottom: 8px;
+        .bold {
+          font-weight: 300;
+        }
       }
       .text.below {
         top: 100%;
         margin-top: 8px;
         .bold {
+          font-weight: 300;
           margin-bottom: 8px;
         }
       }

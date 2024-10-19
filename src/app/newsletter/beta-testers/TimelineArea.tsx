@@ -33,7 +33,7 @@ const phases: TimelinePhase[] = [
   },
   {
     id: '5',
-    title: 'April',
+    title: 'January',
     above: true,
     description: undefined,
     width: 100,
@@ -43,11 +43,11 @@ const phases: TimelinePhase[] = [
 const TimelineArea: React.FC = () => {
   return (
     <div className={styles['timeline']}>
-      <div className={styles['website-timeline-wrapper']}>
+      {/* <div className={styles['website-timeline-wrapper']}>
         <div className={styles['website-timeline']}>
           <Timeline phases={phases} />
         </div>
-      </div>
+      </div> */}
       <div className={styles['timeline-text-wrapper']}>
         <p className={styles['timeline-light']}>
           SO, LET'S CHAT ABOUT THE TIMELINE
@@ -58,7 +58,7 @@ const TimelineArea: React.FC = () => {
           deadline.
         </p>
         <p className={styles['timeline-point-2']}>
-          Fingers crossed 🤞 that you'll still be interested in being a crucial
+          Fingers crossed 🤞🏼 that you'll still be interested in being a crucial
           part of out app dev.
         </p>
       </div>

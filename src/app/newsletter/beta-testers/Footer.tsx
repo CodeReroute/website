@@ -27,7 +27,10 @@ const Footer: React.FC = () => {
           <a href="#">unsubscribe</a>
         </div>
         <div className={styles['footer-right']}>
-          <SocialMedia className={styles['footer-social-media']} />
+          <SocialMedia
+            path="/beta-testers"
+            className={styles['footer-social-media']}
+          />
           <p>
             We respectfully acknowledge that we are located on Treaty 6
             territory, a traditional meeting ground and home for many Indigenous

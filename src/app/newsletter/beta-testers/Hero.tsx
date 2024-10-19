@@ -20,24 +20,21 @@ const Hero: React.FC = () => {
           </h1>
           <p className={styles['thank-you-text']}>THANK YOU</p>
           <p className={styles['hero-description']}>
-            HONESTLY, WE ARE OVERWHELMED WITH THE AMOUNT OF PEOPLE WHO
-            VOLUNTEERED TO PROVIDE FEEDBACK
+            Honestly, we are overwhelmed with the amount of people who
+            volunteered to provide feedback.
           </p>
           <div className={styles['hero-total']}>
-            <h1>121</h1>
-            <p>AWESOME FOLKS</p>
+            {/* <div className={styles['hero-total-circle']}>
+              <h1>121</h1>
+            </div> */}
+            <p>121 AWESOME FOLKS</p>
           </div>
         </div>
       </div>
-      <div className={styles['hero-right']}>
-        <img
-          alt="Hero Image"
-          title="Hero Image"
-          width={undefined}
-          height={undefined}
-          src={assetUrl('/images/beta-testers/hero-image.png')}
-        />
-      </div>
+      <div
+        title="Photo of French restaurant"
+        className={styles['hero-right']}
+      ></div>
     </div>
   );
 };
