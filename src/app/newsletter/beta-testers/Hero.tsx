@@ -11,8 +11,8 @@ const Hero: React.FC = () => {
           <Image
             alt="Logo"
             title="Logo"
-            width={180}
-            height={30.48}
+            width={150}
+            height={25.39}
             src={assetUrl('/images/beta-testers/logo-red.png')}
           />
           <h1 className={styles['main-heading']}>
