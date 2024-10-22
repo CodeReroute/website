@@ -81,7 +81,7 @@
 }
 
 .meantime {
-  padding: 80px;
+  padding: 80px 100px;
   color: var(--red);
   min-height: 100vh;
   background-color: var(--light-background);
@@ -128,7 +128,7 @@
 }
 
 .footer {
-  padding: 150px 50px;
+  padding: 100px;
   color: var(--red);
   background-color: var(--light-background);
   .footer-thank-you {
@@ -174,14 +174,14 @@
 .product-description {
   display: flex;
   gap: 50px;
-  min-height: 100vh;
+  padding: 80px 10px;
   align-items: center;
   color: var(--white-base);
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('/images/beta-testers/map-pattern.png');
+  background-image: url('/images/map-pattern.png');
   background-color: var(--dark-background);
   .product-image-left {
     display: flex;
@@ -238,6 +238,7 @@
     }
   }
   @media screen and (max-width: 1100px) {
+    padding: 0;
     .product-image-left {
       display: none;
       justify-content: flex-end;
@@ -270,10 +271,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('/images/beta-testers/map-pattern.png');
+  background-image: url('/images/map-pattern.png');
   letter-spacing: var(--second-letter-spacing);
   background-color: var(--dark-background);
-  padding: 150px 10px;
+  padding: 180px 10px;
   .timeline-text-wrapper {
     text-align: center;
     max-width: 480px;

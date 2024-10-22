@@ -14,7 +14,7 @@ import SocialMedia from './components/SocialMedia';
 
 const style: React.CSSProperties = {
   backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.20), rgba(95, 93, 63, 0.20)), url('${assetUrl(
-    '/images/hero.jpg',
+    '/images/map-pattern.png',
   )}')`,
 };
 
@@ -84,15 +84,13 @@ export default function Home() {
               discover + save restaurants into an interactive map &mdash;
               revolutionizing the way you experience restaurants
             </div>
-            <div className={styles['sign-up-text']}>
-              beta testing link now closed.
-            </div>
+            <div className={styles['sign-up-text']}>waitlist signup</div>
             <form onSubmit={handleSubmit}>
               <input
                 ref={inputRef}
                 type="email"
                 required
-                placeholder="waitlist signup"
+                placeholder="enter email"
                 disabled={disabled}
                 className={`${styles.button} ${styles.email}`}
               />
@@ -110,7 +108,7 @@ export default function Home() {
       </div>
       <div ref={sectionBottom} className={styles['dream-team']}>
         <div className={styles['heading-wrapper']}>
-          <h1>the dream team</h1>
+          <h1>The dream team</h1>
           <div className={styles['sub-heading']}>
             Working together behind-the-scenes to build the foundational
             architecture and systems needed for our app development

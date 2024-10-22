@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles['footer']}>
       <div className={styles['footer-thank-you']}>
-        Thank you for being part of the journey!
+        THANK YOU FOR BEING PART OF THE JOURNEY!
       </div>
       <Image
         alt="Logo"
@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
           <p className={styles['footer-company-name']}>@ {year} Code Reroute</p>
           <p className={styles['footer-declaration']}>
             Code Reroute is comprised of a multidisciplinary team of software
-            engineers and designers building @mappetizer &mdash; the world's
-            biggest restaurant app.
+            engineers and designers building <a href="/">@mappetizer</a> &mdash;
+            the world's biggest restaurant app.
           </p>
           <a href="#">unsubscribe</a>
         </div>

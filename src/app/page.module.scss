@@ -38,9 +38,9 @@
   }
   .button.email {
     outline: none;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     &::placeholder {
-      color: var(--light-background); /* Change this to your desired color */
+      color: var(--dark-background); /* Change this to your desired color */
     }
     &:focus::placeholder {
       color: var(--gray); /* Change this to your desired color */
@@ -49,7 +49,7 @@
   .button.submit {
     cursor: pointer;
     &:active {
-      background-color: var(--red);
+      background-color: var(--light-background);
     }
   }
 }
@@ -58,17 +58,16 @@
   text-align: center;
   width: 100%;
   border: none;
-  padding: 16px 8px;
+  padding: 13px 8px;
   font-size: 14px;
   border-radius: 50px;
-  max-width: 240px;
   margin-left: auto;
   margin-right: auto;
-  color: var(--white-base);
-  background-color: var(--red);
+  color: var(--dark-background);
+  background-color: var(--light-background);
   transition: background-color 0.5s;
   &:hover {
-    background-color: var(--red-hover);
+    background-color: var(--white-base);
   }
 }
 

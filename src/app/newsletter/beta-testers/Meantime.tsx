@@ -14,7 +14,10 @@ const Meantime: React.FC = () => {
         </p>
         <p className={styles['main-text']}>
           You can expect the occasional email from us (we promise not to spam
-          you). When we’re ready, we’ll send a link to all of you.
+          you).
+          <br />
+          <br />
+          When we’re ready, we’ll send a link to all of you.
           <br />
           <br />
           If you’d like to opt out of receiving emails, no problem! There’s a

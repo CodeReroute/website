@@ -22,8 +22,10 @@ const Employee: React.FC<EmployeeProps> = ({
       />
       <div className={styles['employee-info']}>
         <div className={styles['employee-title']}>{name}</div>
-        <div>{title}</div>
-        {subTitle && <div>{subTitle}</div>}
+        <div className={styles['employee-subtitle']}>{title}</div>
+        {subTitle && (
+          <div className={styles['employee-subtitle']}>{subTitle}</div>
+        )}
       </div>
     </div>
   );

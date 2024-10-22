@@ -19,9 +19,6 @@ const Product: React.FC = () => {
         <p className={styles['product-middle-section-sub-heading']}>
           HERE'S A QUICK OVERVIEW OF MAPPETIZER
         </p>
-        <p className={styles['product-middle-section-customer']}>
-          customers 🤝 restaurants
-        </p>
         <p className={styles['product-middle-section-paragraph-1']}>
           We’ve identified that the process for restaurant discovery, booking,
           paying and reviewing is fragmented (and low-key annoying). We are
