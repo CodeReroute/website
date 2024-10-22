@@ -1,6 +1,6 @@
 .hero {
   padding: 70px;
-  min-height: 100svh;
+  min-height: 90svh;
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -10,8 +10,11 @@
   align-items: center;
   flex-direction: column;
   gap: 50px;
+  .main-wrapper {
+    margin-top: -20px;
+  }
   .logo {
-    margin-bottom: 50px;
+    margin-bottom: 0px;
   }
   .sub-heading {
     max-width: 365px;

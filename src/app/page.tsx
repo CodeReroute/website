@@ -67,42 +67,40 @@ export default function Home() {
   return (
     <div>
       <div ref={sectionTop} className={styles.hero} style={style}>
-        <div>
-          <a target="_blank" href="https://codereroute.com">
-            <Image
-              className={styles.logo}
-              src={assetUrl('/images/logo.png')}
-              alt="Code Reroute"
-              title="Code Reroute"
-              width={138}
-              height={19}
-            />
-          </a>
-          <div>
-            <h1>mappetizer</h1>
-            <div className={styles['sub-heading']}>
-              discover + save restaurants into an interactive map &mdash;
-              revolutionizing the way you experience restaurants
-            </div>
-            <div className={styles['sign-up-text']}>waitlist signup</div>
-            <form onSubmit={handleSubmit}>
-              <input
-                ref={inputRef}
-                type="email"
-                required
-                placeholder="enter email"
-                disabled={disabled}
-                className={`${styles.button} ${styles.email}`}
-              />
-              <button
-                disabled={disabled}
-                className={`${styles.button} ${styles.submit}`}
-              >
-                {getSubmitText(requestState)}
-              </button>
-              <ReCaptchaV3 hideText={true} />
-            </form>
+        <a target="_blank" href="https://codereroute.com">
+          <Image
+            className={styles.logo}
+            src={assetUrl('/images/logo.png')}
+            alt="Code Reroute"
+            title="Code Reroute"
+            width={138}
+            height={19}
+          />
+        </a>
+        <div className={styles['main-wrapper']}>
+          <h1>mappetizer</h1>
+          <div className={styles['sub-heading']}>
+            discover + save restaurants into an interactive map &mdash;
+            revolutionizing the way you experience restaurants
           </div>
+          <div className={styles['sign-up-text']}>waitlist signup</div>
+          <form onSubmit={handleSubmit}>
+            <input
+              ref={inputRef}
+              type="email"
+              required
+              placeholder="enter email"
+              disabled={disabled}
+              className={`${styles.button} ${styles.email}`}
+            />
+            <button
+              disabled={disabled}
+              className={`${styles.button} ${styles.submit}`}
+            >
+              {getSubmitText(requestState)}
+            </button>
+            <ReCaptchaV3 hideText={true} />
+          </form>
         </div>
         <SocialMedia />
       </div>

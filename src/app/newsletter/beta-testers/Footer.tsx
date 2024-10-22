@@ -27,7 +27,9 @@ const Footer: React.FC = () => {
             engineers and designers building <a href="/">@mappetizer</a> &mdash;
             the world's biggest restaurant app.
           </p>
-          <a href="#">unsubscribe</a>
+          <a href="#" className={styles['footer-unsubscribe']}>
+            unsubscribe
+          </a>
         </div>
         <div className={styles['footer-right']}>
           <SocialMedia

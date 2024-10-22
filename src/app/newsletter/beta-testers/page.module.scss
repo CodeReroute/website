@@ -1,6 +1,8 @@
 .main-beta-testers {
   h1 {
     font-size: 40px;
+    line-height: 35px;
+    margin-bottom: 24px;
   }
 }
 
@@ -25,7 +27,8 @@
         margin-bottom: 8px;
       }
       .main-heading {
-        margin-bottom: 40px;
+        margin-top: 16px;
+        margin-bottom: 55px;
         @media screen and (min-width: 500px) {
           font-size: 45px;
         }
@@ -86,7 +89,7 @@
   min-height: 100vh;
   background-color: var(--light-background);
   .main-heading {
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
   .sub-heading {
     margin-bottom: 12px;
@@ -131,6 +134,9 @@
   padding: 100px;
   color: var(--red);
   background-color: var(--light-background);
+  a {
+    text-decoration-thickness: 1px;
+  }
   .footer-thank-you {
     margin-bottom: 16px;
   }
@@ -143,14 +149,20 @@
     .footer-left {
       flex: 1;
       .footer-company-name {
+        font-weight: 300;
         margin-bottom: 16px;
       }
       .footer-declaration {
+        font-weight: 300;
         margin-bottom: 16px;
+      }
+      .footer-unsubscribe {
+        font-weight: 300;
       }
     }
     .footer-right {
       flex: 1;
+      font-weight: 300;
       .footer-social-media {
         justify-content: left;
         margin-bottom: 16px;
@@ -202,7 +214,7 @@
     min-width: 500px;
     h1 {
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 30px;
     }
     .product-middle-section-sub-heading {
       text-align: center;

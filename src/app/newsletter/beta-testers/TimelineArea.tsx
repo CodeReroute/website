@@ -58,7 +58,7 @@ const TimelineArea: React.FC = () => {
         </p>
         <p className={styles['timeline-point-2']}>
           Fingers crossed 🤞🏼 that you'll still be interested in being a crucial
-          part of out app dev.
+          part of our app dev.
         </p>
       </div>
     </div>
