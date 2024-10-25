@@ -104,6 +104,7 @@
   .meantime-image {
     display: flex;
     flex-wrap: wrap;
+    gap: 40px;
     justify-content: center;
   }
   .meantime-image-phone {
@@ -124,6 +125,9 @@
       padding-left: 30px;
       padding-right: 30px;
     }
+    .meantime-image {
+      gap: 24px;
+    }
     .meantime-image-phone {
       max-width: 150px;
     }
@@ -131,7 +135,7 @@
 }
 
 .footer {
-  padding: 100px;
+  padding: 100px 100px 70px 100px;
   color: var(--red);
   background-color: var(--light-background);
   a {
@@ -286,7 +290,7 @@
   background-image: url('/images/map-pattern.png');
   letter-spacing: var(--second-letter-spacing);
   background-color: var(--dark-background);
-  padding: 180px 10px;
+  padding: 180px 30px;
   .timeline-text-wrapper {
     text-align: center;
     max-width: 480px;

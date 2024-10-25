@@ -11,25 +11,25 @@ const Footer: React.FC = () => {
       <div className={styles['footer-thank-you']}>
         THANK YOU FOR BEING PART OF THE JOURNEY!
       </div>
-      <Image
-        alt="Logo"
-        title="Logo"
-        width={180}
-        height={30.48}
-        className={styles['footer-logo']}
-        src={assetUrl('/images/beta-testers/logo-red.png')}
-      />
       <div className={styles['footer-divide']}>
         <div className={styles['footer-left']}>
+          <Image
+            alt="Logo"
+            title="Logo"
+            width={180}
+            height={30.48}
+            className={styles['footer-logo']}
+            src={assetUrl('/images/beta-testers/logo-red.png')}
+          />
           <p className={styles['footer-company-name']}>@ {year} Code Reroute</p>
           <p className={styles['footer-declaration']}>
             Code Reroute is comprised of a multidisciplinary team of software
             engineers and designers building <a href="/">@mappetizer</a> &mdash;
             the world's biggest restaurant app.
           </p>
-          <a href="#" className={styles['footer-unsubscribe']}>
+          {/* <a href="#" className={styles['footer-unsubscribe']}>
             unsubscribe
-          </a>
+          </a> */}
         </div>
         <div className={styles['footer-right']}>
           <SocialMedia
