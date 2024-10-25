@@ -31,7 +31,7 @@ const Meantime: React.FC = () => {
           width={220}
           height={391.1}
           className={styles['meantime-image-phone']}
-          src={assetUrl('/images/beta-testers/meantime-phone-1.png')}
+          src={assetUrl('/images/beta-testers/meantime-phone-2.png')}
         />
         <Image
           alt="Phone 2"
@@ -39,7 +39,7 @@ const Meantime: React.FC = () => {
           width={220}
           height={391.1}
           className={styles['meantime-image-phone']}
-          src={assetUrl('/images/beta-testers/meantime-phone-2.png')}
+          src={assetUrl('/images/beta-testers/meantime-phone-1.png')}
         />
         <Image
           alt="Phone 3"
