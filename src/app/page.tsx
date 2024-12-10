@@ -73,8 +73,8 @@ export default function Home() {
             src={assetUrl('/images/logo.png')}
             alt="Code Reroute"
             title="Code Reroute"
-            width={138}
-            height={19}
+            width={200}
+            height={27.51}
           />
         </a>
         <div className={styles['main-wrapper']}>

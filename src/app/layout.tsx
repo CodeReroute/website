@@ -41,6 +41,12 @@ export default function RootLayout({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={featuredImage} />
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon_white.png"
+          media="(prefers-color-scheme: dark)"
+        />
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${webConfig.gaTrackingId}`}
