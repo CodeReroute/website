@@ -13,12 +13,12 @@
 body {
   background-color: #000;
   letter-spacing: 0.5px;
-  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  font-family: var(--font-goga), Arial, Helvetica, sans-serif;
 }
 
 h1,
 h2 {
-  font-family: var(--font-roca), serif;
+  font-family: var(--font-goga), serif;
 }
 
 *,

@@ -1,103 +1,53 @@
 import localFont from 'next/font/local';
 
-export const rocaTwo = localFont({
-  src: './FontsFree-Net-Roca-Two-Bold.ttf',
-  variable: '--font-roca',
-  weight: '400 500 600 700 800 900',
-});
 
-export const montserrat = localFont({
+export const goga = localFont({
   src: [
     {
-      path: './montserrat/Montserrat-Black.ttf',
+      path: './goga/Goga-Black.otf',
       weight: '900',
       style: 'normal',
     },
     {
-      path: './montserrat/Montserrat-BlackItalic.ttf',
-      weight: '900',
-      style: 'italic',
-    },
-    {
-      path: './montserrat/Montserrat-Bold.ttf',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: './montserrat/Montserrat-BoldItalic.ttf',
-      weight: '700',
-      style: 'italic',
-    },
-    {
-      path: './montserrat/Montserrat-ExtraBold.ttf',
+      path: './goga/Goga-Extrabold.otf',
       weight: '800',
       style: 'normal',
     },
     {
-      path: './montserrat/Montserrat-ExtraBoldItalic.ttf',
-      weight: '800',
-      style: 'italic',
-    },
-    {
-      path: './montserrat/Montserrat-ExtraLight.ttf',
-      weight: '200',
+      path: './goga/Goga-Bold.otf',
+      weight: '700',
       style: 'normal',
     },
     {
-      path: './montserrat/Montserrat-ExtraLightItalic.ttf',
-      weight: '200',
-      style: 'italic',
-    },
-    // {
-    //   path: './montserrat/Montserrat-Italic.ttf',
-    //   weight: '400',
-    //   style: 'italic',
-    // },
-    {
-      path: './montserrat/Montserrat-Light.ttf',
-      weight: '300',
-      style: 'normal',
-    },
-    {
-      path: './montserrat/Montserrat-LightItalic.ttf',
-      weight: '300',
-      style: 'italic',
-    },
-    {
-      path: './montserrat/Montserrat-Medium.ttf',
-      weight: '400 500',
-      style: 'normal',
-    },
-    {
-      path: './montserrat/Montserrat-MediumItalic.ttf',
-      weight: '400 500',
-      style: 'italic',
-    },
-    // {
-    //   path: './montserrat/Montserrat-Regular.ttf',
-    //   weight: '400',
-    //   style: 'normal',
-    // },
-    {
-      path: './montserrat/Montserrat-SemiBold.ttf',
+      path: './goga/Goga-Semibold.otf',
       weight: '600',
       style: 'normal',
     },
     {
-      path: './montserrat/Montserrat-SemiBoldItalic.ttf',
-      weight: '600',
-      style: 'italic',
-    },
-    {
-      path: './montserrat/Montserrat-Thin.ttf',
-      weight: '100',
+      path: './goga/Goga-Medium.otf',
+      weight: '500',
       style: 'normal',
     },
     {
-      path: './montserrat/Montserrat-ThinItalic.ttf',
+      path: './goga/Goga-Regular.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './goga/Goga-Light.otf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './goga/Goga-Extralight.otf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: './goga/Goga-Thin.otf',
       weight: '100',
-      style: 'italic',
+      style: 'normal',
     },
   ],
-  variable: '--font-montserrat',
+  variable: '--font-goga',
 });

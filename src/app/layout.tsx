@@ -1,6 +1,6 @@
 import Script from 'next/script';
 import type { Metadata } from 'next';
-import { montserrat, rocaTwo } from './fonts/fonts';
+import { goga } from './fonts/fonts';
 import './globals.css';
 import { webConfig } from './components/utils/webConfig';
 
@@ -65,7 +65,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${montserrat.variable} ${rocaTwo.variable}`}>
+      <body className={`${goga.variable}`}>
         {children}
       </body>
     </html>
