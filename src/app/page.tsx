@@ -1,24 +1,8 @@
 'use client';
 import Image from 'next/image';
 import styles from './page.module.scss';
-import Employee from '@/app/components/employee/Employee';
-import { employees } from './components/employee/employees';
 import { assetUrl } from './components/utils';
-import React, { FormEvent, useCallback, useRef, useState } from 'react';
-import { RequestState, useApi } from './components/utils/hooks/useApi';
-import ReCaptchaV3, {
-  requestRecaptchaV3Token,
-} from './components/utils/ReCaptchaV3';
-import { trackEvent } from './components/utils/googleAnalytics';
-import SocialMedia from './components/SocialMedia';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-
-const style: React.CSSProperties = {
-  backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.20), rgba(95, 93, 63, 0.20)), url('${assetUrl(
-    '/images/map-pattern.png',
-  )}')`,
-};
+import React, {useRef} from 'react';
 
 export default function Home() {
   const sectionTop = useRef<HTMLDivElement>(null);
