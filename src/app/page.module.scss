@@ -1,156 +1,87 @@
 .hero {
-  padding: 70px;
-  min-height: 90svh;
+  min-height: 100vh;
+  padding-top: 25px;
   background-size: cover;
   background-position: center;
-  text-align: center;
-  color: var(--white-base);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  gap: 50px;
-  .main-wrapper {
-    margin-top: -20px;
-  }
-  .logo {
-    margin-bottom: 0px;
-  }
-  .sub-heading {
-    max-width: 365px;
-    margin-top: 6px;
-    margin-bottom: 18px;
-    font-weight: 300;
-    color: var(--light-background);
-  }
-  .sign-up-text {
-    font-weight: 400;
-    margin-bottom: 25px;
-  }
-  .button.email,
-  .button.submit {
-    font-weight: 300;
-    margin-bottom: 18px;
-  }
-  .button.email,
-  .button.submit,
-  .sign-up-text {
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-family: var(--font-montserrat);
-  }
-  .button.email {
-    outline: none;
-    margin-bottom: 8px;
-    &::placeholder {
-      color: var(--dark-background); /* Change this to your desired color */
-    }
-    &:focus::placeholder {
-      color: var(--gray); /* Change this to your desired color */
-    }
-  }
-  .button.submit {
-    cursor: pointer;
-    &:active {
-      background-color: var(--light-background);
-    }
-  }
-}
 
-.button {
-  text-align: center;
-  width: 100%;
-  border: none;
-  padding: 13px 8px;
-  font-size: 14px;
-  border-radius: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--dark-background);
-  background-color: var(--light-background);
-  transition: background-color 0.5s;
-  &:hover {
-    background-color: var(--white-base);
-  }
-}
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 40px);
+    margin: 0px auto;
 
-.dream-team {
-  color: var(--red);
-  background-color: var(--light-background);
-  padding: 80px 80px 90px 80px;
-  .heading-wrapper {
-    margin-bottom: 60px;
-    .sub-heading {
-      font-weight: 300;
-      max-width: 550px;
-      margin-top: 16px;
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-left: 0;
+
+      @media (min-width: 768px) {
+        width: 150px;
+      }
+    }
+
+    .right-text {
+      font-size: 12px;
+      font-weight: 400;
+      text-align: right;
+      color: #f0efea;
+      margin-right: 10px;
+
+      @media (min-width: 768px) {
+        font-size: 14px;
+      }
     }
   }
-  .team {
-    display: grid;
-    gap: 20px;
+
+  .header-line {
+    width: calc(100% - 60px);
+    height: 2px;
+    background-color: #f0efea;
+    margin: 20px auto 0 auto;
+  }
+
+  .middleSection {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas: 'item1 item2 item3 item4 item5 item6';
-  }
-  .team > div:nth-child(1) {
-    grid-area: item1;
-  }
-  .team > div:nth-child(2) {
-    grid-area: item2;
-  }
-  .team > div:nth-child(3) {
-    grid-area: item3;
-  }
-  .team > div:nth-child(4) {
-    grid-area: item4;
-  }
-  .team > div:nth-child(5) {
-    grid-area: item5;
-  }
-  .team > div:nth-child(6) {
-    grid-area: item6;
-  }
+    padding: 0 20px;
+    height: 100%;
+    flex-grow: 1;
 
-  @media (max-width: 1100px) {
-    .team {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-areas:
-        '. item1 item2 .'
-        'item3 item4 item5 item6';
+    @media (min-width: 768px) {
+      padding: 0 40px;
     }
-  }
-  @media (max-width: 750px) {
-    .team {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-areas: inherit;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #d0f29b;
+      line-height: 1;
+      text-transform: uppercase;
+
+      @media (min-width: 768px) {
+        font-size: 3.5rem;
+      }
     }
-    .team > div:nth-child(1) {
-      grid-area: inherit;
-    }
-    .team > div:nth-child(2) {
-      grid-area: inherit;
-    }
-    .team > div:nth-child(3) {
-      grid-area: inherit;
-    }
-    .team > div:nth-child(4) {
-      grid-area: inherit;
-    }
-    .team > div:nth-child(5) {
-      grid-area: inherit;
-    }
-    .team > div:nth-child(6) {
-      grid-area: inherit;
-    }
-  }
-  @media (max-width: 500px) {
-    text-align: center;
-    padding: 50px 20px;
-  }
-  @media (max-width: 425px) {
-    .team {
-      grid-template-columns: 1fr;
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #f0efea;
+      line-height: 1.2;
+      text-transform: uppercase;
+
+      @media (min-width: 768px) {
+        font-size: 2rem;
+      }
+
+      span {
+        display: inline;
+      }
     }
   }
 }
