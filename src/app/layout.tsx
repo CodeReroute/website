@@ -6,6 +6,7 @@ import { webConfig } from './components/utils/webConfig';
 
 const title = 'mappetizer';
 const description = 'a restaurant discovery app.';
+const keywords = 'mappetizer, restaurant, food, discover, map';
 const featuredImage = 'https://codereroute.com/assets/sharing-meta-image.png';
 export const metadata: Metadata = {
   title,
@@ -23,6 +24,7 @@ export default function RootLayout({
         {/* <!-- Google / Search Engine Tags --> */}
         <meta itemProp="name" content={title} />
         <meta itemProp="description" content={description} />
+        <meta name="keywords" content={keywords} />
         <meta itemProp="image" content={featuredImage} />
         {/* <!-- Facebook Meta Tags --> */}
         <meta property="og:url" content="https://mappetizer.com" />
