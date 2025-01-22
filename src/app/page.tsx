@@ -11,12 +11,18 @@ const style: React.CSSProperties = {
   )}')`,
 };
 
+interface Slide {
+  title: string;
+  description: string | JSX.Element;
+  img: string;
+}
+
 // Function to scroll the slider
 const scrollSlider = (
   direction: number,
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>,
   currentIndex: number,
-  slides: any[],
+  slides: Slide[],
 ) => {
   const slider = document.getElementById('horizontalSlider');
   if (slider) {
@@ -94,7 +100,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className={styles.hero}>
+      <div ref={sectionTop} className={styles.hero}>
         {/* Video Background */}
         <video
           autoPlay
