@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { assetUrl } from './components/utils';
@@ -92,7 +92,6 @@ export default function Home() {
   // State to track the current index of the slider
   const [currentIndex, setCurrentIndex] = useState(0);
 
-const Home: React.FC = () => {
   return (
     <div>
       <div className={styles.hero}>
@@ -254,6 +253,4 @@ const Home: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default Home;
+}
