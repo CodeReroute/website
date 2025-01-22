@@ -4,9 +4,7 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
-
   .videoBackground {
     position: absolute;
     top: 0;
@@ -19,7 +17,6 @@
 
   .header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: calc(100% - 40px);
     margin-top: 20px;
@@ -65,7 +62,10 @@
 
   .middleSection {
     display: flex;
+    padding: 30px;
+    margin-left: 28px;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
     align-items: center;
     align-self: center;

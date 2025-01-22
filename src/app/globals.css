@@ -6,13 +6,16 @@
   --dark-background: #101010;
   --white-base: #ffffff;
   --black-base: #000000;
-  --grey: #909090;
+  --turquoise: #d0f29b;
+  --gray: #909090;
   --second-letter-spacing: 1px;
+  --main-background: #101010;
 }
 
 body {
-  background-color: #000;
   letter-spacing: 0.5px;
+  color: var(--white-base);
+  background-color: var(--main-background);
   font-family: var(--font-goga), Arial, Helvetica, sans-serif;
 }
 

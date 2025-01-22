@@ -25,7 +25,7 @@ export default function RootLayout({
         <meta itemProp="description" content={description} />
         <meta itemProp="image" content={featuredImage} />
         {/* <!-- Facebook Meta Tags --> */}
-        <meta property="og:url" content="https://codereroute.com" />
+        <meta property="og:url" content="https://mappetizer.com" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -34,7 +34,7 @@ export default function RootLayout({
         <meta property="fb:app_id" content="811203999437355" />
         {/* <!-- Twitter Meta Tags --> */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://codereroute.com" />
+        <meta property="twitter:url" content="https://mappetizer.com" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:image" content={featuredImage} />
         <meta property="twitter:description" content={description} />
@@ -65,9 +65,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${goga.variable}`}>
-        {children}
-      </body>
+      <body className={`${goga.variable}`}>{children}</body>
     </html>
   );
 }
