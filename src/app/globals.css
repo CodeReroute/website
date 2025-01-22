@@ -1,18 +1,14 @@
 :root {
-  --red: #a83a32;
-  --red-hover: #bc4138;
-  --light-green: #7a7752;
-  --light-background: #efede1;
-  --dark-background: #262412;
   --white-base: #ffffff;
   --black-base: #000000;
-  --gray: #909090;
-  --second-letter-spacing: 1px;
+  --turquoise: #d0f29b;
+  --dark-background: #262412;
 }
 
 body {
-  background-color: #000;
   letter-spacing: 0.5px;
+  color: var(--white-base);
+  background-color: var(--black-base);
   font-family: var(--font-goga), Arial, Helvetica, sans-serif;
 }
 
