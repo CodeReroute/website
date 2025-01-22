@@ -15,7 +15,7 @@ const Home: React.FC = () => {
           width={150}
           height={20.5}
         />
-        <h4>COMING SOON</h4>
+        <h4 className={styles['coming-soon']}>COMING SOON</h4>
       </header>
       <div className={styles['text-wrapper']}>
         <h1>PAUSE.</h1>
