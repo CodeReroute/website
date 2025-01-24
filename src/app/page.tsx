@@ -39,53 +39,29 @@ const slides = [
   {
     title: 'SAY HI',
     description: 'Meet the team behind this ambitious app build.',
-    img: '/images/1.jpg',
+    img: '/images/1.png',
   },
   {
     title: 'THE WAITLIST',
     description: 'Early birds only. Sign up to be among the first app users.',
-    img: '/images/2.jpg',
+    img: '/images/2.png',
   },
   {
     title: 'RESTO ROLL CALL',
     description: 'We’re requesting feedback from any and all restaurants.',
-    img: '/images/3.jpg',
+    img: '/images/3.png',
   },
   {
     title: 'FOLLOW US',
-    description: <SocialMedia customStyles={{justifyContent: 'flex-start'}} />,
-    img: '/images/4.jpg',
+    description:
+      'Support our vision by sharing it with your friends far and wide.',
+    img: '/images/4.png',
   },
   {
     title: 'TELL A FRIEND',
     description:
       'Support our vision by sharing it with your friends far and wide.',
-    img: '/images/5.jpg',
-  },
-  {
-    title: 'GET INVOLVED',
-    description: 'Join the movement and make a difference.',
-    img: '/images/6.jpg',
-  },
-  {
-    title: 'PARTNER WITH US',
-    description: 'Explore opportunities to collaborate.',
-    img: '/images/7.jpg',
-  },
-  {
-    title: 'OUR MISSION',
-    description: 'Learn more about what drives our vision.',
-    img: '/images/8.jpg',
-  },
-  {
-    title: 'TEAM UPDATES',
-    description: 'Catch up on the latest updates from our team.',
-    img: '/images/9.jpg',
-  },
-  {
-    title: 'THANK YOU',
-    description: 'We appreciate your support and enthusiasm!',
-    img: '/images/10.jpg',
+    img: '/images/5.png',
   },
 ];
 
@@ -165,12 +141,15 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      <div className={styles.textSection}>
-        <p className={styles['text-section-description']}>
-          <span>Discover Restaurants, Book Tables,</span> <br />
-          <span>Share Experiences</span> <br />
-        </p>
+      <div>
+        <div className={styles.textSection}>
+          <p className={styles['text-section-description']}>
+            <span>Discover Restaurants, Book Tables,</span> <br />
+            <span>Share Experiences</span> <br />
+          </p>
+          {/* Add a horizontal line */}
+        </div>
+        <div className={styles['text-section-line']} />
       </div>
 
       {/* Horizontal Slider Section */}
