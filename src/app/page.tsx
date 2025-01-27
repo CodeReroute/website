@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { assetUrl } from './components/utils';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SocialMedia from './components/SocialMedia';
 
 const style: React.CSSProperties = {
@@ -17,7 +17,6 @@ interface Slide {
   img: string;
 }
 
-// Function to scroll the slider
 const scrollSlider = (
   direction: number,
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>,
@@ -26,7 +25,7 @@ const scrollSlider = (
 ) => {
   const slider = document.getElementById('horizontalSlider');
   if (slider) {
-    const scrollAmount = 300; // Adjust based on your slide width
+    const scrollAmount = 300;
     slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     const newIndex = currentIndex + direction;
     if (newIndex >= 0 && newIndex < slides.length) {
@@ -70,8 +69,22 @@ export default function Home() {
   const sectionBottom = useRef<HTMLDivElement>(null);
   const sectionFooter = useRef<HTMLDivElement>(null);
   const [showInputSection, setShowInputSection] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // State to track the current index of the slider
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 560);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
@@ -147,7 +160,6 @@ export default function Home() {
             <span>Discover Restaurants, Book Tables,</span> <br />
             <span>Share Experiences</span> <br />
           </p>
-          {/* Add a horizontal line */}
         </div>
         <div className={styles['text-section-line']} />
       </div>
@@ -216,25 +228,53 @@ export default function Home() {
       </div>
 
       <div ref={sectionFooter} className={styles.footer} style={style}>
-        <div className={styles.footerContent}>
-          <h2 className={styles.footerItem}>WORK WITH US</h2>
-          <h2 className={styles.footerItem}>CEO LINKEDIN</h2>
-          <h2 className={styles.footerItem}>PRESS INQUIRIES</h2>
-          <h2 className={styles.footerItem}>CONTACT</h2>
-          <h2 className={styles.footerItem}>FAQ</h2>
-        </div>
-        <div className={styles['footer-line']} />
-        <div className={styles.footerSection}>
-          <Image
-            className={styles.logo}
-            src={assetUrl('/images/logo.png')}
-            alt="Mappetizer"
-            title="Mappetizer"
-            width={150}
-            height={40}
-          />
-          <SocialMedia />
-        </div>
+        {!isMobile && (
+          <>
+            <div className={styles.footerContent}>
+              <h2 className={styles.footerItem}>WORK WITH US</h2>
+              <h2 className={styles.footerItem}>CEO LINKEDIN</h2>
+              <h2 className={styles.footerItem}>PRESS INQUIRIES</h2>
+              <h2 className={styles.footerItem}>CONTACT</h2>
+              <h2 className={styles.footerItem}>FAQ</h2>
+            </div>
+            <div className={styles['footer-line']} />
+            <div className={styles.footerSection}>
+              <Image
+                className={styles.logo}
+                src={assetUrl('/images/logo.png')}
+                alt="Mappetizer"
+                title="Mappetizer"
+                width={150}
+                height={40}
+              />
+              <SocialMedia />
+            </div>
+          </>
+        )}
+        {isMobile && (
+          <>
+            <div className={styles.socialMediaContainer}>
+              <SocialMedia />
+            </div>
+            <div className={styles.footerButtonContainer}>
+              <button className={styles.footerButton}>WORK HERE</button>
+              <button className={styles.footerButton}>CEO LINKEDIN</button>
+              <button className={styles.footerButton}>PRESS INQUIRIES</button>
+              <button className={styles.footerButton}>CONTACT</button>
+              <button className={styles.footerButton}>FAQ</button>
+            </div>
+            <div className={styles.footerLogo}>
+              <Image
+                className={styles.logo}
+                src={assetUrl('/images/logoIcon.png')}
+                alt="Mappetizer"
+                title="Mappetizer"
+                width={50}
+                height={50}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
