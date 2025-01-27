@@ -196,6 +196,25 @@
       margin-left: 0;
     }
 
+    .waitlistButton {
+      margin-top: 20px;
+      padding: 8px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      height: 40px;
+      border: 2px solid var(--white-base);
+      border-radius: 5px;
+      background-color: transparent;
+      color: var(--light-background);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .waitlistButton:hover {
+      background-color: var(--black-base);
+      border: none;
+    }
+
     .middleSection h1 {
       font-size: 2rem;
     }
@@ -315,6 +334,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  scrollbar-width: none;
 }
 
 .navButton {
@@ -375,19 +395,11 @@
   scroll-behavior: smooth;
   gap: 20px;
   padding: 10px 25px;
-}
-
-#horizontalSlider {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 20px;
-  padding: 10px 25px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-#horizontalSlider::-webkit-scrollbar {
+.horizontalSlider::-webkit-scrollbar {
   display: none;
 }
 
@@ -675,7 +687,7 @@
   }
 
   .logo {
-    width: 50px;
+    width: 30px;
     height: auto;
     object-fit: contain;
   }

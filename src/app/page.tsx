@@ -52,8 +52,9 @@ const slides = [
   },
   {
     title: 'FOLLOW US',
-    description:
-      'Support our vision by sharing it with your friends far and wide.',
+    description: (
+      <SocialMedia customStyles={{ justifyContent: 'flex-start' }} />
+    ),
     img: '/images/4.png',
   },
   {
@@ -141,6 +142,14 @@ export default function Home() {
             <span>HIDDEN GEMS</span> <br />
             <span>IN YOUR CITY</span>
           </h1>
+          {isMobile && !showInputSection && (
+            <button
+              onClick={() => setShowInputSection(!showInputSection)}
+              className={styles.waitlistButton}
+            >
+              JOIN THE WAITLIST
+            </button>
+          )}
           {showInputSection && (
             <div className={styles.inputSection}>
               <input type="text" placeholder="NAME" className={styles.input} />
@@ -188,7 +197,7 @@ export default function Home() {
             />
           </button>
 
-          <div id="horizontalSlider" className={styles.horizontalSlider}>
+          <div className={styles.horizontalSlider}>
             {slides.map((slide, index) => (
               <div key={index} className={styles.sliderItem}>
                 <Image
@@ -200,7 +209,13 @@ export default function Home() {
                   height={230}
                 />
                 <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                <p className={styles.sliderDescription}>{slide.description}</p>
+                <div className={styles.sliderDescription}>
+                  {typeof slide.description === 'string' ? (
+                    <p>{slide.description}</p>
+                  ) : (
+                    slide.description
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -269,8 +284,8 @@ export default function Home() {
                 src={assetUrl('/images/logoIcon.png')}
                 alt="Mappetizer"
                 title="Mappetizer"
-                width={50}
-                height={50}
+                width={30}
+                height={30}
               />
             </div>
           </>
