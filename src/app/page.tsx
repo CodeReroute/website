@@ -197,7 +197,7 @@ export default function Home() {
             />
           </button>
 
-          <div className={styles.horizontalSlider}>
+          <div id="horizontalSlider" className={styles.horizontalSlider}>
             {slides.map((slide, index) => (
               <div key={index} className={styles.sliderItem}>
                 <Image
