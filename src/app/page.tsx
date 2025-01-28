@@ -17,13 +17,15 @@ const Home: React.FC = () => {
         />
         <h4 className={styles['coming-soon']}>COMING SOON</h4>
       </header>
-      <div className={styles['text-wrapper']}>
-        <h1>PAUSE.</h1>
-        <h3>
-          WE ARE UPDATING OUR SITE.
-          <br />
-          CHECK BACK EARLY FEB.
-        </h3>
+      <div className={styles['bottom-section']}>
+        <div className={styles['text-wrapper']}>
+          <h1>PAUSE.</h1>
+          <h3>
+            WE ARE UPDATING OUR SITE.
+            <br />
+            CHECK BACK EARLY FEB.
+          </h3>
+        </div>
       </div>
     </div>
   );
