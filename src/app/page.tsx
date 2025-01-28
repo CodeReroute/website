@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { assetUrl } from './components/utils';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SocialMedia from './components/SocialMedia';
 
 const style: React.CSSProperties = {
@@ -11,16 +11,21 @@ const style: React.CSSProperties = {
   )}')`,
 };
 
-// Function to scroll the slider
+interface Slide {
+  title: string;
+  description: string | JSX.Element;
+  img: string;
+}
+
 const scrollSlider = (
   direction: number,
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>,
   currentIndex: number,
-  slides: any[],
+  slides: Slide[],
 ) => {
   const slider = document.getElementById('horizontalSlider');
   if (slider) {
-    const scrollAmount = 300; // Adjust based on your slide width
+    const scrollAmount = 300;
     slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     const newIndex = currentIndex + direction;
     if (newIndex >= 0 && newIndex < slides.length) {
@@ -33,53 +38,30 @@ const slides = [
   {
     title: 'SAY HI',
     description: 'Meet the team behind this ambitious app build.',
-    img: '/images/1.jpg',
+    img: '/images/1.png',
   },
   {
     title: 'THE WAITLIST',
     description: 'Early birds only. Sign up to be among the first app users.',
-    img: '/images/2.jpg',
+    img: '/images/2.png',
   },
   {
     title: 'RESTO ROLL CALL',
     description: 'We’re requesting feedback from any and all restaurants.',
-    img: '/images/3.jpg',
+    img: '/images/3.png',
   },
   {
     title: 'FOLLOW US',
-    description: <SocialMedia customStyles={{justifyContent: 'flex-start'}} />,
-    img: '/images/4.jpg',
+    description: (
+      <SocialMedia customStyles={{ justifyContent: 'flex-start' }} />
+    ),
+    img: '/images/4.png',
   },
   {
     title: 'TELL A FRIEND',
     description:
       'Support our vision by sharing it with your friends far and wide.',
-    img: '/images/5.jpg',
-  },
-  {
-    title: 'GET INVOLVED',
-    description: 'Join the movement and make a difference.',
-    img: '/images/6.jpg',
-  },
-  {
-    title: 'PARTNER WITH US',
-    description: 'Explore opportunities to collaborate.',
-    img: '/images/7.jpg',
-  },
-  {
-    title: 'OUR MISSION',
-    description: 'Learn more about what drives our vision.',
-    img: '/images/8.jpg',
-  },
-  {
-    title: 'TEAM UPDATES',
-    description: 'Catch up on the latest updates from our team.',
-    img: '/images/9.jpg',
-  },
-  {
-    title: 'THANK YOU',
-    description: 'We appreciate your support and enthusiasm!',
-    img: '/images/10.jpg',
+    img: '/images/5.png',
   },
 ];
 
@@ -88,13 +70,27 @@ export default function Home() {
   const sectionBottom = useRef<HTMLDivElement>(null);
   const sectionFooter = useRef<HTMLDivElement>(null);
   const [showInputSection, setShowInputSection] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // State to track the current index of the slider
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 560);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
     <div>
-      <div className={styles.hero}>
+      <div ref={sectionTop} className={styles.hero}>
         {/* Video Background */}
         <video
           autoPlay
@@ -146,6 +142,14 @@ export default function Home() {
             <span>HIDDEN GEMS</span> <br />
             <span>IN YOUR CITY</span>
           </h1>
+          {isMobile && !showInputSection && (
+            <button
+              onClick={() => setShowInputSection(!showInputSection)}
+              className={styles.waitlistButton}
+            >
+              JOIN THE WAITLIST
+            </button>
+          )}
           {showInputSection && (
             <div className={styles.inputSection}>
               <input type="text" placeholder="NAME" className={styles.input} />
@@ -159,12 +163,14 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      <div className={styles.textSection}>
-        <p className={styles['text-section-description']}>
-          <span>Discover Restaurants, Book Tables,</span> <br />
-          <span>Share Experiences</span> <br />
-        </p>
+      <div>
+        <div className={styles.textSection}>
+          <p className={styles['text-section-description']}>
+            <span>Discover Restaurants, Book Tables,</span> <br />
+            <span>Share Experiences</span> <br />
+          </p>
+        </div>
+        <div className={styles['text-section-line']} />
       </div>
 
       {/* Horizontal Slider Section */}
@@ -203,7 +209,13 @@ export default function Home() {
                   height={230}
                 />
                 <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                <p className={styles.sliderDescription}>{slide.description}</p>
+                <div className={styles.sliderDescription}>
+                  {typeof slide.description === 'string' ? (
+                    <p>{slide.description}</p>
+                  ) : (
+                    slide.description
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -231,25 +243,53 @@ export default function Home() {
       </div>
 
       <div ref={sectionFooter} className={styles.footer} style={style}>
-        <div className={styles.footerContent}>
-          <h2 className={styles.footerItem}>WORK WITH US</h2>
-          <h2 className={styles.footerItem}>CEO LINKEDIN</h2>
-          <h2 className={styles.footerItem}>PRESS INQUIRIES</h2>
-          <h2 className={styles.footerItem}>CONTACT</h2>
-          <h2 className={styles.footerItem}>FAQ</h2>
-        </div>
-        <div className={styles['footer-line']} />
-        <div className={styles.footerSection}>
-          <Image
-            className={styles.logo}
-            src={assetUrl('/images/logo.png')}
-            alt="Mappetizer"
-            title="Mappetizer"
-            width={150}
-            height={40}
-          />
-          <SocialMedia />
-        </div>
+        {!isMobile && (
+          <>
+            <div className={styles.footerContent}>
+              <h2 className={styles.footerItem}>WORK WITH US</h2>
+              <h2 className={styles.footerItem}>CEO LINKEDIN</h2>
+              <h2 className={styles.footerItem}>PRESS INQUIRIES</h2>
+              <h2 className={styles.footerItem}>CONTACT</h2>
+              <h2 className={styles.footerItem}>FAQ</h2>
+            </div>
+            <div className={styles['footer-line']} />
+            <div className={styles.footerSection}>
+              <Image
+                className={styles.logo}
+                src={assetUrl('/images/logo.png')}
+                alt="Mappetizer"
+                title="Mappetizer"
+                width={150}
+                height={40}
+              />
+              <SocialMedia />
+            </div>
+          </>
+        )}
+        {isMobile && (
+          <>
+            <div className={styles.socialMediaContainer}>
+              <SocialMedia />
+            </div>
+            <div className={styles.footerButtonContainer}>
+              <button className={styles.footerButton}>WORK HERE</button>
+              <button className={styles.footerButton}>CEO LINKEDIN</button>
+              <button className={styles.footerButton}>PRESS INQUIRIES</button>
+              <button className={styles.footerButton}>CONTACT</button>
+              <button className={styles.footerButton}>FAQ</button>
+            </div>
+            <div className={styles.footerLogo}>
+              <Image
+                className={styles.logo}
+                src={assetUrl('/images/logoIcon.png')}
+                alt="Mappetizer"
+                title="Mappetizer"
+                width={30}
+                height={30}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
