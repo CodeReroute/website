@@ -7,17 +7,14 @@ import { mergeClassNames } from './utils/mergeClassNames';
 interface SocialMediaProps {
   path?: string;
   className?: string;
-  customStyles?: React.CSSProperties; // Add custom styles prop
 }
 
-const SocialMedia: React.FC<SocialMediaProps> = ({ path = '', className, customStyles }) => {
+const SocialMedia: React.FC<SocialMediaProps> = ({ path = '', className }) => {
   return (
-    <div
-      className={mergeClassNames(styles['social-media'], className)}
-      style={customStyles} // Apply dynamic styles here
-    >
+    <div className={mergeClassNames(styles['social-media'], className)}>
       <a target="_blank" href="https://www.instagram.com/_mappetizer">
         <Image
+          className={styles['social-media']}
           src={assetUrl(`/images${path}/social-media/instagram.png`)}
           alt="Instagram"
           title="Instagram"
@@ -27,6 +24,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ path = '', className, customS
       </a>
       <a target="_blank" href="https://www.tiktok.com/@mappetizer">
         <Image
+          className={styles['social-media']}
           src={assetUrl(`/images${path}/social-media/tiktok.png`)}
           alt="TikTok"
           title="TikTok"
@@ -39,6 +37,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ path = '', className, customS
         href="https://www.linkedin.com/company/mappetizer/about"
       >
         <Image
+          className={styles['social-media']}
           src={assetUrl(`/images${path}/social-media/linkedin.png`)}
           alt="LinkedIn"
           title="LinkedIn"
