@@ -56,11 +56,11 @@ const slides = [
       <div>
         <SocialMedia
           instagramUrl="https://www.instagram.com/_mappetizer"
-          instagramIcon="/images/social-media/instagramBlack.png"
+          instagramIcon={assetUrl("/images/social-media/instagram.png")}
           tiktokUrl="https://www.tiktok.com/@mappetizer"
-          tiktokIcon="/images/social-media/tiktokBlack.png"
+          tiktokIcon={assetUrl("/images/social-media/tiktok.png")}
           linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-          linkedinIcon="/images/social-media/linkedinBlack.png"
+          linkedinIcon={assetUrl("/images/social-media/linkedin.png")}
           className="custom-class"
           customStyles={{ justifyContent: 'flex-start' }}
         />
@@ -119,7 +119,7 @@ export default function Home() {
           playsInline
           className={styles.videoBackground}
         >
-          <source src="/video.mp4" type="video/mp4" />
+          <source src={assetUrl("/video.mp4")} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -294,7 +294,7 @@ export default function Home() {
                 >
                   <Image
                     className={styles.sliderImage}
-                    src={slide.img}
+                    src={assetUrl(slide.img)}
                     alt="restaurant"
                     title="Restaurant"
                     width={300}
@@ -364,7 +364,7 @@ export default function Home() {
                 >
                   <Image
                     className={styles.sliderImage}
-                    src={slide.img}
+                    src={assetUrl(slide.img)}
                     alt="restaurant"
                     title="Restaurant"
                     width={300}
@@ -592,11 +592,11 @@ export default function Home() {
               <div>
                 <SocialMedia
                   instagramUrl="https://www.instagram.com/_mappetizer"
-                  instagramIcon="/images/social-media/instagram.png"
+                  instagramIcon={assetUrl('/images/social-media/instagram.png')}
                   tiktokUrl="https://www.tiktok.com/@mappetizer"
-                  tiktokIcon="/images/social-media/tiktok.png"
+                  tiktokIcon={assetUrl('/images/social-media/tiktok.png')}
                   linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                  linkedinIcon="/images/social-media/linkedin.png"
+                  linkedinIcon={assetUrl('/images/social-media/linkedin.png')}
                   className="custom-class"
                 />
               </div>
@@ -608,11 +608,11 @@ export default function Home() {
             <div className={styles.socialMediaContainer}>
               <SocialMedia
                 instagramUrl="https://www.instagram.com/_mappetizer"
-                instagramIcon="/images/social-media/instagram.png"
+                instagramIcon={assetUrl("/images/social-media/instagram.png")}
                 tiktokUrl="https://www.tiktok.com/@mappetizer"
-                tiktokIcon="/images/social-media/tiktok.png"
+                tiktokIcon={assetUrl("/images/social-media/tiktok.png")}
                 linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                linkedinIcon="/images/social-media/linkedin.png"
+                linkedinIcon={assetUrl("/images/social-media/linkedin.png")}
                 className="custom-class"
               />
             </div>
