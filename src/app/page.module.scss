@@ -37,12 +37,13 @@
       text-align: center;
       color: var(--light-background);
       flex: 1;
+      line-height: 0;
+      transition: all 0.3s ease;
     }
 
     .center-text:hover {
       color: var(--light-green);
       font-size: 30px;
-      line-height: 0;
     }
 
     .right-text {
@@ -70,6 +71,7 @@
     text-align: center;
     color: var(--light-background);
     margin-top: 5px;
+    transition: all 0.3s ease;
   }
 
   .waitlist:hover {
@@ -703,10 +705,9 @@
   color: var(--light-background);
   cursor: pointer;
   transition: color 0.3s ease;
-}
-
-.footerItem:hover {
-  color: #f0efea;
+  &:hover {
+    color: #f0efea;
+  }
 }
 
 .footerSection {
@@ -1000,5 +1001,16 @@
 
   .modalText {
     font-size: 12px;
+  }
+}
+
+.footer-item-link {
+  text-decoration: none;
+  .footer-button {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 }

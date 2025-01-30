@@ -6,7 +6,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import SocialMedia from './components/SocialMedia';
 import { logError } from './components/utils/logging';
 import ShareButtons from './components/ShareButtons/ShareButtons';
+import { mergeClassNames } from './components/utils/mergeClassNames';
 
+const pressEmail = 'press@mappetizer.com';
+const contactEmail = 'hello@mappetizer.com';
 const style: React.CSSProperties = {
   backgroundImage: `linear-gradient(rgb(16, 16, 16, 0.2), rgb(16, 16, 16, 0.2)), url('${assetUrl(
     '/images/map-pattern.png',
@@ -421,107 +424,65 @@ export default function Home() {
         {!isMobile && (
           <>
             <div className={styles.footerContent}>
-              <div
-                className={styles.footerItemWrapper}
-                onMouseEnter={() => setHoveredFooter('WORK WITH US')}
-                onMouseLeave={() => setHoveredFooter(null)}
+              <a
+                className={styles['footer-item-link']}
+                href="https://codereroute.com/"
+                target="_blank"
               >
-                {hoveredFooter === 'WORK WITH US' ? (
-                  <a
-                    target="_blank"
-                    href={'https://codereroute.com/'}
-                    rel="noopener noreferrer"
-                  >
-                    <button
-                      className={`${styles.footerItem} ${styles.footerButton}`}
-                    >
-                      WORK WITH US
-                    </button>
-                  </a>
-                ) : (
-                  <h2 className={styles.footerItem}>WORK WITH US</h2>
-                )}
-              </div>
-
-              <div
-                className={styles.footerItemWrapper}
-                onMouseEnter={() => setHoveredFooter('CEO LINKEDIN')}
-                onMouseLeave={() => setHoveredFooter(null)}
+                <h2
+                  className={mergeClassNames(
+                    styles.footerItem,
+                    styles['footer-button'],
+                  )}
+                >
+                  WORK WITH US
+                </h2>
+              </a>
+              <a
+                target="_blank"
+                className={styles['footer-item-link']}
+                href={'https://www.linkedin.com/in/danielle-dufour'}
+                rel="noopener noreferrer"
               >
-                {hoveredFooter === 'CEO LINKEDIN' ? (
-                  <a
-                    target="_blank"
-                    href={
-                      'https://www.linkedin.com/in/danielle-dufour?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'
-                    }
-                    rel="noopener noreferrer"
-                  >
-                    <button
-                      className={`${styles.footerItem} ${styles.footerButton}`}
-                    >
-                      CEO LINKEDIN
-                    </button>
-                  </a>
-                ) : (
-                  <h2 className={styles.footerItem}>CEO LINKEDIN</h2>
-                )}
-              </div>
-
-              {!pressInquiries && (
-                <div
-                  className={styles.footerItemWrapper}
-                  onMouseEnter={() => setHoveredFooter('PRESS INQUIRIES')}
-                  onMouseLeave={() => setHoveredFooter(null)}
-                >
-                  {hoveredFooter === 'PRESS INQUIRIES' ? (
-                    <button
-                      className={`${styles.footerItem} ${styles.footerButton}`}
-                      onClick={() => setPressInquiries(true)}
-                    >
-                      PRESS INQUIRIES
-                    </button>
-                  ) : (
-                    <h2 className={styles.footerItem}>PRESS INQUIRIES</h2>
+                <h2
+                  className={mergeClassNames(
+                    styles.footerItem,
+                    styles['footer-button'],
                   )}
-                </div>
-              )}
-
-              {pressInquiries && (
-                <button
-                  className={`${styles.footerItem} ${styles.footerButton}`}
-                  onClick={() => setPressInquiries(false)}
                 >
-                  press@mappetizer.com
-                </button>
-              )}
-
-              {!isContact && (
-                <div
-                  className={styles.footerItemWrapper}
-                  onMouseEnter={() => setHoveredFooter('CONTACT')}
-                  onMouseLeave={() => setHoveredFooter(null)}
-                >
-                  {hoveredFooter === 'CONTACT' ? (
-                    <button
-                      className={`${styles.footerItem} ${styles.footerButton}`}
-                      onClick={() => setIsContact(true)}
-                    >
-                      CONTACT
-                    </button>
-                  ) : (
-                    <h2 className={styles.footerItem}>CONTACT</h2>
+                  CEO LINKEDIN
+                </h2>
+              </a>
+              <a
+                target="_blank"
+                className={styles['footer-item-link']}
+                href={`mailto:${pressEmail}`}
+                onClick={() => setPressInquiries(true)}
+              >
+                <h2
+                  className={mergeClassNames(
+                    styles.footerItem,
+                    styles['footer-button'],
                   )}
-                </div>
-              )}
-
-              {isContact && (
-                <button
-                  className={`${styles.footerItem} ${styles.footerButton}`}
-                  onClick={() => setIsContact(false)}
                 >
-                  hello@mappetizer.com
-                </button>
-              )}
+                  PRESS INQUIRIES
+                </h2>
+              </a>
+              <a
+                target="_blank"
+                className={styles['footer-item-link']}
+                href={`mailto:${contactEmail}`}
+                onClick={() => setPressInquiries(true)}
+              >
+                <h2
+                  className={mergeClassNames(
+                    styles.footerItem,
+                    styles['footer-button'],
+                  )}
+                >
+                  CONTACT
+                </h2>
+              </a>
             </div>
 
             <div className={styles['footer-line']} />
