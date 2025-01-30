@@ -56,11 +56,11 @@ const slides = [
       <div>
         <SocialMedia
           instagramUrl="https://www.instagram.com/_mappetizer"
-          instagramIcon={assetUrl("/images/social-media/instagram.png")}
+          instagramIcon="/images/social-media/instagramBlack.png"
           tiktokUrl="https://www.tiktok.com/@mappetizer"
-          tiktokIcon={assetUrl("/images/social-media/tiktok.png")}
+          tiktokIcon="/images/social-media/tiktokBlack.png"
           linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-          linkedinIcon={assetUrl("/images/social-media/linkedin.png")}
+          linkedinIcon="/images/social-media/linkedinBlack.png"
           className="custom-class"
           customStyles={{ justifyContent: 'flex-start' }}
         />
@@ -119,7 +119,7 @@ export default function Home() {
           playsInline
           className={styles.videoBackground}
         >
-          <source src={assetUrl("/video.mp4")} type="video/mp4" />
+          <source src="/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -194,7 +194,7 @@ export default function Home() {
       </div>
 
       {/* Horizontal Slider Section */}
-      <div ref={sectionBottom} className={styles.sliderSection}>
+      <div className={styles.sliderSection}>
         <h1 className={styles.sectionTitle}>SECOND COURSE</h1>
         <div className={styles.sliderWrapper}>
           {/* Next Button */}
@@ -294,7 +294,7 @@ export default function Home() {
                 >
                   <Image
                     className={styles.sliderImage}
-                    src={assetUrl(slide.img)}
+                    src={slide.img}
                     alt="restaurant"
                     title="Restaurant"
                     width={300}
@@ -336,13 +336,7 @@ export default function Home() {
                       </button>
                     </div>
                   ) : (
-                    <div>
-                      <button
-                        className={`${styles.sliderTitle} ${styles.titleButton}`}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
+                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
                   )}
                   <div className={styles.sliderDescription}>
                     {typeof slide.description === 'string' ? (
@@ -364,7 +358,7 @@ export default function Home() {
                 >
                   <Image
                     className={styles.sliderImage}
-                    src={assetUrl(slide.img)}
+                    src={slide.img}
                     alt="restaurant"
                     title="Restaurant"
                     width={300}
@@ -406,16 +400,7 @@ export default function Home() {
                       </button>
                     </div>
                   ) : (
-                    <div>
-                      <button
-                        className={styles.titleButton}
-                        onClick={() => {
-                          setIsModalOpen(true);
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
+                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
                   )}
                   <div className={styles.sliderDescription}>
                     {typeof slide.description === 'string' ? (
@@ -509,7 +494,7 @@ export default function Home() {
                   {hoveredFooter === 'PRESS INQUIRIES' ? (
                     <button
                       className={`${styles.footerItem} ${styles.footerButton}`}
-                      onClick={() => setPressInquiries(!pressInquiries)}
+                      onClick={() => setPressInquiries(true)}
                     >
                       PRESS INQUIRIES
                     </button>
@@ -520,9 +505,12 @@ export default function Home() {
               )}
 
               {pressInquiries && (
-                <div className={styles.emailContainer}>
-                  <a href="mailto:hello@mappetizer.com">press@mappetizer.com</a>
-                </div>
+                <button
+                  className={`${styles.footerItem} ${styles.footerButton}`}
+                  onClick={() => setPressInquiries(false)}
+                >
+                  press@mappetizer.com
+                </button>
               )}
 
               {!isContact && (
@@ -534,7 +522,7 @@ export default function Home() {
                   {hoveredFooter === 'CONTACT' ? (
                     <button
                       className={`${styles.footerItem} ${styles.footerButton}`}
-                      onClick={() => setIsContact(!isContact)}
+                      onClick={() => setIsContact(true)}
                     >
                       CONTACT
                     </button>
@@ -545,11 +533,12 @@ export default function Home() {
               )}
 
               {isContact && (
-                <div className={styles.emailContainer}>
-                  <a href="mailto:hello@mappetizer.com">
-                    contact@mappetizer.com
-                  </a>
-                </div>
+                <button
+                  className={`${styles.footerItem} ${styles.footerButton}`}
+                  onClick={() => setIsContact(false)}
+                >
+                  hello@mappetizer.com
+                </button>
               )}
             </div>
 
@@ -563,40 +552,14 @@ export default function Home() {
                 width={150}
                 height={40}
               />
-              {pressInquiries && (
-                <div className={styles.footerItemWrapper}>
-                  <button
-                    className={`${styles.footerItem} ${styles.footerButton}`}
-                    onClick={() => {
-                      setPressInquiries(!pressInquiries);
-                      setHoveredFooter(null);
-                    }}
-                  >
-                    PRESS INQUIRIES
-                  </button>
-                </div>
-              )}
-              {isContact && (
-                <div className={styles.footerItemWrapper}>
-                  <button
-                    className={`${styles.footerItem} ${styles.footerButton}`}
-                    onClick={() => {
-                      setIsContact(!isContact);
-                      setHoveredFooter(null);
-                    }}
-                  >
-                    CONTACT
-                  </button>
-                </div>
-              )}
               <div>
                 <SocialMedia
                   instagramUrl="https://www.instagram.com/_mappetizer"
-                  instagramIcon={assetUrl('/images/social-media/instagram.png')}
+                  instagramIcon="/images/social-media/instagram.png"
                   tiktokUrl="https://www.tiktok.com/@mappetizer"
-                  tiktokIcon={assetUrl('/images/social-media/tiktok.png')}
+                  tiktokIcon="/images/social-media/tiktok.png"
                   linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                  linkedinIcon={assetUrl('/images/social-media/linkedin.png')}
+                  linkedinIcon="/images/social-media/linkedin.png"
                   className="custom-class"
                 />
               </div>
@@ -608,19 +571,45 @@ export default function Home() {
             <div className={styles.socialMediaContainer}>
               <SocialMedia
                 instagramUrl="https://www.instagram.com/_mappetizer"
-                instagramIcon={assetUrl("/images/social-media/instagram.png")}
+                instagramIcon="/images/social-media/instagram.png"
                 tiktokUrl="https://www.tiktok.com/@mappetizer"
-                tiktokIcon={assetUrl("/images/social-media/tiktok.png")}
+                tiktokIcon="/images/social-media/tiktok.png"
                 linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                linkedinIcon={assetUrl("/images/social-media/linkedin.png")}
+                linkedinIcon="/images/social-media/linkedin.png"
                 className="custom-class"
               />
             </div>
             <div className={styles.footerButtonContainer}>
-              <button className={styles.footerButton}>WORK HERE</button>
-              <button className={styles.footerButton}>CEO LINKEDIN</button>
-              <button className={styles.footerButton}>PRESS INQUIRIES</button>
-              <button className={styles.footerButton}>CONTACT</button>
+              <a
+                target="_blank"
+                href={'https://codereroute.com/'}
+                rel="noopener noreferrer"
+              >
+                <button className={styles.footerButton}>WORK HERE</button>
+              </a>
+              <a
+                target="_blank"
+                href={
+                  'https://www.linkedin.com/in/danielle-dufour?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'
+                }
+                rel="noopener noreferrer"
+              >
+                <button className={styles.footerButton}>CEO LINKEDIN</button>
+              </a>
+              <button
+                onClick={() => setPressInquiries(!pressInquiries)} // ✅ Toggle state correctly
+                className={styles.footerButton}
+              >
+                {pressInquiries ? 'PRESS@MAPPETIZER.COM' : 'PRESS INQUIRIES'}
+              </button>
+
+              {/* CONTACT */}
+              <button
+                onClick={() => setIsContact(!isContact)} // ✅ Toggle state correctly
+                className={styles.footerButton}
+              >
+                {isContact ? 'HELLO@MAPPETIZER.COM' : 'CONTACT'}
+              </button>
             </div>
             <div className={styles.footerLogo}>
               <Image

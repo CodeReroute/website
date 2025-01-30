@@ -80,8 +80,6 @@
 
   .middleSection {
     display: flex;
-    padding: 30px;
-    margin-left: 28px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
@@ -106,18 +104,20 @@
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
+    flex-wrap: nowrap;
   }
 
   .input {
     font-size: 1rem;
     border: 2px solid var(--white-base);
     border-radius: 5px;
-    background-color: transparent;
     color: var(--white-base);
-    width: 150px;
+    background: transparent;
+    width: 180px !important;
+    min-width: 0;
     height: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0px 10px;
+    box-sizing: border-box;
     outline: none;
   }
 
@@ -136,11 +136,12 @@
     color: var(--light-background);
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-align: left;
+    text-align: center;
   }
 
   .button:hover {
     background-color: var(--black-base);
+    color: var(--white-base);
     border: none;
   }
 }
@@ -171,7 +172,7 @@
     }
 
     .middleSection h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
     }
 
     .input {
@@ -211,10 +212,8 @@
       display: none;
     }
 
-    .middleSection {
-      align-items: flex-start;
-      align-self: flex-start;
-      margin-left: 0;
+    .middleSection h1 {
+      font-size: 3rem;
     }
 
     .waitlistButton {
@@ -231,22 +230,19 @@
       transition: background-color 0.3s ease;
     }
 
-    .middleSection h1 {
-      font-size: 2rem;
-    }
-
     .inputSection {
       flex-direction: column;
+      gap: 0px;
     }
 
     .input {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       width: 150px;
       height: 30px;
     }
 
     .button {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
       height: 30px;
       width: 100px;
     }
@@ -265,7 +261,7 @@
     }
 
     .middleSection h1 {
-      font-size: 1.7rem;
+      font-size: 2.5rem;
     }
 
     .header {
@@ -348,7 +344,7 @@
 
 .sliderSection {
   background-color: #f7f7f7;
-  padding: 80px 20px;
+  padding: 120px 20px;
 }
 
 .sectionTitle {
@@ -402,12 +398,12 @@
 }
 
 .navButton.disabled {
-  background: var(--black-base);
+  background: #f7f7f7;
   cursor: not-allowed;
 }
 
 .navButton1.disabled1 {
-  background: var(--black-base);
+  background: #f7f7f7;
   cursor: not-allowed;
 }
 
@@ -417,13 +413,13 @@
   width: 25%;
 }
 
-.navButton.disabled .navIcon {
-  filter: invert(1) brightness(100%) contrast(100%);
-}
+// .navButton.disabled .navIcon {
+//   filter: invert(1) brightness(100%) contrast(100%);
+// }
 
-.navButton1.disabled1 .navIcon {
-  filter: invert(1) brightness(100%) contrast(100%);
-}
+// .navButton1.disabled1 .navIcon {
+//   filter: invert(1) brightness(100%) contrast(100%);
+// }
 
 .horizontalSlider {
   display: flex;
@@ -546,7 +542,7 @@
   }
 
   .sliderDescription {
-    font-size: 10px;
+    font-size: 16px;
   }
   .titleButton {
     font-size: 18px;
@@ -568,9 +564,9 @@
     height: 400px;
 
     &:hover {
-      background-color: none;
+      background-color: #f7f7f7;
       box-shadow: none;
-      transform: scale(1);
+      transform: none;
     }
   }
 
@@ -592,15 +588,14 @@
 
   .sliderTitle {
     font-size: 16px;
-    margin-left: 15px;
   }
 
   .sliderDescription {
-    font-size: 9px;
-    margin-left: 15px;
+    font-size: 14px;
   }
   .titleButton {
     font-size: 16px;
+    margin-left: 0px;
 
     &:hover {
       color: var(--black-base);
@@ -650,7 +645,7 @@
   }
 
   .sliderDescription {
-    font-size: 8px;
+    font-size: 12px;
   }
   .titleButton {
     font-size: 14px;
@@ -750,7 +745,7 @@
   }
 }
 
-@media (max-width: 935px) {
+@media (max-width: 900px) {
   .footerItem {
     font-size: 16px;
   }
@@ -763,30 +758,17 @@
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 815px) {
   .footerItem {
-    font-size: 14px;
-  }
-  .emailContainer {
-    font-size: 14px;
-  }
-
-  .emailContainer:hover {
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 785px) {
-  .footerItem {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .emailContainer {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .emailContainer:hover {
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
@@ -840,7 +822,7 @@
   .footerButton {
     padding: 10px 15px;
     background-color: transparent;
-    border: 1px solid var(--white-base);
+    border: 2px solid var(--white-base);
     color: var(--white-base);
     border-radius: 5px;
     text-transform: uppercase;
@@ -848,11 +830,6 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     margin-bottom: 15px;
-  }
-
-  .footerButton:hover {
-    background-color: var(--white-base);
-    color: var(--black-base);
   }
 
   .footerLogo {
