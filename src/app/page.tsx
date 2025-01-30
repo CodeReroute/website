@@ -336,13 +336,7 @@ export default function Home() {
                       </button>
                     </div>
                   ) : (
-                    <div>
-                      <button
-                        className={`${styles.sliderTitle} ${styles.titleButton}`}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
+                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
                   )}
                   <div className={styles.sliderDescription}>
                     {typeof slide.description === 'string' ? (
@@ -406,16 +400,7 @@ export default function Home() {
                       </button>
                     </div>
                   ) : (
-                    <div>
-                      <button
-                        className={styles.titleButton}
-                        onClick={() => {
-                          setIsModalOpen(true);
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
+                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
                   )}
                   <div className={styles.sliderDescription}>
                     {typeof slide.description === 'string' ? (
@@ -509,7 +494,7 @@ export default function Home() {
                   {hoveredFooter === 'PRESS INQUIRIES' ? (
                     <button
                       className={`${styles.footerItem} ${styles.footerButton}`}
-                      onClick={() => setPressInquiries(!pressInquiries)}
+                      onClick={() => setPressInquiries(true)}
                     >
                       PRESS INQUIRIES
                     </button>
@@ -520,9 +505,12 @@ export default function Home() {
               )}
 
               {pressInquiries && (
-                <div className={styles.emailContainer}>
-                  <a href="mailto:hello@mappetizer.com">press@mappetizer.com</a>
-                </div>
+                <button
+                  className={`${styles.footerItem} ${styles.footerButton}`}
+                  onClick={() => setPressInquiries(false)}
+                >
+                  press@mappetizer.com
+                </button>
               )}
 
               {!isContact && (
@@ -534,7 +522,7 @@ export default function Home() {
                   {hoveredFooter === 'CONTACT' ? (
                     <button
                       className={`${styles.footerItem} ${styles.footerButton}`}
-                      onClick={() => setIsContact(!isContact)}
+                      onClick={() => setIsContact(true)}
                     >
                       CONTACT
                     </button>
@@ -545,11 +533,12 @@ export default function Home() {
               )}
 
               {isContact && (
-                <div className={styles.emailContainer}>
-                  <a href="mailto:hello@mappetizer.com">
-                    contact@mappetizer.com
-                  </a>
-                </div>
+                <button
+                  className={`${styles.footerItem} ${styles.footerButton}`}
+                  onClick={() => setIsContact(false)}
+                >
+                  hello@mappetizer.com
+                </button>
               )}
             </div>
 
@@ -563,32 +552,6 @@ export default function Home() {
                 width={150}
                 height={40}
               />
-              {pressInquiries && (
-                <div className={styles.footerItemWrapper}>
-                  <button
-                    className={`${styles.footerItem} ${styles.footerButton}`}
-                    onClick={() => {
-                      setPressInquiries(!pressInquiries);
-                      setHoveredFooter(null);
-                    }}
-                  >
-                    PRESS INQUIRIES
-                  </button>
-                </div>
-              )}
-              {isContact && (
-                <div className={styles.footerItemWrapper}>
-                  <button
-                    className={`${styles.footerItem} ${styles.footerButton}`}
-                    onClick={() => {
-                      setIsContact(!isContact);
-                      setHoveredFooter(null);
-                    }}
-                  >
-                    CONTACT
-                  </button>
-                </div>
-              )}
               <div>
                 <SocialMedia
                   instagramUrl="https://www.instagram.com/_mappetizer"
@@ -617,10 +580,36 @@ export default function Home() {
               />
             </div>
             <div className={styles.footerButtonContainer}>
-              <button className={styles.footerButton}>WORK HERE</button>
-              <button className={styles.footerButton}>CEO LINKEDIN</button>
-              <button className={styles.footerButton}>PRESS INQUIRIES</button>
-              <button className={styles.footerButton}>CONTACT</button>
+              <a
+                target="_blank"
+                href={'https://codereroute.com/'}
+                rel="noopener noreferrer"
+              >
+                <button className={styles.footerButton}>WORK HERE</button>
+              </a>
+              <a
+                target="_blank"
+                href={
+                  'https://www.linkedin.com/in/danielle-dufour?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'
+                }
+                rel="noopener noreferrer"
+              >
+                <button className={styles.footerButton}>CEO LINKEDIN</button>
+              </a>
+              <button
+                onClick={() => setPressInquiries(!pressInquiries)} // ✅ Toggle state correctly
+                className={styles.footerButton}
+              >
+                {pressInquiries ? 'PRESS@MAPPETIZER.COM' : 'PRESS INQUIRIES'}
+              </button>
+
+              {/* CONTACT */}
+              <button
+                onClick={() => setIsContact(!isContact)} // ✅ Toggle state correctly
+                className={styles.footerButton}
+              >
+                {isContact ? 'HELLO@MAPPETIZER.COM' : 'CONTACT'}
+              </button>
             </div>
             <div className={styles.footerLogo}>
               <Image
