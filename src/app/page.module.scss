@@ -7,7 +7,7 @@
   flex-direction: column;
 
   .videoBackground {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -713,7 +713,6 @@
 .footerButton {
   font-size: 22px;
   font-weight: 600;
-  border: 2px solid var(--white-base);
   border-radius: 5px;
   background: none;
   cursor: pointer;
@@ -822,7 +821,6 @@
   .footerButton {
     padding: 10px 15px;
     background-color: transparent;
-    border: 2px solid var(--white-base);
     color: var(--white-base);
     border-radius: 5px;
     text-transform: uppercase;

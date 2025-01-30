@@ -4,13 +4,13 @@ import { goga } from './fonts/fonts';
 import './globals.css';
 import { webConfig } from './components/utils/webConfig';
 
-const title = 'mappetizer';
-const description = 'a restaurant discovery app.';
+const siteTitle = 'mappetizer';
+const siteDescription = 'a restaurant discovery app.';
 const keywords = 'mappetizer, restaurant, food, discover, map';
 const featuredImage = 'https://codereroute.com/assets/sharing-meta-image.png';
 export const metadata: Metadata = {
-  title,
-  description,
+  title: siteTitle,
+  description: siteDescription,
 };
 
 export default function RootLayout({
@@ -22,26 +22,26 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <!-- Google / Search Engine Tags --> */}
-        <meta itemProp="name" content={title} />
-        <meta itemProp="description" content={description} />
+        <meta itemProp="name" content={siteTitle} />
+        <meta itemProp="description" content={siteDescription} />
         <meta name="keywords" content={keywords} />
         <meta itemProp="image" content={featuredImage} />
         {/* <!-- Facebook Meta Tags --> */}
         <meta property="og:url" content="https://mappetizer.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:description" content={siteDescription} />
         <meta property="og:image" content={featuredImage} />
-        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:alt" content={siteTitle} />
         <meta property="fb:app_id" content="811203999437355" />
         {/* <!-- Twitter Meta Tags --> */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://mappetizer.com" />
-        <meta property="twitter:title" content={title} />
+        <meta property="twitter:title" content={siteTitle} />
         <meta property="twitter:image" content={featuredImage} />
-        <meta property="twitter:description" content={description} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
+        <meta property="twitter:description" content={siteDescription} />
+        <meta name="twitter:title" content={siteTitle} />
+        <meta name="twitter:description" content={siteDescription} />
         <meta name="twitter:image" content={featuredImage} />
         <link
           rel="icon"

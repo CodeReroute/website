@@ -2,19 +2,22 @@
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { assetUrl } from './components/utils';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import SocialMedia from './components/SocialMedia';
+import { logError } from './components/utils/logging';
+import ShareButtons from './components/ShareButtons/ShareButtons';
 
 const style: React.CSSProperties = {
-  backgroundImage: `linear-gradient(rgba(95, 93, 63, 0.20), rgba(95, 93, 63, 0.20)), url('${assetUrl(
+  backgroundImage: `linear-gradient(rgb(16, 16, 16, 0.2), rgb(16, 16, 16, 0.2)), url('${assetUrl(
     '/images/map-pattern.png',
   )}')`,
 };
 
 interface Slide {
   title: string;
-  description: string | JSX.Element;
+  description: JSX.Element | React.ReactNode;
   img: string;
+  onClick?: () => unknown;
 }
 
 const scrollSlider = (
@@ -34,21 +37,39 @@ const scrollSlider = (
   }
 };
 
-const slides = [
+const siteTitle = 'mappetizer';
+const siteDescription = 'a restaurant discovery app.';
+const getSlides = (
+  setShowInputSection: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsShareModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+): Slide[] => [
   {
     title: 'SAY HI',
-    description: 'Meet the team behind this ambitious app build.',
+    description: <p>Meet the team behind this ambitious app build.</p>,
     img: '/images/1.png',
+    onClick: () => {
+      window.location.href = 'https://codereroute.com';
+    },
   },
   {
     title: 'THE WAITLIST',
-    description: 'Early birds only. Sign up to be among the first app users.',
+    description: (
+      <p>Early birds only. Sign up to be among the first app users.</p>
+    ),
     img: '/images/2.png',
+    onClick: () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setShowInputSection(true);
+    },
   },
   {
     title: 'RESTO ROLL CALL',
-    description: 'We’re requesting feedback from any and all restaurants.',
+    description: <p>We’re requesting feedback from any and all restaurants.</p>,
     img: '/images/3.png',
+    onClick: () => {
+      setIsModalOpen(true);
+    },
   },
   {
     title: 'FOLLOW US',
@@ -56,11 +77,11 @@ const slides = [
       <div>
         <SocialMedia
           instagramUrl="https://www.instagram.com/_mappetizer"
-          instagramIcon={assetUrl("/images/social-media/instagramBlack.png")}
+          instagramIcon={assetUrl('/images/social-media/instagramBlack.png')}
           tiktokUrl="https://www.tiktok.com/@mappetizer"
-          tiktokIcon={assetUrl("/images/social-media/tiktokBlack.png")}
+          tiktokIcon={assetUrl('/images/social-media/tiktokBlack.png')}
           linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-          linkedinIcon={assetUrl("/images/social-media/linkedinBlack.png")}
+          linkedinIcon={assetUrl('/images/social-media/linkedinBlack.png')}
           className="custom-class"
           customStyles={{ justifyContent: 'flex-start' }}
         />
@@ -70,9 +91,27 @@ const slides = [
   },
   {
     title: 'TELL A FRIEND',
-    description:
-      'Support our vision by sharing it with your friends far and wide.',
+    description: (
+      <p>Support our vision by sharing it with your friends far and wide.</p>
+    ),
     img: '/images/5.png',
+    onClick: () => {
+      if (!navigator.share) {
+        setIsShareModalOpen(true);
+        logError('Web Share API not supported.');
+        return;
+      }
+      try {
+        navigator.share({
+          title: siteTitle,
+          text: siteDescription,
+          url: window.location.href,
+        });
+      } catch (e) {
+        setIsShareModalOpen(true);
+        logError('Web Share API not supported.', e);
+      }
+    },
   },
 ];
 
@@ -85,6 +124,7 @@ export default function Home() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [hoveredFooter, setHoveredFooter] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [pressInquiries, setPressInquiries] = useState<boolean>(false);
   const [isContact, setIsContact] = useState<boolean>(false);
 
@@ -106,6 +146,11 @@ export default function Home() {
     };
   }, []);
 
+  const slides = useMemo(
+    () => getSlides(setShowInputSection, setIsModalOpen, setIsShareModalOpen),
+    [],
+  );
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
@@ -119,7 +164,7 @@ export default function Home() {
           playsInline
           className={styles.videoBackground}
         >
-          <source src={assetUrl("/video.mp4")} type="video/mp4" />
+          <source src={assetUrl('/video.mp4')} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -150,6 +195,7 @@ export default function Home() {
           <h1
             className={styles.waitlist}
             onClick={() => setShowInputSection(!showInputSection)}
+            style={{ cursor: 'pointer' }}
           >
             JOIN THE WAITLIST
           </h1>
@@ -172,7 +218,12 @@ export default function Home() {
           )}
           {showInputSection && (
             <div className={styles.inputSection}>
-              <input type="text" placeholder="NAME" className={styles.input} />
+              <input
+                type="text"
+                placeholder="NAME"
+                autoFocus={true}
+                className={styles.input}
+              />
               <input
                 type="email"
                 placeholder="EMAIL"
@@ -284,66 +335,39 @@ export default function Home() {
                 </div>
               </div>
             )}
+            {isShareModalOpen && (
+              <div
+                className={styles.modalOverlay}
+                role="dialog"
+                aria-labelledby="modal-title"
+              >
+                <div className={styles.modalContent}>
+                  <div className={styles.inputSection}>
+                    <ShareButtons />
+                  </div>
+                </div>
+              </div>
+            )}
             {!isMobile &&
               slides.map((slide, index) => (
                 <div
                   key={index}
                   className={styles.sliderItem}
+                  onClick={slide.onClick}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
                   <Image
                     className={styles.sliderImage}
                     src={assetUrl(slide.img)}
-                    alt="restaurant"
+                    alt="Restaurant"
                     title="Restaurant"
                     width={300}
                     height={230}
                   />
-                  {slide.title === 'FOLLOW US' || hoveredIndex !== index ? (
-                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                  ) : slide.title === 'SAY HI' ? (
-                    <div>
-                      <button
-                        className={`${styles.sliderTitle} ${styles.titleButton}`}
-                        onClick={() => {
-                          window.location.href = 'https://codereroute.com';
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
-                  ) : slide.title === 'THE WAITLIST' ? (
-                    <div>
-                      <button
-                        className={`${styles.sliderTitle} ${styles.titleButton}`}
-                        onClick={() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
-                  ) : slide.title === 'RESTO ROLL CALL' ? (
-                    <div>
-                      <button
-                        className={`${styles.sliderTitle} ${styles.titleButton}`}
-                        onClick={() => {
-                          setIsModalOpen(true);
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
-                  ) : (
-                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                  )}
+                  <h3 className={styles.sliderTitle}>{slide.title}</h3>
                   <div className={styles.sliderDescription}>
-                    {typeof slide.description === 'string' ? (
-                      <p>{slide.description}</p>
-                    ) : (
-                      slide.description
-                    )}
+                    {slide.description}
                   </div>
                 </div>
               ))}
@@ -353,61 +377,19 @@ export default function Home() {
                 <div
                   key={index}
                   className={styles.sliderItem}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={slide.onClick}
                 >
                   <Image
                     className={styles.sliderImage}
                     src={assetUrl(slide.img)}
-                    alt="restaurant"
+                    alt="Restaurant"
                     title="Restaurant"
                     width={300}
                     height={230}
                   />
-                  {slide.title === 'FOLLOW US' ? (
-                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                  ) : slide.title === 'SAY HI' ? (
-                    <div>
-                      <button
-                        className={styles.titleButton}
-                        onClick={() => {
-                          window.location.href = 'https://codereroute.com';
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
-                  ) : slide.title === 'THE WAITLIST' ? (
-                    <div>
-                      <button
-                        className={styles.titleButton}
-                        onClick={() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
-                  ) : slide.title === 'RESTO ROLL CALL' ? (
-                    <div>
-                      <button
-                        className={styles.titleButton}
-                        onClick={() => {
-                          setIsModalOpen(true);
-                        }}
-                      >
-                        {slide.title}
-                      </button>
-                    </div>
-                  ) : (
-                    <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                  )}
+                  <h3 className={styles.sliderTitle}>{slide.title}</h3>
                   <div className={styles.sliderDescription}>
-                    {typeof slide.description === 'string' ? (
-                      <p>{slide.description}</p>
-                    ) : (
-                      slide.description
-                    )}
+                    {slide.description}
                   </div>
                 </div>
               ))}
@@ -555,11 +537,11 @@ export default function Home() {
               <div>
                 <SocialMedia
                   instagramUrl="https://www.instagram.com/_mappetizer"
-                  instagramIcon={assetUrl("/images/social-media/instagram.png")}
+                  instagramIcon={assetUrl('/images/social-media/instagram.png')}
                   tiktokUrl="https://www.tiktok.com/@mappetizer"
-                  tiktokIcon={assetUrl("/images/social-media/tiktok.png")}
+                  tiktokIcon={assetUrl('/images/social-media/tiktok.png')}
                   linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                  linkedinIcon={assetUrl("/images/social-media/linkedin.png")}
+                  linkedinIcon={assetUrl('/images/social-media/linkedin.png')}
                   className="custom-class"
                 />
               </div>
@@ -571,33 +553,27 @@ export default function Home() {
             <div className={styles.socialMediaContainer}>
               <SocialMedia
                 instagramUrl="https://www.instagram.com/_mappetizer"
-                instagramIcon={assetUrl("/images/social-media/instagram.png")}
+                instagramIcon={assetUrl('/images/social-media/instagram.png')}
                 tiktokUrl="https://www.tiktok.com/@mappetizer"
-                tiktokIcon={assetUrl("/images/social-media/tiktok.png")}
+                tiktokIcon={assetUrl('/images/social-media/tiktok.png')}
                 linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                linkedinIcon={assetUrl("/images/social-media/linkedin.png")}
+                linkedinIcon={assetUrl('/images/social-media/linkedin.png')}
                 className="custom-class"
               />
             </div>
             <div className={styles.footerButtonContainer}>
-              <a
-                target="_blank"
-                href={'https://codereroute.com/'}
-                rel="noopener noreferrer"
-              >
+              <a target="_blank" href="https://codereroute.com/">
                 <button className={styles.footerButton}>WORK HERE</button>
               </a>
               <a
                 target="_blank"
-                href={
-                  'https://www.linkedin.com/in/danielle-dufour?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'
-                }
+                href={'https://www.linkedin.com/in/danielle-dufour'}
                 rel="noopener noreferrer"
               >
                 <button className={styles.footerButton}>CEO LINKEDIN</button>
               </a>
               <button
-                onClick={() => setPressInquiries(!pressInquiries)} 
+                onClick={() => setPressInquiries(!pressInquiries)}
                 className={styles.footerButton}
               >
                 {pressInquiries ? 'PRESS@MAPPETIZER.COM' : 'PRESS INQUIRIES'}
