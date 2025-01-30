@@ -125,7 +125,6 @@ export default function Home() {
   const [showInputSection, setShowInputSection] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [, setHoveredIndex] = useState<number | null>(null);
-  const [hoveredFooter, setHoveredFooter] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [pressInquiries, setPressInquiries] = useState<boolean>(false);
