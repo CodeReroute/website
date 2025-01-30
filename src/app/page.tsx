@@ -194,7 +194,7 @@ export default function Home() {
       </div>
 
       {/* Horizontal Slider Section */}
-      <div className={styles.sliderSection}>
+      <div ref={sectionBottom} className={styles.sliderSection}>
         <h1 className={styles.sectionTitle}>SECOND COURSE</h1>
         <div className={styles.sliderWrapper}>
           {/* Next Button */}
