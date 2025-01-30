@@ -1,6 +1,7 @@
 export const webConfig = {
   isProduction: process.env.APP_ENV === 'production',
   basePath: process.env.CODE_REROUTE_BASE_PATH || '',
+  assetBaseUrl: process.env.ASSET_BASE_URL || '',
   sendEmailBaseUrl:
     process.env.SEND_EMAIL_BASE_URL ||
     'https://code-reroute-send-emails.netlify.app/.netlify/functions/api',
