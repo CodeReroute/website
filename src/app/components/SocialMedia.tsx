@@ -1,50 +1,86 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './social-media.module.scss';
-import { assetUrl } from './utils';
 import { mergeClassNames } from './utils/mergeClassNames';
 
 interface SocialMediaProps {
-  path?: string;
+  instagramUrl?: string;
+  instagramIcon?: string;
+  tiktokUrl?: string;
+  tiktokIcon?: string;
+  linkedinUrl?: string;
+  linkedinIcon?: string;
   className?: string;
+  customStyles?: React.CSSProperties;
 }
 
-const SocialMedia: React.FC<SocialMediaProps> = ({ path = '', className }) => {
+const SocialMedia: React.FC<SocialMediaProps> = ({
+  instagramUrl,
+  instagramIcon,
+  tiktokUrl,
+  tiktokIcon,
+  linkedinUrl,
+  linkedinIcon,
+  className,
+  customStyles,
+}) => {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 560);
+      };
+  
+      handleResize();
+  
+      window.addEventListener('resize', handleResize);
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
   return (
-    <div className={mergeClassNames(styles['social-media'], className)}>
-      <a target="_blank" href="https://www.instagram.com/_mappetizer">
-        <Image
-          className={styles['social-media']}
-          src={assetUrl(`/images${path}/social-media/instagram.png`)}
-          alt="Instagram"
-          title="Instagram"
-          width={25}
-          height={25}
-        />
-      </a>
-      <a target="_blank" href="https://www.tiktok.com/@mappetizer">
-        <Image
-          className={styles['social-media']}
-          src={assetUrl(`/images${path}/social-media/tiktok.png`)}
-          alt="TikTok"
-          title="TikTok"
-          width={25}
-          height={25}
-        />
-      </a>
-      <a
-        target="_blank"
-        href="https://www.linkedin.com/company/mappetizer/about"
-      >
-        <Image
-          className={styles['social-media']}
-          src={assetUrl(`/images${path}/social-media/linkedin.png`)}
-          alt="LinkedIn"
-          title="LinkedIn"
-          width={25}
-          height={25}
-        />
-      </a>
+    <div
+      className={mergeClassNames(styles['social-media'], className)}
+      style={customStyles}
+    >
+      {/* Instagram Link */}
+      {instagramUrl && instagramIcon && (
+        <a target="_blank" href={instagramUrl} rel="noopener noreferrer">
+          <Image
+            src={instagramIcon}
+            alt="Instagram"
+            title="Instagram"
+            width={isMobile ? 25 : 35}
+            height={isMobile ? 25 : 35}
+          />
+        </a>
+      )}
+
+      {/* TikTok Link */}
+      {tiktokUrl && tiktokIcon && (
+        <a target="_blank" href={tiktokUrl} rel="noopener noreferrer">
+          <Image
+            src={tiktokIcon} 
+            alt="TikTok"
+            title="TikTok"
+            width={isMobile ? 25 : 35}
+            height={isMobile ? 25 : 35}
+          />
+        </a>
+      )}
+
+      {/* LinkedIn Link */}
+      {linkedinUrl && linkedinIcon && (
+        <a target="_blank" href={linkedinUrl} rel="noopener noreferrer">
+          <Image
+            src={linkedinIcon}
+            alt="LinkedIn"
+            title="LinkedIn"
+            width={isMobile ? 25 : 35}
+            height={isMobile ? 25 : 35}
+          />
+        </a>
+      )}
     </div>
   );
 };
