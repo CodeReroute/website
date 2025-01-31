@@ -1,8 +1,12 @@
 import React from 'react';
-import { assetUrl } from '../utils';
 import styles from './share.module.scss';
+import { assetUrl } from '../utils';
 
-const shareUrl = 'https://mappetizer.com';
+const shareUrl =
+  typeof window !== 'undefined'
+    ? window.location.href
+    : 'https://mappetizer.com/';
+
 const ShareButtons: React.FC<{ handleClose: () => void }> = ({
   handleClose,
 }) => {
