@@ -361,7 +361,9 @@ export default function Home() {
               >
                 <div className={styles.modalContent}>
                   <div className={styles.inputSection}>
-                    <ShareButtons />
+                    <ShareButtons
+                      handleClose={() => setIsShareModalOpen(false)}
+                    />
                   </div>
                 </div>
               </div>
