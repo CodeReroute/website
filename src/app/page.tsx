@@ -7,6 +7,10 @@ import SocialMedia from './components/SocialMedia';
 import { logError } from './components/utils/logging';
 import ShareButtons from './components/ShareButtons/ShareButtons';
 import { mergeClassNames } from './components/utils/mergeClassNames';
+import { webConfig } from './components/utils/webConfig';
+import ReCaptchaV3, {
+  requestRecaptchaV3Token,
+} from './components/utils/ReCaptchaV3';
 
 const pressEmail = 'press@mappetizer.com';
 const contactEmail = 'hello@mappetizer.com';
@@ -129,6 +133,67 @@ export default function Home() {
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [pressInquiries, setPressInquiries] = useState<boolean>(false);
   const [isContact, setIsContact] = useState<boolean>(false);
+  const [firstName, setFirstName] = useState<string>('');
+  const [lastName, setLastName] = useState<string | undefined>('');
+  const [email, setEmail] = useState<string | undefined>('');
+  const [resp, setResp] = useState<BaseResponse | null>(null);
+
+  interface BaseResponse {
+    success: boolean;
+    message?: string;
+    error?: string;
+  }
+
+  useEffect(() => {
+    const formattedName = firstName.split(' ');
+    if (formattedName.length === 4) {
+      setLastName(formattedName[formattedName.length - 1]);
+    } else {
+      setLastName(undefined);
+    }
+  }, [firstName]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setResp(null);
+
+    await requestRecaptchaV3Token(async (token) => {
+      if (!token) {
+        alert('reCAPTCHA verification failed. Please try again.');
+        return;
+      }
+
+      // Use the token directly in the API request
+      const response = await fetch(
+        `${webConfig.nextPublicBaseUrl}/user-info/create?token=${token}`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            types: ['RESTAURANT'],
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        setResp({
+          success: true,
+          message: 'Application submitted successfully!',
+        });
+      } else {
+        setResp({
+          success: false,
+          error: data.message || 'Something went wrong. Please try again.',
+        });
+      }
+    });
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -157,6 +222,7 @@ export default function Home() {
 
   return (
     <div>
+      <ReCaptchaV3 />
       <div ref={sectionTop} className={styles.hero}>
         {/* Video Background */}
         <video
@@ -219,20 +285,46 @@ export default function Home() {
             </button>
           )}
           {showInputSection && (
-            <div className={styles.inputSection}>
-              <input
-                type="text"
-                placeholder="NAME"
-                autoFocus={true}
-                className={styles.input}
-              />
-              <input
-                type="email"
-                placeholder="EMAIL"
-                className={styles.input}
-              />
-              <button className={styles.button}>SUBMIT</button>
-            </div>
+            <>
+              <div className={styles.inputSection}>
+                <input
+                  onChange={(e) => setFirstName(e.target.value)}
+                  value={firstName}
+                  type="text"
+                  placeholder="NAME"
+                  autoFocus={true}
+                  className={styles.input}
+                />
+                <input
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  type="email"
+                  placeholder="EMAIL"
+                  className={styles.input}
+                />
+                <button onClick={handleSubmit} className={styles.button}>
+                  {resp && resp.success
+                    ? 'SUBMITTED'
+                    : resp?.error === 'User with this type already exists'
+                    ? 'SUBMITTED'
+                    : 'SUBMIT'}
+                </button>
+              </div>
+              {resp && (
+                <div>
+                  <p
+                    style={{
+                      color: resp.success ? '#d0f29b' : 'red',
+                      fontWeight: '700',
+                      fontSize: '16px',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {resp.success ? resp.message : resp.error}
+                  </p>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
