@@ -26,19 +26,18 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
   customStyles,
 }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+
   useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 560);
-      };
-  
-      handleResize();
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 560);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div
       className={mergeClassNames(styles['social-media'], className)}
@@ -46,7 +45,12 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
     >
       {/* Instagram Link */}
       {instagramUrl && instagramIcon && (
-        <a target="_blank" href={instagramUrl} rel="noopener noreferrer">
+        <a
+          className={styles['iconContainer']}
+          target="_blank"
+          href={instagramUrl}
+          rel="noopener noreferrer"
+        >
           <Image
             src={instagramIcon}
             alt="Instagram"
@@ -59,9 +63,14 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
 
       {/* TikTok Link */}
       {tiktokUrl && tiktokIcon && (
-        <a target="_blank" href={tiktokUrl} rel="noopener noreferrer">
+        <a
+          className={styles['iconContainer']}
+          target="_blank"
+          href={tiktokUrl}
+          rel="noopener noreferrer"
+        >
           <Image
-            src={tiktokIcon} 
+            src={tiktokIcon}
             alt="TikTok"
             title="TikTok"
             width={isMobile ? 25 : 35}
@@ -72,7 +81,12 @@ const SocialMedia: React.FC<SocialMediaProps> = ({
 
       {/* LinkedIn Link */}
       {linkedinUrl && linkedinIcon && (
-        <a target="_blank" href={linkedinUrl} rel="noopener noreferrer">
+        <a
+          className={styles['iconContainer']}
+          target="_blank"
+          href={linkedinUrl}
+          rel="noopener noreferrer"
+        >
           <Image
             src={linkedinIcon}
             alt="LinkedIn"
