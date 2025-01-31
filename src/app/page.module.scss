@@ -141,6 +141,17 @@
     text-align: center;
   }
 
+  .success {
+    background-color: var(--black-base) ;
+    padding: 6px 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    height: 40px;
+    border-radius: 5px;
+    color: white ;
+    border: none ;
+  }
+
   .button:hover {
     background-color: var(--black-base);
     color: var(--white-base);
@@ -319,6 +330,11 @@
     font-size: 28px;
   }
 
+  .text-section-sub {
+    font-size: 18px;
+    max-width: 500px;
+  }
+
   .text-section-line {
     width: 100%;
   }
@@ -328,8 +344,10 @@
   .text-section-description {
     font-size: 22px;
   }
+
   .text-section-sub {
-    font-size: 16px;
+    font-size: 14px;
+    max-width: 400px;
   }
 
   .text-section-line {
@@ -339,8 +357,13 @@
 
 @media (max-width: 400px) {
   .textSection {
-    height: 120px;
+    height: 280px;
     padding: 5px;
+  }
+
+  .text-section-sub {
+    font-size: 10px;
+    max-width: 300px;
   }
 
   .text-section-description {
@@ -839,6 +862,7 @@
   .footerButton {
     padding: 10px 15px;
     background-color: transparent;
+    border: 2px solid var(--white-base);
     color: var(--white-base);
     border-radius: 5px;
     text-transform: uppercase;
@@ -846,6 +870,7 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     margin-bottom: 15px;
+    font-size: 20px;
   }
 
   .footerLogo {
@@ -864,6 +889,7 @@
 @media (max-width: 400px) {
   .footerButton {
     margin-bottom: 10px;
+    font-size: 16px;
   }
 }
 
@@ -882,21 +908,37 @@
 
 .modalContent {
   background: var(--black-base);
-  height: 500px;
-  width: 700px;
+  height: auto;
+  width: 80%; /* Adjusted width */
+  max-width: 900px; /* Maximum width */
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   display: flex;
-  align-items: center;
-  padding: 0px 30px;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.inputRow {
+  display: flex;
+  gap: 20px; /* Space between the two input sections */
+  flex-wrap: wrap; /* Allow inputs to wrap if necessary */
+  margin-bottom: 20px;
 }
 
 .inputSection {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  width: 48%; /* Each input takes half of the row's width */
+  align-items: flex-start; /* Align items to the start, but we'll modify if the label wraps */
+}
+
+.inputLabel {
+  font-size: 1rem;
+  color: var(--white-base);
+  font-weight: 500;
+  margin-bottom: 5px; /* Space between label and input */
+  white-space: normal; /* Allow label to wrap if it's too long */
+  display: block;
 }
 
 .input {
@@ -908,30 +950,8 @@
   height: 40px;
   padding-left: 10px;
   padding-right: 10px;
-  margin-bottom: 10px;
   outline: none;
-  flex: none;
-  min-width: auto;
-}
-
-.input:nth-child(1),
-.input:nth-child(2) {
-  width: 48%;
-}
-
-.input:nth-child(3),
-.input:nth-child(4),
-.input:nth-child(5) {
-  width: 31%;
-}
-
-.input:nth-child(6),
-.input:nth-child(7) {
-  width: 47%;
-}
-
-.input:nth-child(8) {
-  width: 46%;
+  width: 100%; /* Input takes full width of its container */
 }
 
 .input::placeholder {
@@ -965,11 +985,7 @@
   color: var(--black-base);
 }
 
-.modalText {
-  font-size: 18px;
-  font-weight: 500;
-  margin-top: 10px;
-}
+
 
 @media screen and (max-width: 768px) {
   .modalContent {

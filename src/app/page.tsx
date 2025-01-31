@@ -83,14 +83,9 @@ const getSlides = (
     description: (
       <div>
         <SocialMedia
-          instagramUrl="https://www.instagram.com/_mappetizer"
-          instagramIcon={assetUrl('/images/social-media/instagramBlack.png')}
-          tiktokUrl="https://www.tiktok.com/@mappetizer"
-          tiktokIcon={assetUrl('/images/social-media/tiktokBlack.png')}
-          linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-          linkedinIcon={assetUrl('/images/social-media/linkedinBlack.png')}
-          className="custom-class"
           customStyles={{ justifyContent: 'flex-start' }}
+          imageStyle={{ filter: 'invert(100%)' }}
+          iconContainerStyle={{ backgroundColor: '#000000' }}
         />
       </div>
     ),
@@ -302,7 +297,12 @@ export default function Home() {
                   placeholder="EMAIL"
                   className={styles.input}
                 />
-                <button onClick={handleSubmit} className={styles.button}>
+                <button
+                  onClick={handleSubmit}
+                  className={`${styles.button} ${
+                    resp?.success ? styles.success : ''
+                  }`}
+                >
                   {resp && resp.success
                     ? 'SUBMITTED'
                     : resp?.error === 'User with this type already exists'
@@ -386,65 +386,141 @@ export default function Home() {
                 aria-labelledby="modal-title"
               >
                 <div className={styles.modalContent}>
-                  <div className={styles.inputSection}>
-                    <input
-                      type="text"
-                      placeholder="Your Preferred Role"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Your Email"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Pronouns"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Your City"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Why do you want to work with us?"
-                      className={styles.input}
-                    />
-                    <input
-                      type="text"
-                      placeholder="How did you hear about us?"
-                      className={styles.input}
-                    />
-                    <button className={styles.input}>
-                      Attach your portfolio
-                    </button>
-                    <div className={styles.buttonSection}>
-                      <button className={styles.button}>Submit</button>
-                      <button onClick={closeModal} className={styles.button}>
-                        Cancel
-                      </button>
+                  {/* Row 1 */}
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>Name</label>
+                      <input
+                        type="text"
+                        placeholder="Enter your name"
+                        className={styles.input}
+                      />
                     </div>
-                    <h3 className={styles.modalText}>
-                      If a role becomes available in your preferred category and
-                      if we think you might be a good fit, we will reach out via
-                      email.
-                    </h3>
+
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        Restaurant name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Restaurant Name"
+                        className={styles.input}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>Location</label>
+                      <input
+                        type="text"
+                        placeholder="Location"
+                        className={styles.input}
+                      />
+                    </div>
+
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>Cuisine type</label>
+                      <input
+                        type="text"
+                        placeholder="Cuisine type"
+                        className={styles.input}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 3 */}
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        What tools or platforms does your restaurant you use to
+                        manage marketing?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="What tools or platforms does your restaurant you use to manage marketing?"
+                        className={styles.input}
+                      />
+                    </div>
+
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        What tools or platforms does your restaurant you use to
+                        manage reservations?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="What tools or platforms does your restaurant you use to manage reservations?"
+                        className={styles.input}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 4 */}
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        How do you currently attract new customers to your
+                        restaurant?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="How do you currently attract new customers to your restaurant?"
+                        className={styles.input}
+                      />
+                    </div>
+
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        Do you have any strategies to encourage repeat customers
+                        or build loyality?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Do you have any strategies to encourage repeat customers or build loyality?"
+                        className={styles.input}
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.inputRow}>
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        What do you think is the most important factor in
+                        retaining customers?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="What do you think is the most important factor in retaining customers?"
+                        className={styles.input}
+                      />
+                    </div>
+
+                    <div className={styles.inputSection}>
+                      <label className={styles.inputLabel}>
+                        Where do your customers typically hear about your
+                        restaurant?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Where do your customers typically hear about your restaurant?"
+                        className={styles.input}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className={styles.buttonSection}>
+                    <button className={styles.button}>Submit</button>
+                    <button onClick={closeModal} className={styles.button}>
+                      Cancel
+                    </button>
                   </div>
                 </div>
               </div>
             )}
+
             {isShareModalOpen && (
               <div
                 className={styles.modalOverlay}
@@ -605,15 +681,7 @@ export default function Home() {
                 height={40}
               />
               <div>
-                <SocialMedia
-                  instagramUrl="https://www.instagram.com/_mappetizer"
-                  instagramIcon={assetUrl('/images/social-media/instagram.png')}
-                  tiktokUrl="https://www.tiktok.com/@mappetizer"
-                  tiktokIcon={assetUrl('/images/social-media/tiktok.png')}
-                  linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                  linkedinIcon={assetUrl('/images/social-media/linkedin.png')}
-                  className="custom-class"
-                />
+                <SocialMedia className="custom-class" />
               </div>
             </div>
           </>
@@ -621,15 +689,7 @@ export default function Home() {
         {isMobile && (
           <>
             <div className={styles.socialMediaContainer}>
-              <SocialMedia
-                instagramUrl="https://www.instagram.com/_mappetizer"
-                instagramIcon={assetUrl('/images/social-media/instagram.png')}
-                tiktokUrl="https://www.tiktok.com/@mappetizer"
-                tiktokIcon={assetUrl('/images/social-media/tiktok.png')}
-                linkedinUrl="https://www.linkedin.com/company/mappetizer/about"
-                linkedinIcon={assetUrl('/images/social-media/linkedin.png')}
-                className="custom-class"
-              />
+              <SocialMedia className="custom-class" />
             </div>
             <div className={styles.footerButtonContainer}>
               <a target="_blank" href="https://codereroute.com/">
