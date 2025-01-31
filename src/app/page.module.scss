@@ -276,11 +276,11 @@
 }
 
 .textSection {
-  background-color: #f7f7f7;
-  height: 300px;
+  background-color: #f0efea;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 75px 12px;
 }
 
 .text-section-description {
@@ -288,7 +288,22 @@
   color: var(--dark-background);
   text-align: center;
   font-weight: 600;
-  line-height: 0.8;
+  line-height: 0.9;
+}
+
+.text-section-sub {
+  font-size: 20px;
+  color: var(--dark-background);
+  text-align: center;
+  font-weight: 400;
+  line-height: 0.9;
+  max-width: 800px;
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  & > p {
+    margin-bottom: 20px;
+  }
 }
 
 .text-section-line {
@@ -300,11 +315,6 @@
 }
 
 @media (max-width: 768px) {
-  .textSection {
-    height: 200px;
-    padding: 15px;
-  }
-
   .text-section-description {
     font-size: 28px;
   }
@@ -315,13 +325,11 @@
 }
 
 @media (max-width: 560px) {
-  .textSection {
-    height: 150px;
-    padding: 10px;
-  }
-
   .text-section-description {
     font-size: 22px;
+  }
+  .text-section-sub {
+    font-size: 16px;
   }
 
   .text-section-line {
@@ -485,7 +493,7 @@
 }
 
 .sliderDescription {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: var(--black-base);
   transition: padding 0.3s ease;

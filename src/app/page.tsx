@@ -238,10 +238,26 @@ export default function Home() {
       </div>
       <div>
         <div className={styles.textSection}>
-          <p className={styles['text-section-description']}>
-            <span>Discover restaurants. Book tables.</span> <br />
-            <span>Share experiences.</span> <br />
-          </p>
+          <div>
+            <p className={styles['text-section-description']}>
+              <span>Discover restaurants. Book tables.</span> <br />
+              <span>Share experiences.</span> <br />
+            </p>
+            <p className={styles['text-section-sub']}>
+              <p>
+                We’re building a platform to connect restaurants directly with
+                customers (users). Our platform offers a niche social media
+                experience for users with ‘action buttons’ for personalized
+                restaurant discoverability, direct reservations, quick planning
+                between friends, trustworthy reviews + more.
+              </p>
+              <p>
+                We believe the secret sauce is in creating an app that caters to
+                both restaurants and customers— while serving up cool app
+                features that make dining experiences fun.
+              </p>
+            </p>
+          </div>
         </div>
         <div className={styles['text-section-line']} />
       </div>
@@ -362,8 +378,8 @@ export default function Home() {
                   <Image
                     className={styles.sliderImage}
                     src={assetUrl(slide.img)}
-                    alt="Restaurant"
-                    title="Restaurant"
+                    alt=""
+                    title=""
                     width={300}
                     height={230}
                   />
@@ -384,8 +400,8 @@ export default function Home() {
                   <Image
                     className={styles.sliderImage}
                     src={assetUrl(slide.img)}
-                    alt="Restaurant"
-                    title="Restaurant"
+                    alt=""
+                    title=""
                     width={300}
                     height={230}
                   />
@@ -464,7 +480,7 @@ export default function Home() {
                     styles['footer-button'],
                   )}
                 >
-                  PRESS INQUIRIES
+                  {pressInquiries ? 'PRESS@MAPPETIZER.COM' : 'PRESS INQUIRIES'}
                 </h2>
               </a>
               <a
@@ -479,7 +495,7 @@ export default function Home() {
                     styles['footer-button'],
                   )}
                 >
-                  CONTACT
+                  {isContact ? 'HELLO@MAPPETIZER.COM' : 'CONTACT'}
                 </h2>
               </a>
             </div>
@@ -532,20 +548,24 @@ export default function Home() {
               >
                 <button className={styles.footerButton}>CEO LINKEDIN</button>
               </a>
-              <button
-                onClick={() => setPressInquiries(!pressInquiries)}
-                className={styles.footerButton}
-              >
-                {pressInquiries ? 'PRESS@MAPPETIZER.COM' : 'PRESS INQUIRIES'}
-              </button>
+              <a href={`mailto:${pressEmail}`}>
+                <button
+                  onClick={() => setPressInquiries(true)}
+                  className={styles.footerButton}
+                >
+                  {pressInquiries ? 'PRESS@MAPPETIZER.COM' : 'PRESS INQUIRIES'}
+                </button>
+              </a>
 
               {/* CONTACT */}
-              <button
-                onClick={() => setIsContact(!isContact)}
-                className={styles.footerButton}
-              >
-                {isContact ? 'HELLO@MAPPETIZER.COM' : 'CONTACT'}
-              </button>
+              <a href={`mailto:${contactEmail}`}>
+                <button
+                  onClick={() => setIsContact(true)}
+                  className={styles.footerButton}
+                >
+                  {isContact ? 'HELLO@MAPPETIZER.COM' : 'CONTACT'}
+                </button>
+              </a>
             </div>
             <div className={styles.footerLogo}>
               <Image
