@@ -1,15 +1,12 @@
 import React from 'react';
-import { assetUrl } from '../utils';
 import styles from './share.module.scss';
+import { assetUrl } from '../utils';
 
-const siteTitle = 'mappetizer';
-const siteDescription = 'a restaurant discovery app.';
-const siteUrl =
+const shareUrl =
   typeof window !== 'undefined'
     ? window.location.href
     : 'https://mappetizer.com/';
 
-const shareUrl = 'https://mappetizer.com';
 const ShareButtons: React.FC<{ handleClose: () => void }> = ({
   handleClose,
 }) => {
