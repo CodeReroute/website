@@ -389,7 +389,6 @@ export default function Home() {
                   {/* Row 1 */}
                   <div className={styles.inputRow}>
                     <div className={styles.inputSection}>
-                      <label className={styles.inputLabel}>Name</label>
                       <input
                         type="text"
                         placeholder="Enter your name"
@@ -398,9 +397,6 @@ export default function Home() {
                     </div>
 
                     <div className={styles.inputSection}>
-                      <label className={styles.inputLabel}>
-                        Restaurant name
-                      </label>
                       <input
                         type="text"
                         placeholder="Restaurant Name"
@@ -412,7 +408,6 @@ export default function Home() {
                   {/* Row 2 */}
                   <div className={styles.inputRow}>
                     <div className={styles.inputSection}>
-                      <label className={styles.inputLabel}>Location</label>
                       <input
                         type="text"
                         placeholder="Location"
@@ -421,7 +416,6 @@ export default function Home() {
                     </div>
 
                     <div className={styles.inputSection}>
-                      <label className={styles.inputLabel}>Cuisine type</label>
                       <input
                         type="text"
                         placeholder="Cuisine type"
@@ -431,8 +425,13 @@ export default function Home() {
                   </div>
 
                   {/* Row 3 */}
-                  <div className={styles.inputRow}>
-                    <div className={styles.inputSection}>
+                  <div className={styles.inputFullRow}>
+                    <div
+                      className={mergeClassNames(
+                        styles.inputSection,
+                        styles.fullRowInput,
+                      )}
+                    >
                       <label className={styles.inputLabel}>
                         What tools or platforms does your restaurant you use to
                         manage marketing?
@@ -444,7 +443,12 @@ export default function Home() {
                       />
                     </div>
 
-                    <div className={styles.inputSection}>
+                    <div
+                      className={mergeClassNames(
+                        styles.inputSection,
+                        styles.fullRowInput,
+                      )}
+                    >
                       <label className={styles.inputLabel}>
                         What tools or platforms does your restaurant you use to
                         manage reservations?
@@ -458,8 +462,13 @@ export default function Home() {
                   </div>
 
                   {/* Row 4 */}
-                  <div className={styles.inputRow}>
-                    <div className={styles.inputSection}>
+                  <div className={styles.inputFullRow}>
+                    <div
+                      className={mergeClassNames(
+                        styles.inputSection,
+                        styles.fullRowInput,
+                      )}
+                    >
                       <label className={styles.inputLabel}>
                         How do you currently attract new customers to your
                         restaurant?
@@ -471,7 +480,12 @@ export default function Home() {
                       />
                     </div>
 
-                    <div className={styles.inputSection}>
+                    <div
+                      className={mergeClassNames(
+                        styles.inputSection,
+                        styles.fullRowInput,
+                      )}
+                    >
                       <label className={styles.inputLabel}>
                         Do you have any strategies to encourage repeat customers
                         or build loyality?
@@ -484,8 +498,13 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className={styles.inputRow}>
-                    <div className={styles.inputSection}>
+                  <div className={styles.inputFullRow}>
+                    <div
+                      className={mergeClassNames(
+                        styles.inputSection,
+                        styles.fullRowInput,
+                      )}
+                    >
                       <label className={styles.inputLabel}>
                         What do you think is the most important factor in
                         retaining customers?
@@ -497,7 +516,12 @@ export default function Home() {
                       />
                     </div>
 
-                    <div className={styles.inputSection}>
+                    <div
+                      className={mergeClassNames(
+                        styles.inputSection,
+                        styles.fullRowInput,
+                      )}
+                    >
                       <label className={styles.inputLabel}>
                         Where do your customers typically hear about your
                         restaurant?
