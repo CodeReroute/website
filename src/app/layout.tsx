@@ -5,9 +5,9 @@ import './globals.css';
 import { webConfig } from './components/utils/webConfig';
 
 const siteTitle = 'mappetizer';
-const siteDescription = 'a restaurant discovery app.';
+const siteDescription = 'The world’s biggest restaurant app';
 const keywords = 'mappetizer, restaurant, food, discover, map';
-const featuredImage = 'https://codereroute.com/assets/sharing-meta-image.png';
+const featuredImage = 'https://mappetizer.com/sharing-meta-image.png';
 export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,

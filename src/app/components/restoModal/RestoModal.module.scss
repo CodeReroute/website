@@ -1,0 +1,90 @@
+.closeIconContainer {
+  margin-bottom: 20px;
+  text-align: right;
+  svg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    fill: var(--white-base);
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+  @media screen and (max-width: 450px) {
+    padding-right: 10px;
+  }
+}
+
+.inputLabel {
+  font-size: 1rem;
+  color: var(--white-base);
+  font-weight: 500;
+  margin-bottom: 5px;
+  white-space: normal;
+  display: block;
+}
+
+.input {
+  font-size: 1rem;
+  border: 2px solid var(--white-base);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--white-base);
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: none;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--white-base);
+}
+
+.buttonSection {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.button {
+  font-size: 1rem;
+  border: 2px solid var(--white-base);
+  border-radius: 5px;
+  background-color: transparent;
+  color: var(--white-base);
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--white-base);
+  color: var(--black-base);
+}
+
+.fullRowInput {
+  margin-bottom: 20px;
+}
+
+.inputRow {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  .inputSection {
+    flex: 1;
+  }
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

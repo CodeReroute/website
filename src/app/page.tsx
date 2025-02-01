@@ -11,6 +11,7 @@ import { webConfig } from './components/utils/webConfig';
 import ReCaptchaV3, {
   requestRecaptchaV3Token,
 } from './components/utils/ReCaptchaV3';
+import RestoModal from './components/restoModal/RestoModal';
 
 const pressEmail = 'press@mappetizer.com';
 const contactEmail = 'hello@mappetizer.com';
@@ -281,13 +282,17 @@ export default function Home() {
           )}
           {showInputSection && (
             <>
-              <div className={styles.inputSection}>
+              <div
+                className={mergeClassNames(
+                  styles.inputSection,
+                  styles.topInputContainer,
+                )}
+              >
                 <input
                   onChange={(e) => setFirstName(e.target.value)}
                   value={firstName}
                   type="text"
                   placeholder="NAME"
-                  autoFocus={true}
                   className={styles.input}
                 />
                 <input
@@ -385,163 +390,10 @@ export default function Home() {
                 role="dialog"
                 aria-labelledby="modal-title"
               >
-                <div className={styles.modalContent}>
-                  {/* Row 1 */}
-                  <div className={styles.inputRow}>
-                    <div className={styles.inputSection}>
-                      <input
-                        type="text"
-                        placeholder="Enter your name"
-                        className={styles.input}
-                      />
-                    </div>
-
-                    <div className={styles.inputSection}>
-                      <input
-                        type="text"
-                        placeholder="Restaurant Name"
-                        className={styles.input}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 2 */}
-                  <div className={styles.inputRow}>
-                    <div className={styles.inputSection}>
-                      <input
-                        type="text"
-                        placeholder="Location"
-                        className={styles.input}
-                      />
-                    </div>
-
-                    <div className={styles.inputSection}>
-                      <input
-                        type="text"
-                        placeholder="Cuisine type"
-                        className={styles.input}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 3 */}
-                  <div className={styles.inputFullRow}>
-                    <div
-                      className={mergeClassNames(
-                        styles.inputSection,
-                        styles.fullRowInput,
-                      )}
-                    >
-                      <label className={styles.inputLabel}>
-                        What tools or platforms does your restaurant you use to
-                        manage marketing?
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="What tools or platforms does your restaurant you use to manage marketing?"
-                        className={styles.input}
-                      />
-                    </div>
-
-                    <div
-                      className={mergeClassNames(
-                        styles.inputSection,
-                        styles.fullRowInput,
-                      )}
-                    >
-                      <label className={styles.inputLabel}>
-                        What tools or platforms does your restaurant you use to
-                        manage reservations?
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="What tools or platforms does your restaurant you use to manage reservations?"
-                        className={styles.input}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Row 4 */}
-                  <div className={styles.inputFullRow}>
-                    <div
-                      className={mergeClassNames(
-                        styles.inputSection,
-                        styles.fullRowInput,
-                      )}
-                    >
-                      <label className={styles.inputLabel}>
-                        How do you currently attract new customers to your
-                        restaurant?
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="How do you currently attract new customers to your restaurant?"
-                        className={styles.input}
-                      />
-                    </div>
-
-                    <div
-                      className={mergeClassNames(
-                        styles.inputSection,
-                        styles.fullRowInput,
-                      )}
-                    >
-                      <label className={styles.inputLabel}>
-                        Do you have any strategies to encourage repeat customers
-                        or build loyality?
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Do you have any strategies to encourage repeat customers or build loyality?"
-                        className={styles.input}
-                      />
-                    </div>
-                  </div>
-
-                  <div className={styles.inputFullRow}>
-                    <div
-                      className={mergeClassNames(
-                        styles.inputSection,
-                        styles.fullRowInput,
-                      )}
-                    >
-                      <label className={styles.inputLabel}>
-                        What do you think is the most important factor in
-                        retaining customers?
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="What do you think is the most important factor in retaining customers?"
-                        className={styles.input}
-                      />
-                    </div>
-
-                    <div
-                      className={mergeClassNames(
-                        styles.inputSection,
-                        styles.fullRowInput,
-                      )}
-                    >
-                      <label className={styles.inputLabel}>
-                        Where do your customers typically hear about your
-                        restaurant?
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Where do your customers typically hear about your restaurant?"
-                        className={styles.input}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Buttons */}
-                  <div className={styles.buttonSection}>
-                    <button className={styles.button}>Submit</button>
-                    <button onClick={closeModal} className={styles.button}>
-                      Cancel
-                    </button>
-                  </div>
-                </div>
+                <RestoModal
+                  closeModal={closeModal}
+                  className={styles.modalContent}
+                />
               </div>
             )}
 
@@ -681,7 +533,7 @@ export default function Home() {
                 target="_blank"
                 className={styles['footer-item-link']}
                 href={`mailto:${contactEmail}`}
-                onClick={() => setPressInquiries(true)}
+                onClick={() => setIsContact(true)}
               >
                 <h2
                   className={mergeClassNames(
@@ -712,9 +564,6 @@ export default function Home() {
         )}
         {isMobile && (
           <>
-            <div className={styles.socialMediaContainer}>
-              <SocialMedia className="custom-class" />
-            </div>
             <div className={styles.footerButtonContainer}>
               <a target="_blank" href="https://codereroute.com/">
                 <button className={styles.footerButton}>WORK HERE</button>
@@ -745,7 +594,10 @@ export default function Home() {
                 </button>
               </a>
             </div>
-            <div className={styles.footerLogo}>
+            <div className={styles.socialMediaContainer}>
+              <SocialMedia className="custom-class" />
+            </div>
+            {/* <div className={styles.footerLogo}>
               <Image
                 className={styles.logo}
                 src={assetUrl('/images/logoIcon.png')}
@@ -754,7 +606,7 @@ export default function Home() {
                 width={30}
                 height={30}
               />
-            </div>
+            </div> */}
           </>
         )}
       </div>
