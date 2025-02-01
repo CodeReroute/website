@@ -17,7 +17,6 @@ const defaultSubmitAction = { action: 'submit' };
 export const requestRecaptchaV3Token = (
   callback: (token: string | undefined) => unknown,
   options: object = defaultSubmitAction,
-  event?: string,
 ) => {
   const grecaptcha = window.grecaptcha;
   if (!grecaptcha) {
