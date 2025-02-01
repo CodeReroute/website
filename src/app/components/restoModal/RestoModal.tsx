@@ -9,8 +9,12 @@ interface RestoModalProps {
 }
 
 const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className={className}>
+    <form className={className} onSubmit={handleSubmit}>
       <div className={styles.closeIconContainer}>
         <CloseIcon onClick={closeModal} />
       </div>
@@ -24,16 +28,18 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
         <div className={styles.inputSection}>
           <input
             type="text"
-            placeholder="Enter your name"
+            placeholder="Name *"
             className={styles.input}
+            required
           />
         </div>
 
         <div className={styles.inputSection}>
           <input
             type="text"
-            placeholder="Restaurant Name"
+            placeholder="Restaurant name *"
             className={styles.input}
+            required
           />
         </div>
       </div>
@@ -41,14 +47,20 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
       {/* Row 2 */}
       <div className={styles.inputRow}>
         <div className={styles.inputSection}>
-          <input type="text" placeholder="Location" className={styles.input} />
+          <input
+            type="text"
+            placeholder="Location *"
+            className={styles.input}
+            required
+          />
         </div>
 
         <div className={styles.inputSection}>
           <input
-            type="text"
-            placeholder="Cuisine type"
+            type="email"
+            placeholder="Email *"
             className={styles.input}
+            required
           />
         </div>
       </div>
@@ -82,7 +94,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
           className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
         >
           <label className={styles.inputLabel}>
-            How do you currently attract new customers to your restaurant?
+            Where do customers typically hear about your restaurant?
           </label>
           <input type="text" className={styles.input} />
         </div>
@@ -91,8 +103,8 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
           className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
         >
           <label className={styles.inputLabel}>
-            Do you have any strategies to encourage repeat customers or build
-            loyality?
+            What challenges does your restaurant face for maintaining a
+            consistent flow of customers?
           </label>
           <input type="text" className={styles.input} />
         </div>
@@ -103,8 +115,8 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
           className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
         >
           <label className={styles.inputLabel}>
-            What do you think is the most important factor in retaining
-            customers?
+            What frustrates you the most about your current customer engagement
+            or marketing efforts?
           </label>
           <input type="text" className={styles.input} />
         </div>
@@ -113,7 +125,49 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
           className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
         >
           <label className={styles.inputLabel}>
-            Where do your customers typically hear about your restaurant?
+            Do you work with a marketing agency?
+          </label>
+          <input type="text" className={styles.input} />
+        </div>
+        <div
+          className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
+        >
+          <label className={styles.inputLabel}>
+            If you were to spend $1,000 on marketing, how would you determine
+            whether it was effective?
+          </label>
+          <input type="text" className={styles.input} />
+        </div>
+        <div
+          className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
+        >
+          <label className={styles.inputLabel}>
+            How much are you currently spending on software per month?
+          </label>
+          <input type="text" className={styles.input} />
+        </div>
+        <div
+          className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
+        >
+          <label className={styles.inputLabel}>
+            Do you work with influencers or local food bloggers?
+          </label>
+          <input type="text" className={styles.input} />
+        </div>
+        <div
+          className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
+        >
+          <label className={styles.inputLabel}>
+            Would you like it if negative reviews were not made public?
+          </label>
+          <input type="text" className={styles.input} />
+        </div>
+        <div
+          className={mergeClassNames(styles.inputSection, styles.fullRowInput)}
+        >
+          <label className={styles.inputLabel}>
+            If you could design the perfect tool to help run your restaurant,
+            what features would it have?
           </label>
           <input type="text" className={styles.input} />
         </div>
@@ -121,12 +175,14 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
 
       {/* Buttons */}
       <div className={styles.buttonSection}>
-        <button onClick={closeModal} className={styles.button}>
+        {/* <button onClick={closeModal} className={styles.button}>
           Cancel
+        </button> */}
+        <button className={styles.button} type="submit">
+          SUBMIT
         </button>
-        <button className={styles.button}>Submit</button>
       </div>
-    </div>
+    </form>
   );
 };
 
