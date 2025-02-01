@@ -910,7 +910,7 @@
 .modalContent {
   background: var(--black-base);
   height: auto;
-  max-height: 99%;
+  max-height: 90%;
   overflow: auto;
   width: 99%;
   max-width: 900px;
@@ -920,6 +920,9 @@
   flex-direction: column;
   padding: 30px;
   @media screen and (max-width: 430px) {
+    max-height: 100vh;
+    width: 100vw;
+    border-radius: 0;
     padding-left: 10px;
     padding-right: 10px;
   }
