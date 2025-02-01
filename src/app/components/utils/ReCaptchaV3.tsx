@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { webConfig } from './webConfig';
 
-const DISABLE_CAPTCHA = false;
-// const logError = console.error;
-
 declare global {
   interface Window {
     grecaptcha?: {
@@ -24,12 +21,8 @@ export const requestRecaptchaV3Token = (
 ) => {
   const grecaptcha = window.grecaptcha;
   if (!grecaptcha) {
-    if (!DISABLE_CAPTCHA) {
-      alert(`Unable to load Google Recaptcha in '${event}'`);
-    }
     return callback(undefined);
   }
-
   grecaptcha.ready(() => {
     grecaptcha.execute(webConfig.recaptchaV3Key, options).then(callback);
   });

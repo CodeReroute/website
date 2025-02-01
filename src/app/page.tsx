@@ -167,7 +167,7 @@ export default function Home() {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            types: ['RESTAURANT'],
+            types: ['WAITLIST'],
           }),
           headers: {
             'Content-Type': 'application/json',
@@ -305,7 +305,7 @@ export default function Home() {
                 >
                   {resp && resp.success
                     ? 'SUBMITTED'
-                    : resp?.error === 'User with this type already exists'
+                    : resp?.error === 'Email address already exists'
                     ? 'SUBMITTED'
                     : 'SUBMIT'}
                 </button>

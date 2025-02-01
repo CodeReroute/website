@@ -142,20 +142,19 @@
   }
 
   .success {
-    background-color: var(--black-base) ;
+    background-color: var(--black-base);
     padding: 6px 10px;
     font-size: 1rem;
     font-weight: 700;
     height: 40px;
     border-radius: 5px;
-    color: white ;
-    border: none ;
+    color: white;
+    border: none;
   }
 
   .button:hover {
     background-color: var(--black-base);
     color: var(--white-base);
-    border: none;
   }
 }
 
@@ -909,8 +908,8 @@
 .modalContent {
   background: var(--black-base);
   height: auto;
-  width: 80%; 
-  max-width: 900px; 
+  width: 80%;
+  max-width: 900px;
   border-radius: 10px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -920,24 +919,23 @@
 
 .inputRow {
   display: flex;
-  gap: 20px; 
-  flex-wrap: wrap; 
+  gap: 20px;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
 .inputSection {
   display: flex;
   flex-direction: column;
-  width: 48%; 
-  align-items: flex-start; 
+  align-items: flex-start;
 }
 
 .inputLabel {
   font-size: 1rem;
   color: var(--white-base);
   font-weight: 500;
-  margin-bottom: 5px; 
-  white-space: normal; 
+  margin-bottom: 5px;
+  white-space: normal;
   display: block;
 }
 
@@ -951,7 +949,7 @@
   padding-left: 10px;
   padding-right: 10px;
   outline: none;
-  width: 100%; 
+  width: 100%;
 }
 
 .input::placeholder {
