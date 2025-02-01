@@ -18,7 +18,7 @@ export const logWarning = (
 
 export const logError = (
   message: Message,
-  options?: Record<string, unknown>,
+  options?: Record<string, unknown> | unknown,
 ) => {
   // eslint-disable-next-line no-console
   console.error(message, options);

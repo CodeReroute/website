@@ -1,13 +1,32 @@
 .social-media {
-  gap: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px; // Adjust spacing between icons
   transition: opacity 0.5s;
+
   &:hover {
     opacity: 0.8;
   }
+
+  .iconContainer {
+    width: 40px; // Adjust size as needed
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-background);
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
   img {
-    border-radius: 50px;
+    border-radius: 50%;
+    width: 70%; // Icon size relative to container
+    height: 70%;
   }
 }

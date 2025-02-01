@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { webConfig } from './webConfig';
 
 const DISABLE_CAPTCHA = false;
-const logError = console.error;
+// const logError = console.error;
 
 declare global {
   interface Window {
@@ -25,10 +25,7 @@ export const requestRecaptchaV3Token = (
   const grecaptcha = window.grecaptcha;
   if (!grecaptcha) {
     if (!DISABLE_CAPTCHA) {
-      logError(`Unable to load Google Recaptcha in '${event}'.`, {
-        event,
-        isRecaptchaEnvSet: Boolean(webConfig.recaptchaV3Key),
-      });
+      alert(`Unable to load Google Recaptcha in '${event}'`);
     }
     return callback(undefined);
   }
@@ -70,28 +67,6 @@ const ReCaptchaV3: React.FC<{ className?: string; hideText?: boolean }> = ({
   if (hideText) {
     return null;
   }
-
-  return (
-    <div className="recaptcha">
-      This site is protected by reCAPTCHA and the Google{' '}
-      <a
-        href={'https://policies.google.com/privacy'}
-        rel={'noopener noreferrer'}
-        target={'_blank'}
-      >
-        Privacy Policy
-      </a>{' '}
-      and{' '}
-      <a
-        href={'https://policies.google.com/terms'}
-        rel={'noopener noreferrer'}
-        target={'_blank'}
-      >
-        Terms of Service
-      </a>{' '}
-      apply.
-    </div>
-  );
 };
 
 export default ReCaptchaV3;

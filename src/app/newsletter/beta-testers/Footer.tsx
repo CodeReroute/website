@@ -33,7 +33,6 @@ const Footer: React.FC = () => {
         </div>
         <div className={styles['footer-right']}>
           <SocialMedia
-            path="/beta-testers"
             className={styles['footer-social-media']}
           />
           <p>
