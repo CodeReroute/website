@@ -175,9 +175,12 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
 
       {/* Buttons */}
       <div className={styles.buttonSection}>
-        {/* <button onClick={closeModal} className={styles.button}>
-          Cancel
-        </button> */}
+        <button
+          onClick={closeModal}
+          className={mergeClassNames(styles.button, styles.cancelButton)}
+        >
+          CANCEL
+        </button>
         <button className={styles.button} type="submit">
           SUBMIT
         </button>

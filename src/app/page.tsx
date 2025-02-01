@@ -46,7 +46,7 @@ const scrollSlider = (
 };
 
 const siteTitle = 'mappetizer';
-const siteDescription = 'a restaurant discovery app.';
+const siteDescription = 'The world’s biggest restaurant app';
 const getSlides = (
   setShowInputSection: React.Dispatch<React.SetStateAction<boolean>>,
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
