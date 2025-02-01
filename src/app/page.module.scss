@@ -932,10 +932,12 @@
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  .inputSection {
+    flex: 1;
+  }
 }
 
 .inputSection {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
