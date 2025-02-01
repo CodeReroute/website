@@ -1,5 +1,4 @@
 .closeIconContainer {
-  margin-bottom: 20px;
   text-align: right;
   svg {
     width: 30px;
@@ -14,6 +13,11 @@
   @media screen and (max-width: 450px) {
     padding-right: 10px;
   }
+}
+
+.modalTitle {
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .inputLabel {

@@ -14,6 +14,11 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
       <div className={styles.closeIconContainer}>
         <CloseIcon onClick={closeModal} />
       </div>
+      <div className={styles.modalTitle}>
+        By filling out the information on this form, you are helping us build
+        powerful tech for restaurants everywhere. Thank you for your role in
+        shaping this project.
+      </div>
       {/* Row 1 */}
       <div className={styles.inputRow}>
         <div className={styles.inputSection}>
