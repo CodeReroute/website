@@ -11,6 +11,24 @@ const featuredImage = 'https://mappetizer.com/sharing-meta-image.png';
 export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  keywords,
+  openGraph: {
+    type: 'website',
+    url: 'https://mappetizer.com',
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        alt: siteTitle,
+        url: featuredImage,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
