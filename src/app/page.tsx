@@ -132,6 +132,7 @@ export default function Home() {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string | undefined>('');
   const [email, setEmail] = useState<string | undefined>('');
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [resp, setResp] = useState<BaseResponse | null>(null);
 
   interface BaseResponse {
@@ -149,9 +150,24 @@ export default function Home() {
     }
   }, [firstName]);
 
+  const validateForm = () => {
+    let newErrors: { [key: string]: string } = {};
+    if (!firstName) newErrors.firstName = 'Name field is required';
+    if (!email) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = 'Invalid email format';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setResp(null);
+    if (!validateForm()) {
+      setResp(null);
+      return;
+    }
 
     await requestRecaptchaV3Token(async (token) => {
       if (!token) {
@@ -288,20 +304,30 @@ export default function Home() {
                   styles.topInputContainer,
                 )}
               >
-                <input
-                  onChange={(e) => setFirstName(e.target.value)}
-                  value={firstName}
-                  type="text"
-                  placeholder="NAME"
-                  className={styles.input}
-                />
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
-                  type="email"
-                  placeholder="EMAIL"
-                  className={styles.input}
-                />
+                <div>
+                  <input
+                    onChange={(e) => setFirstName(e.target.value)}
+                    value={firstName}
+                    type="text"
+                    placeholder="NAME *"
+                    className={styles.input}
+                  />
+                  {errors.firstName && (
+                    <p className={styles.error}>{errors.firstName}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    type="email"
+                    placeholder="EMAIL *"
+                    className={styles.input}
+                  />
+                  {errors.email && (
+                    <p className={styles.error}>{errors.email}</p>
+                  )}
+                </div>
                 <button
                   onClick={handleSubmit}
                   className={`${styles.button} ${
