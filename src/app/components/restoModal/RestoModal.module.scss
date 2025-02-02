@@ -50,6 +50,12 @@
   color: var(--white-base);
 }
 
+.error {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .buttonSection {
   display: flex;
   gap: 10px;

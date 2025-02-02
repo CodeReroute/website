@@ -43,6 +43,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const [desiredFeatures, setDesiredFeatures] = useState<string | undefined>(
     '',
   );
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const [resp, setResp] = useState<BaseResponse | null>(null);
 
@@ -55,9 +56,28 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
     }
   }, [firstName]);
 
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (!firstName) newErrors.firstName = 'Name field is required';
+    if (!restaurantName)
+      newErrors.restaurantName = 'Restaurant name is required';
+    if (!location) newErrors.location = 'Location is required';
+    if (!email) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = 'Invalid email format';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setResp(null);
+    if (!validateForm()) {
+      document.querySelector('input')?.scrollIntoView({ behavior: 'smooth' });
+      setResp(null);
+      return;
+    }
 
     await requestRecaptchaV3Token(async (token) => {
       if (!token) {
@@ -133,6 +153,9 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
             className={styles.input}
             required
           />
+          {errors.firstName && (
+            <p className={styles.error}>{errors.firstName}</p>
+          )}
         </div>
 
         <div className={styles.inputSection}>
@@ -144,6 +167,9 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
             className={styles.input}
             required
           />
+          {errors.restaurantName && (
+            <p className={styles.error}>{errors.restaurantName}</p>
+          )}
         </div>
       </div>
 
@@ -158,6 +184,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
             className={styles.input}
             required
           />
+          {errors.location && <p className={styles.error}>{errors.location}</p>}
         </div>
 
         <div className={styles.inputSection}>
@@ -169,6 +196,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
             className={styles.input}
             required
           />
+          {errors.email && <p className={styles.error}>{errors.email}</p>}
         </div>
       </div>
 
