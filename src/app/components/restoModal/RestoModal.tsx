@@ -57,7 +57,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   }, [firstName]);
 
   const validateForm = () => {
-    let newErrors: { [key: string]: string } = {};
+    const newErrors: { [key: string]: string } = {};
     if (!firstName) newErrors.firstName = 'Name field is required';
     if (!restaurantName)
       newErrors.restaurantName = 'Restaurant name is required';

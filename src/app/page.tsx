@@ -151,7 +151,7 @@ export default function Home() {
   }, [firstName]);
 
   const validateForm = () => {
-    let newErrors: { [key: string]: string } = {};
+    const newErrors: { [key: string]: string } = {};
     if (!firstName) newErrors.firstName = 'Name field is required';
     if (!email) {
       newErrors.email = 'Email is required';
