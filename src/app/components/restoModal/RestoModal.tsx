@@ -54,6 +54,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
       setLastName(undefined);
     }
   }, [firstName]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setResp(null);
@@ -98,7 +99,6 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
 
       const data = await response.json();
       if (response.ok) {
-        console.log(resp?.message, 'response');
         setResp({
           success: true,
           message: 'Application submitted successfully!',
