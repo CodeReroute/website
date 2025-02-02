@@ -16,7 +16,7 @@ import RestoModal from './components/restoModal/RestoModal';
 const pressEmail = 'press@mappetizer.com';
 const contactEmail = 'hello@mappetizer.com';
 const style: React.CSSProperties = {
-  backgroundImage: `linear-gradient(rgb(16, 16, 16, 0.2), rgb(16, 16, 16, 0.2)), url('${assetUrl(
+  backgroundImage: `linear-gradient(rgb(16, 16, 16, 0.5), rgb(16, 16, 16, 0.5)), url('${assetUrl(
     '/images/map-pattern.png',
   )}')`,
 };
@@ -343,12 +343,12 @@ export default function Home() {
             <p className={styles['text-section-sub']}>
               <p>
                 We’re building a platform to connect restaurants directly with
-                customers (users). Our platform offers a niche social media
+                customers (users). Our platform offers a reimagined social media
                 experience for users with ‘action buttons’ for personalized
                 restaurant discoverability, direct reservations, quick planning
                 between friends, trustworthy reviews + more.
               </p>
-              <p>
+              <p className="mb-0">
                 We believe the secret sauce is in creating an app that caters to
                 both restaurants and customers— while serving up cool app
                 features that make dining experiences fun.

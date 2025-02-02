@@ -5,6 +5,7 @@
   --light-background: #efede1;
   --dark-background: #262412;
   --white-base: #ffffff;
+  --cream-base: #f0efea;
   --black-base: #000000;
   --turquoise: #d0f29b;
   --gray: #909090;
@@ -59,4 +60,8 @@ a {
 
 .grecaptcha-badge {
   display: none !important;
+}
+
+.mb-0 {
+  margin-bottom: 0px !important;
 }
