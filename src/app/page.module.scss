@@ -547,7 +547,7 @@
 
 @media (max-width: 768px) {
   .sliderSection {
-    padding: 60px 10px 10px 10px;
+    padding: 60px 10px 15px 10px;
   }
 
   .sectionTitle {
@@ -644,7 +644,7 @@
 
 @media (max-width: 400px) {
   .sliderSection {
-    padding: 50px 5px 0 5px;
+    padding: 50px 5px 15px 5px;
   }
 
   .sectionTitle {
@@ -652,7 +652,6 @@
   }
 
   .horizontalSlider {
-    gap: 5px;
     padding: 2px;
   }
 
@@ -892,9 +891,8 @@
   justify-content: center;
   z-index: 1000;
 }
-
-.modalContent {
-  background: var(--black-base);
+.modalContentWrapper {
+  background-color: var(--main-background);
   height: auto;
   max-height: 90%;
   overflow: auto;
@@ -904,13 +902,20 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  padding: 30px;
   @media screen and (max-width: 430px) {
-    max-height: 100vh;
-    width: 100vw;
+    max-height: 100svh;
+    width: 100svw;
     border-radius: 0;
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .modalContent {
+    padding: 30px;
+    background-image: linear-gradient(
+        rgba(16, 16, 16, 0.5),
+        rgba(16, 16, 16, 0.5)
+      ),
+      url(/images/map-pattern.png);
   }
 }
 

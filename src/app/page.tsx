@@ -390,10 +390,12 @@ export default function Home() {
                 role="dialog"
                 aria-labelledby="modal-title"
               >
-                <RestoModal
-                  closeModal={closeModal}
-                  className={styles.modalContent}
-                />
+                <div className={styles.modalContentWrapper}>
+                  <RestoModal
+                    closeModal={closeModal}
+                    className={styles.modalContent}
+                  />
+                </div>
               </div>
             )}
 
@@ -403,11 +405,13 @@ export default function Home() {
                 role="dialog"
                 aria-labelledby="modal-title"
               >
-                <div className={styles.modalContent}>
-                  <div className={styles.inputSection}>
-                    <ShareButtons
-                      handleClose={() => setIsShareModalOpen(false)}
-                    />
+                <div className={styles.modalContentWrapper}>
+                  <div className={styles.modalContent}>
+                    <div className={styles.inputSection}>
+                      <ShareButtons
+                        handleClose={() => setIsShareModalOpen(false)}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
