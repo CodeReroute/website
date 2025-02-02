@@ -120,8 +120,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
       </div>
       <div className={styles.modalTitle}>
         By filling out the information on this form, you are helping us build
-        powerful tech for restaurants everywhere. Thank you for your role in
-        shaping this project.
+        powerful tech for restaurants everywhere. Thank you.
       </div>
       {/* Row 1 */}
       <div className={styles.inputRow}>
