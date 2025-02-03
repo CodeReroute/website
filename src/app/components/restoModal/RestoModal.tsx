@@ -48,11 +48,13 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const [resp, setResp] = useState<BaseResponse | null>(null);
 
   useEffect(() => {
-    const formattedName = firstName.split(' ');
-    if (formattedName.length === 4) {
-      setLastName(formattedName[formattedName.length - 1]);
+    const formattedName = firstName.trim().split(' ');
+  
+    if (formattedName.length > 2) {
+      setFirstName(formattedName.slice(0, 2).join(' ')); 
+      setLastName(formattedName.slice(2).join(' ')); 
     } else {
-      setLastName(undefined);
+      setLastName(undefined); 
     }
   }, [firstName]);
 
@@ -74,7 +76,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
-      document.querySelector('input')?.scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' });
       setResp(null);
       return;
     }

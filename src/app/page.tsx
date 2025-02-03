@@ -142,9 +142,11 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const formattedName = firstName.split(' ');
-    if (formattedName.length === 4) {
-      setLastName(formattedName[formattedName.length - 1]);
+    const formattedName = firstName.trim().split(' ');
+
+    if (formattedName.length > 2) {
+      setFirstName(formattedName.slice(0, 2).join(' '));
+      setLastName(formattedName.slice(2).join(' '));
     } else {
       setLastName(undefined);
     }
@@ -175,7 +177,6 @@ export default function Home() {
         return;
       }
 
-      // Use the token directly in the API request
       const response = await fetch(
         `${webConfig.nextPublicBaseUrl}/user-info/create?token=${token}`,
         {
