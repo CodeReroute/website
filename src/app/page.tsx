@@ -309,7 +309,7 @@ export default function Home() {
                     onChange={(e) => setFirstName(e.target.value)}
                     value={firstName}
                     type="text"
-                    placeholder="NAME *"
+                    placeholder="NAME"
                     className={styles.input}
                   />
                   {errors.firstName && (
@@ -321,7 +321,7 @@ export default function Home() {
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     type="email"
-                    placeholder="EMAIL *"
+                    placeholder="EMAIL"
                     className={styles.input}
                   />
                   {errors.email && (
