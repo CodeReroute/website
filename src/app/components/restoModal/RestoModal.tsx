@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { mergeClassNames } from '../utils/mergeClassNames';
 import styles from './RestoModal.module.scss';
 import CloseIcon from './CloseIcon';
@@ -17,6 +17,7 @@ interface RestoModalProps {
 }
 
 const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string | undefined>('');
   const [email, setEmail] = useState<string | undefined>('');
@@ -76,7 +77,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
-      document.querySelector('form')?.scrollIntoView({ behavior: 'smooth' });
+      formRef.current?.scrollIntoView({ behavior: 'smooth' });
       setResp(null);
       return;
     }
@@ -135,7 +136,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   };
 
   return (
-    <form className={className} onSubmit={handleSubmit}>
+    <form ref={formRef} className={className} onSubmit={handleSubmit}>
       <ReCaptchaV3 />
       <div className={styles.closeIconContainer}>
         <CloseIcon onClick={closeModal} />
