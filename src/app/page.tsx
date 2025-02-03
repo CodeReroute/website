@@ -145,8 +145,8 @@ export default function Home() {
     const formattedName = firstName.trim().split(' ');
 
     if (formattedName.length > 2) {
-      setFirstName(formattedName.slice(0, 2).join(' '));
-      setLastName(formattedName.slice(2).join(' '));
+      setFirstName(formattedName.slice(0, -1).join(' '));
+      setLastName(formattedName[formattedName.length - 1]);
     } else {
       setLastName(undefined);
     }
