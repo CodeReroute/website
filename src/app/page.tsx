@@ -12,6 +12,7 @@ import ReCaptchaV3, {
   requestRecaptchaV3Token,
 } from './components/utils/ReCaptchaV3';
 import RestoModal from './components/restoModal/RestoModal';
+import { formatName } from './components/utils/formatName';
 
 const pressEmail = 'press@mappetizer.com';
 const contactEmail = 'hello@mappetizer.com';
@@ -142,14 +143,11 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const formattedName = firstName.trim().split(' ');
+    const { firstName: formattedFirstName, lastName: formattedLastName } =
+      formatName(firstName);
 
-    if (formattedName.length > 2) {
-      setFirstName(formattedName.slice(0, -1).join(' '));
-      setLastName(formattedName[formattedName.length - 1]);
-    } else {
-      setLastName(undefined);
-    }
+    setFirstName(formattedFirstName);
+    setLastName(formattedLastName);
   }, [firstName]);
 
   const validateForm = () => {

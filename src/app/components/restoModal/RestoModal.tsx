@@ -4,6 +4,7 @@ import styles from './RestoModal.module.scss';
 import CloseIcon from './CloseIcon';
 import { webConfig } from '../utils/webConfig';
 import ReCaptchaV3, { requestRecaptchaV3Token } from '../utils/ReCaptchaV3';
+import { formatName } from '../utils/formatName';
 
 interface BaseResponse {
   success: boolean;
@@ -49,14 +50,11 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const [resp, setResp] = useState<BaseResponse | null>(null);
 
   useEffect(() => {
-    const formattedName = firstName.trim().split(' ');
+    const { firstName: formattedFirstName, lastName: formattedLastName } =
+      formatName(firstName);
 
-    if (formattedName.length > 2) {
-      setFirstName(formattedName.slice(0, -1).join(' '));
-      setLastName(formattedName[formattedName.length - 1]);
-    } else {
-      setLastName(undefined);
-    }
+    setFirstName(formattedFirstName);
+    setLastName(formattedLastName);
   }, [firstName]);
 
   const validateForm = () => {
