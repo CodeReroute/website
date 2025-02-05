@@ -389,7 +389,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
               textAlign: 'center',
             }}
           >
-            {resp.success ? resp.message : resp.error}
+            {resp.success ? '' : resp.error}
           </p>
         </div>
       )}

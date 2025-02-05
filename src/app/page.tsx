@@ -350,7 +350,7 @@ export default function Home() {
                       textAlign: 'center',
                     }}
                   >
-                    {resp.success ? resp.message : resp.error}
+                    {resp.success ? '' : resp.error}
                   </p>
                 </div>
               )}
