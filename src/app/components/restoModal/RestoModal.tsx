@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { mergeClassNames } from '../utils/mergeClassNames';
 import styles from './RestoModal.module.scss';
 import CloseIcon from './CloseIcon';
 import { webConfig } from '../utils/webConfig';
 import ReCaptchaV3, { requestRecaptchaV3Token } from '../utils/ReCaptchaV3';
+import { formatName } from '../utils/formatName';
 
 interface BaseResponse {
   success: boolean;
@@ -17,6 +18,7 @@ interface RestoModalProps {
 }
 
 const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string | undefined>('');
   const [email, setEmail] = useState<string | undefined>('');
@@ -48,12 +50,11 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const [resp, setResp] = useState<BaseResponse | null>(null);
 
   useEffect(() => {
-    const formattedName = firstName.split(' ');
-    if (formattedName.length === 4) {
-      setLastName(formattedName[formattedName.length - 1]);
-    } else {
-      setLastName(undefined);
-    }
+    const { firstName: formattedFirstName, lastName: formattedLastName } =
+      formatName(firstName);
+
+    setFirstName(formattedFirstName);
+    setLastName(formattedLastName);
   }, [firstName]);
 
   const validateForm = () => {
@@ -74,7 +75,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
-      document.querySelector('input')?.scrollIntoView({ behavior: 'smooth' });
+      formRef.current?.scrollIntoView({ behavior: 'smooth' });
       setResp(null);
       return;
     }
@@ -133,7 +134,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
   };
 
   return (
-    <form className={className} onSubmit={handleSubmit}>
+    <form ref={formRef} className={className} onSubmit={handleSubmit}>
       <ReCaptchaV3 />
       <div className={styles.closeIconContainer}>
         <CloseIcon onClick={closeModal} />
@@ -388,7 +389,7 @@ const RestoModal: React.FC<RestoModalProps> = ({ closeModal, className }) => {
               textAlign: 'center',
             }}
           >
-            {resp.success ? resp.message : resp.error}
+            {resp.success ? '' : resp.error}
           </p>
         </div>
       )}

@@ -12,6 +12,7 @@ import ReCaptchaV3, {
   requestRecaptchaV3Token,
 } from './components/utils/ReCaptchaV3';
 import RestoModal from './components/restoModal/RestoModal';
+import { formatName } from './components/utils/formatName';
 
 const pressEmail = 'press@mappetizer.com';
 const contactEmail = 'hello@mappetizer.com';
@@ -25,6 +26,7 @@ interface Slide {
   title: string;
   description: JSX.Element | React.ReactNode;
   img: string;
+  optimizedImage: string;
   onClick?: () => unknown;
 }
 
@@ -56,6 +58,7 @@ const getSlides = (
     title: 'SAY HI',
     description: <p>Meet the team behind this ambitious app build.</p>,
     img: '/images/1.png',
+    optimizedImage: '/images/1_optimized.png',
     onClick: () => {
       window.location.href = 'https://codereroute.com';
     },
@@ -66,6 +69,7 @@ const getSlides = (
       <p>Early birds only. Sign up to be among the first app users.</p>
     ),
     img: '/images/2.png',
+    optimizedImage: '/images/2_optimized.png',
     onClick: () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       setShowInputSection(true);
@@ -75,6 +79,7 @@ const getSlides = (
     title: 'RESTO ROLL CALL',
     description: <p>We’re requesting feedback from any and all restaurants.</p>,
     img: '/images/3.png',
+    optimizedImage: '/images/3_optimized.png',
     onClick: () => {
       setIsModalOpen(true);
     },
@@ -91,6 +96,7 @@ const getSlides = (
       </div>
     ),
     img: '/images/4.png',
+    optimizedImage: '/images/4_optimized.png',
   },
   {
     title: 'TELL A FRIEND',
@@ -98,6 +104,7 @@ const getSlides = (
       <p>Support our vision by sharing it with your friends far and wide.</p>
     ),
     img: '/images/5.png',
+    optimizedImage: '/images/5_optimized.png',
     onClick: () => {
       if (!navigator.share) {
         setIsShareModalOpen(true);
@@ -142,12 +149,11 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const formattedName = firstName.split(' ');
-    if (formattedName.length === 4) {
-      setLastName(formattedName[formattedName.length - 1]);
-    } else {
-      setLastName(undefined);
-    }
+    const { firstName: formattedFirstName, lastName: formattedLastName } =
+      formatName(firstName);
+
+    setFirstName(formattedFirstName);
+    setLastName(formattedLastName);
   }, [firstName]);
 
   const validateForm = () => {
@@ -175,7 +181,6 @@ export default function Home() {
         return;
       }
 
-      // Use the token directly in the API request
       const response = await fetch(
         `${webConfig.nextPublicBaseUrl}/user-info/create?token=${token}`,
         {
@@ -255,6 +260,8 @@ export default function Home() {
             src={assetUrl('/images/logo.png')}
             alt="Mappetizer"
             title="Mappetizer"
+            placeholder="blur"
+            blurDataURL={assetUrl('/images/logo_optimized.png')}
             width={150}
             height={40}
           />
@@ -351,7 +358,7 @@ export default function Home() {
                       textAlign: 'center',
                     }}
                   >
-                    {resp.success ? resp.message : resp.error}
+                    {resp.success ? '' : resp.error}
                   </p>
                 </div>
               )}
@@ -404,6 +411,8 @@ export default function Home() {
               src={assetUrl('/images/next.png')}
               alt="Next"
               title="Next"
+              placeholder="blur"
+              blurDataURL={assetUrl('/images/next_optimized.png')}
               width={20}
               height={20}
             />
@@ -456,6 +465,8 @@ export default function Home() {
                     src={assetUrl(slide.img)}
                     alt=""
                     title=""
+                    placeholder="blur"
+                    blurDataURL={assetUrl(slide.optimizedImage)}
                     width={300}
                     height={230}
                   />
@@ -478,6 +489,8 @@ export default function Home() {
                     src={assetUrl(slide.img)}
                     alt=""
                     title=""
+                    placeholder="blur"
+                    blurDataURL={assetUrl(slide.optimizedImage)}
                     width={300}
                     height={230}
                   />
@@ -504,6 +517,8 @@ export default function Home() {
               src={assetUrl('/images/back.png')}
               alt="Back"
               title="Back"
+              placeholder="blur"
+              blurDataURL={assetUrl('/images/back_optimized.png')}
               width={20}
               height={20}
             />
@@ -583,6 +598,8 @@ export default function Home() {
                 src={assetUrl('/images/logo.png')}
                 alt="Mappetizer"
                 title="Mappetizer"
+                placeholder="blur"
+                blurDataURL={assetUrl('/images/logo_optimized.png')}
                 width={150}
                 height={40}
               />
