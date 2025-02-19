@@ -7,37 +7,35 @@ import Footer from '../newsletter/beta-testers/Footer';
 import Image from 'next/image';
 import { assetUrl } from '../components/utils';
 import { useApiRequest } from '../components/utils/hooks/useApi';
+import { webConfig } from '../components/utils/webConfig';
 
-const UNSUBSCRIBE_ENDPOINT = '/endpoint';
+const UNSUBSCRIBE_ENDPOINT = 'unsubscribe';
 
 const Unsubscribe: React.FC = () => {
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState<string | null>(null);
+  const [email] = useState<string | null>(searchParams.get('email') || null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [unsubscribeState, makeUnsubscribeRequest] = useApiRequest();
 
   useEffect(() => {
-    const emailParam = searchParams.get('email');
-    if (emailParam) {
-      setEmail(emailParam);
-    } else {
-      setEmail(null);
-      setLoading(false);
-    }
-  }, [searchParams]);
-
-  useEffect(() => {
     if (email) {
-      makeUnsubscribeRequest(UNSUBSCRIBE_ENDPOINT, 'POST', { email });
+      makeUnsubscribeRequest(
+        `${webConfig.sendEmailBaseUrl}/${UNSUBSCRIBE_ENDPOINT}/${email}`,
+        'POST',
+        {},
+      );
     }
   }, [email, makeUnsubscribeRequest]);
 
   useEffect(() => {
     if (unsubscribeState.type === 'REQUEST_ERROR') {
+      console.log(unsubscribeState.error);
       setError('Invalid response from the server');
       setLoading(false);
     } else if (unsubscribeState.type === 'REQUEST_SUCCESS') {
+      console.log(unsubscribeState.data);
+      setError(null);
       setLoading(false);
     }
   }, [unsubscribeState]);
