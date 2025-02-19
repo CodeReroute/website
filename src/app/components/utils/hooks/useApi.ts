@@ -52,3 +52,42 @@ export const useApi = <T>() => {
   );
   return [requestState, makeRequest] as const;
 };
+
+export const useApiRequest = <T>() => {
+  const [requestState, setRequestState] = useState<RequestState<T>>(
+    requestInit(),
+  );
+
+  const makeRequest = useCallback(
+    async (
+      url: string,
+      method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'POST',
+      body?: Record<string, unknown>,
+    ) => {
+      setRequestState(requestStart());
+      try {
+        const response = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: body ? JSON.stringify(body) : undefined,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const data: T = await response.json();
+        setRequestState(requestSuccess(data));
+      } catch (error) {
+        setRequestState(
+          requestError(
+            error instanceof Error ? error : new Error('Unknown error'),
+          ),
+        );
+      }
+    },
+    [],
+  );
+
+  return [ requestState, makeRequest ] as const;
+};
