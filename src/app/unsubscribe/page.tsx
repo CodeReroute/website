@@ -7,10 +7,10 @@ import Footer from '../newsletter/beta-testers/Footer';
 import Image from 'next/image';
 import { assetUrl } from '../components/utils';
 import { useApiRequest } from '../components/utils/hooks/useApi';
-import { webConfig } from '../components/utils/webConfig';
+
 
 const UNSUBSCRIBE_ENDPOINT = 'unsubscribe';
-
+const BASE_URL='https://mappetizer.ca/monitoring/v1/email'
 const Unsubscribe: React.FC = () => {
   const searchParams = useSearchParams();
   const [email] = useState<string | null>(searchParams.get('email') || null);
@@ -21,9 +21,8 @@ const Unsubscribe: React.FC = () => {
   useEffect(() => {
     if (email) {
       makeUnsubscribeRequest(
-        `${webConfig.sendEmailBaseUrl}/${UNSUBSCRIBE_ENDPOINT}/${email}`,
-        'POST',
-        {},
+        `${BASE_URL}/${UNSUBSCRIBE_ENDPOINT}/${email}`,
+        'GET',
       );
     }
   }, [email, makeUnsubscribeRequest]);
