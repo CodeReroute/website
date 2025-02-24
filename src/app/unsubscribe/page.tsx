@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import styles from './page.module.scss';
 import Footer from '../newsletter/beta-testers/Footer';
@@ -63,4 +63,10 @@ const Unsubscribe: React.FC = () => {
   );
 };
 
-export default Unsubscribe;
+const Page: React.FC = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Unsubscribe />
+  </Suspense>
+);
+
+export default Page;
