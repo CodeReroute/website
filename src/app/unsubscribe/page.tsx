@@ -51,7 +51,7 @@ const Unsubscribe: React.FC = () => {
           {unsubscribeState.type === 'REQUEST_SUCCESS' && (
             <>
               <p className={styles['main-heading']}>
-                You have been unsubscribed from Mappetizer emails
+                You have been unsubscribed from mappetizer emails
               </p>
               <p className={styles['main-email']}>{email}</p>
             </>
