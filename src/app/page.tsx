@@ -2,16 +2,13 @@
 import Image from 'next/image';
 import styles from './page.module.scss';
 import { assetUrl } from './components/utils';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SocialMedia from './components/SocialMedia';
-import { logError } from './components/utils/logging';
-import ShareButtons from './components/ShareButtons/ShareButtons';
 import { mergeClassNames } from './components/utils/mergeClassNames';
 import { webConfig } from './components/utils/webConfig';
 import ReCaptchaV3, {
   requestRecaptchaV3Token,
 } from './components/utils/ReCaptchaV3';
-import RestoModal from './components/restoModal/RestoModal';
 import { formatName } from './components/utils/formatName';
 
 const pressEmail = 'press@mappetizer.com';
@@ -22,118 +19,11 @@ const style: React.CSSProperties = {
   )}')`,
 };
 
-interface Slide {
-  title: string;
-  description: JSX.Element | React.ReactNode;
-  img: string;
-  optimizedImage: string;
-  onClick?: () => unknown;
-}
-
-const scrollSlider = (
-  direction: number,
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>,
-  currentIndex: number,
-  slides: Slide[],
-) => {
-  const slider = document.getElementById('horizontalSlider');
-  if (slider) {
-    const scrollAmount = 300;
-    slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-    const newIndex = currentIndex + direction;
-    if (newIndex >= 0 && newIndex < slides.length) {
-      setCurrentIndex(newIndex);
-    }
-  }
-};
-
-const siteTitle = 'mappetizer';
-const siteDescription = 'The world’s biggest restaurant app';
-const getSlides = (
-  setShowInputSection: React.Dispatch<React.SetStateAction<boolean>>,
-  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
-  setIsShareModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
-): Slide[] => [
-  {
-    title: 'SAY HI',
-    description: <p>Meet the team behind this ambitious app build.</p>,
-    img: '/images/1.png',
-    optimizedImage: '/images/1_optimized.png',
-    onClick: () => {
-      window.location.href = 'https://codereroute.com';
-    },
-  },
-  {
-    title: 'THE WAITLIST',
-    description: (
-      <p>Early birds only. Sign up to be among the first app users.</p>
-    ),
-    img: '/images/2.png',
-    optimizedImage: '/images/2_optimized.png',
-    onClick: () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setShowInputSection(true);
-    },
-  },
-  {
-    title: 'RESTO ROLL CALL',
-    description: <p>We’re requesting feedback from any and all restaurants.</p>,
-    img: '/images/3.png',
-    optimizedImage: '/images/3_optimized.png',
-    onClick: () => {
-      setIsModalOpen(true);
-    },
-  },
-  {
-    title: 'FOLLOW US',
-    description: (
-      <div>
-        <SocialMedia
-          customStyles={{ justifyContent: 'flex-start' }}
-          imageStyle={{ filter: 'invert(100%)' }}
-          iconContainerStyle={{ backgroundColor: '#000000' }}
-        />
-      </div>
-    ),
-    img: '/images/4.png',
-    optimizedImage: '/images/4_optimized.png',
-  },
-  {
-    title: 'TELL A FRIEND',
-    description: (
-      <p>Support our vision by sharing it with your friends far and wide.</p>
-    ),
-    img: '/images/5.png',
-    optimizedImage: '/images/5_optimized.png',
-    onClick: () => {
-      if (!navigator.share) {
-        setIsShareModalOpen(true);
-        logError('Web Share API not supported.');
-        return;
-      }
-      try {
-        navigator.share({
-          title: siteTitle,
-          text: siteDescription,
-          url: window.location.href,
-        });
-      } catch (e) {
-        setIsShareModalOpen(true);
-        logError('Web Share API not supported.', e);
-      }
-    },
-  },
-];
-
 export default function Home() {
   const sectionTop = useRef<HTMLDivElement>(null);
-  const sectionBottom = useRef<HTMLDivElement>(null);
   const sectionFooter = useRef<HTMLDivElement>(null);
   const [showInputSection, setShowInputSection] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [, setHoveredIndex] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [pressInquiries, setPressInquiries] = useState<boolean>(false);
   const [isContact, setIsContact] = useState<boolean>(false);
   const [firstName, setFirstName] = useState<string>('');
@@ -212,10 +102,6 @@ export default function Home() {
     });
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 560);
@@ -230,13 +116,6 @@ export default function Home() {
     };
   }, []);
 
-  const slides = useMemo(
-    () => getSlides(setShowInputSection, setIsModalOpen, setIsShareModalOpen),
-    [],
-  );
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   return (
     <div>
       <ReCaptchaV3 />
@@ -249,7 +128,7 @@ export default function Home() {
           playsInline
           className={styles.videoBackground}
         >
-          <source src={assetUrl('/video.mp4')} type="video/mp4" />
+          <source src={assetUrl('/video.webm')} type="video/webm" />
           Your browser does not support the video tag.
         </video>
 
@@ -390,140 +269,6 @@ export default function Home() {
           </div>
         </div>
         <div className={styles['text-section-line']} />
-      </div>
-
-      {/* Horizontal Slider Section */}
-      <div ref={sectionBottom} className={styles.sliderSection}>
-        <h1 className={styles.sectionTitle}>WHILE YOU WAIT</h1>
-        <div className={styles.sliderWrapper}>
-          {/* Next Button */}
-          <button
-            className={`${styles.navButton1} ${
-              currentIndex < slides.length - 1 ? '' : styles.disabled1
-            }`}
-            onClick={() =>
-              scrollSlider(1, setCurrentIndex, currentIndex, slides)
-            }
-            disabled={currentIndex >= slides.length - 1}
-          >
-            <Image
-              className={styles.navIcon}
-              src={assetUrl('/images/next.png')}
-              alt="Next"
-              title="Next"
-              placeholder="blur"
-              blurDataURL={assetUrl('/images/next_optimized.png')}
-              width={20}
-              height={20}
-            />
-          </button>
-
-          <div id="horizontalSlider" className={styles.horizontalSlider}>
-            {isModalOpen && (
-              <div
-                className={styles.modalOverlay}
-                role="dialog"
-                aria-labelledby="modal-title"
-              >
-                <div className={styles.modalContentWrapper}>
-                  <RestoModal
-                    closeModal={closeModal}
-                    className={styles.modalContent}
-                  />
-                </div>
-              </div>
-            )}
-
-            {isShareModalOpen && (
-              <div
-                className={styles.modalOverlay}
-                role="dialog"
-                aria-labelledby="modal-title"
-              >
-                <div className={styles.modalContentWrapper}>
-                  <div className={styles.modalContent}>
-                    <div className={styles.inputSection}>
-                      <ShareButtons
-                        handleClose={() => setIsShareModalOpen(false)}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-            {!isMobile &&
-              slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={styles.sliderItem}
-                  onClick={slide.onClick}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  <Image
-                    className={styles.sliderImage}
-                    src={assetUrl(slide.img)}
-                    alt=""
-                    title=""
-                    placeholder="blur"
-                    blurDataURL={assetUrl(slide.optimizedImage)}
-                    width={300}
-                    height={230}
-                  />
-                  <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                  <div className={styles.sliderDescription}>
-                    {slide.description}
-                  </div>
-                </div>
-              ))}
-
-            {isMobile &&
-              slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={styles.sliderItem}
-                  onClick={slide.onClick}
-                >
-                  <Image
-                    className={styles.sliderImage}
-                    src={assetUrl(slide.img)}
-                    alt=""
-                    title=""
-                    placeholder="blur"
-                    blurDataURL={assetUrl(slide.optimizedImage)}
-                    width={300}
-                    height={230}
-                  />
-                  <h3 className={styles.sliderTitle}>{slide.title}</h3>
-                  <div className={styles.sliderDescription}>
-                    {slide.description}
-                  </div>
-                </div>
-              ))}
-          </div>
-
-          {/* Back Button */}
-          <button
-            className={`${styles.navButton} ${
-              currentIndex > 0 ? '' : styles.disabled
-            }`}
-            onClick={() =>
-              scrollSlider(-1, setCurrentIndex, currentIndex, slides)
-            }
-            disabled={currentIndex <= 0}
-          >
-            <Image
-              className={styles.navIcon}
-              src={assetUrl('/images/back.png')}
-              alt="Back"
-              title="Back"
-              placeholder="blur"
-              blurDataURL={assetUrl('/images/back_optimized.png')}
-              width={20}
-              height={20}
-            />
-          </button>
-        </div>
       </div>
 
       <div ref={sectionFooter} className={styles.footer} style={style}>
