@@ -6,12 +6,15 @@ import styles from './page.module.scss';
 import Footer from '../newsletter/beta-testers/Footer';
 import Image from 'next/image';
 import { assetUrl } from '../components/utils';
+import QRCode from 'react-qr-code';
 
 const DeepLinkClaimRestaurant: React.FC = () => {
   const searchParams = useSearchParams();
   const claimId =
     searchParams.get('claim-id') || searchParams.get('claimId') || '';
+  const email = searchParams.get('email') || '';
   const [platform, setPlatform] = useState<'ios' | 'android' | 'web'>('web');
+  const [shareUrl, setShareUrl] = useState('');
 
   const deepLink = useMemo(
     () => `mappetizer://signup?claimId=${encodeURIComponent(claimId)}`,
@@ -44,6 +47,22 @@ const DeepLinkClaimRestaurant: React.FC = () => {
     }
   }, [deepLink]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      const url = new URL(window.location.href);
+      if (claimId) {
+        url.searchParams.set('claim-id', claimId);
+      }
+      if (email) {
+        url.searchParams.set('email', email);
+      }
+      setShareUrl(url.toString());
+    } catch {
+      // noop
+    }
+  }, [claimId, email]);
+
   return (
     <>
       <div className={styles.header}>
@@ -69,6 +88,14 @@ const DeepLinkClaimRestaurant: React.FC = () => {
                 Please download the app and open this link to View your
                 Reservation.
               </p>
+              {shareUrl && (
+                <div className={styles['qr-container']}>
+                  <QRCode value={shareUrl} size={200} />
+                  <p className={styles['share-url']}>
+                    Scan your QR code to open/download the app
+                  </p>
+                </div>
+              )}
             </>
           ) : (
             <>
