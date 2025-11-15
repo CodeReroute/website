@@ -39,7 +39,7 @@ export default function Home() {
           <div className={styles.rightSideSection}>
             <div className={styles.textContainer}>
               <p>
-                We’re a fast-paced startup with a mission to build new tech for{' '}
+                We’re a fast-paced startup building new tech for{' '}
                 <b>restaurant discovery</b>.
               </p>
               <br />
@@ -47,6 +47,8 @@ export default function Home() {
                 Made in-house and from scratch, mappetizer is transforming the
                 restaurant industry and the way we go out to eat.
               </p>
+              <br />
+              <p>Coming soon.</p>
               <SocialMedia className="custom-class" />
             </div>
           </div>

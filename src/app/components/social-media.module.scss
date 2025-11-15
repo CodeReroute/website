@@ -1,4 +1,7 @@
 .social-media {
+  top: 0;
+  right: 0;
+  position: absolute;
   display: flex;
   margin-top: 24px;
   align-items: center;
@@ -26,8 +29,7 @@
   }
 
   img {
-    border-radius: 50%;
-    width: 70%; // Icon size relative to container
-    height: 70%;
+    width: 50%; // Icon size relative to container
+    height: 50%;
   }
 }
