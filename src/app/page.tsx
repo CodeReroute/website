@@ -4,12 +4,11 @@ import Image from 'next/image';
 import styles from './page.module.scss';
 import { assetUrl } from './components/utils';
 import SocialMedia from './components/SocialMedia';
-import ReCaptchaV3 from './components/utils/ReCaptchaV3';
 
 export default function Home() {
   return (
     <div>
-      <ReCaptchaV3 />
+      {/* <ReCaptchaV3 /> */}
       <div className={styles.hero}>
         {/* Video Background */}
         <video
@@ -25,18 +24,32 @@ export default function Home() {
 
         {/* Middle section */}
         <div className={styles.middleSection}>
-          <SocialMedia className="custom-class" />
-          <Image
-            className={styles.logo}
-            src={assetUrl('/images/logo.png')}
-            alt="Mappetizer"
-            title="Mappetizer"
-            // placeholder="blur"
-            // blurDataURL={assetUrl('/images/logo_optimized.png')}
-            width={180}
-            height={24}
-          />
-          <p className={styles.comingSoon}>COMING SOON</p>
+          <div className={styles.leftSideSection}>
+            <Image
+              className={styles.logo}
+              src={assetUrl('/images/logo.png')}
+              alt="Mappetizer"
+              title="Mappetizer"
+              // placeholder="blur"
+              // blurDataURL={assetUrl('/images/logo_optimized.png')}
+              width={180}
+              height={24}
+            />
+          </div>
+          <div className={styles.rightSideSection}>
+            <div className={styles.textContainer}>
+              <p>
+                We’re a fast-paced startup with a mission to build new tech for{' '}
+                <b>restaurant discovery</b>.
+              </p>
+              <br />
+              <p>
+                Made in-house and from scratch, mappetizer is transforming the
+                restaurant industry and the way we go out to eat.
+              </p>
+              <SocialMedia className="custom-class" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
