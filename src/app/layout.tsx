@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
   },
   keywords,
   openGraph: {
@@ -40,10 +40,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* <!-- Google / Search Engine Tags --> */}
-        <meta itemProp="name" content={siteTitle} />
-        <meta itemProp="description" content={siteDescription} />
+        <meta name="name" content={siteTitle} />
+        <meta name="description" content={siteDescription} />
         <meta name="keywords" content={keywords} />
-        <meta itemProp="image" content={featuredImage} />
+        <meta name="image" content={featuredImage} />
         {/* <!-- Facebook Meta Tags --> */}
         <meta property="og:url" content="https://mappetizer.com" />
         <meta property="og:type" content="website" />
@@ -61,11 +61,20 @@ export default function RootLayout({
         <meta name="twitter:title" content={siteTitle} />
         <meta name="twitter:description" content={siteDescription} />
         <meta name="twitter:image" content={featuredImage} />
+        {/* Favicons */}
         <link
           rel="icon"
-          type="image/x-icon"
+          type="image/png"
+          href="/favicon.png"
+          media="(prefers-color-scheme: light)"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          type="image/png"
           href="/favicon-white.png"
           media="(prefers-color-scheme: dark)"
+          sizes="32x32"
         />
         <script
           async
