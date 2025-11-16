@@ -5,16 +5,16 @@ import './globals.css';
 import { webConfig } from './components/utils/webConfig';
 
 const siteTitle = 'mappetizer';
-const siteDescription = 'The world’s biggest restaurant app';
+const siteDescription = 'The ‘going out to eat’ app.';
 const keywords = 'mappetizer, restaurant, food, discover, map';
 const featuredImage = 'https://mappetizer.com/sharing-meta-image.png';
 export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
   keywords,
   openGraph: {
@@ -64,7 +64,7 @@ export default function RootLayout({
         <link
           rel="icon"
           type="image/x-icon"
-          href="/favicon_white.png"
+          href="/favicon-white.png"
           media="(prefers-color-scheme: dark)"
         />
         <script
