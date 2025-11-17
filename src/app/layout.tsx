@@ -41,6 +41,7 @@ export default function RootLayout({
       <head>
         {/* <!-- Google / Search Engine Tags --> */}
         <meta name="name" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
         <meta name="description" content={siteDescription} />
         <meta name="keywords" content={keywords} />
         <meta name="image" content={featuredImage} />
