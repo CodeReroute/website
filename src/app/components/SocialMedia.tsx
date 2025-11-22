@@ -12,7 +12,12 @@ interface SocialMediaProps {
   iconContainerStyle?: React.CSSProperties;
 }
 
-const SocialMedia: React.FC<SocialMediaProps> = ({ className, customStyles, imageStyle, iconContainerStyle }) => {
+const SocialMedia: React.FC<SocialMediaProps> = ({
+  className,
+  customStyles,
+  imageStyle,
+  iconContainerStyle,
+}) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
@@ -27,7 +32,10 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ className, customStyles, imag
   }, []);
 
   return (
-    <div className={mergeClassNames(styles['social-media'], className)} style={customStyles}>
+    <div
+      className={mergeClassNames(styles['social-media'], className)}
+      style={customStyles}
+    >
       {/* Instagram Link */}
       <a
         className={styles['iconContainer']}
@@ -37,7 +45,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ className, customStyles, imag
         style={iconContainerStyle}
       >
         <Image
-          src={assetUrl('/images/social-media/insta.png')}   
+          src={assetUrl('/images/social-media/insta.png')}
           alt="Instagram"
           title="Instagram"
           width={isMobile ? 25 : 35}
@@ -55,7 +63,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ className, customStyles, imag
         style={iconContainerStyle}
       >
         <Image
-          src={assetUrl('/images/social-media/tiktokIcon.png')}
+          src={assetUrl('/images/social-media/tiktok.png')}
           alt="TikTok"
           title="TikTok"
           width={isMobile ? 25 : 35}
@@ -73,7 +81,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ className, customStyles, imag
         style={iconContainerStyle}
       >
         <Image
-          src={assetUrl('/images/social-media/linkedinIcon.png')}
+          src={assetUrl('/images/social-media/linkedin.png')}
           alt="LinkedIn"
           title="LinkedIn"
           width={isMobile ? 25 : 35}
