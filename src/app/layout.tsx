@@ -12,7 +12,10 @@ export const metadata: Metadata = {
   title: siteTitle,
   description: siteDescription,
   icons: {
-    icon: '/favicon.png',
+    icon: [
+      { url: '/favicon.png', media: '(prefers-color-scheme: light)' },
+      { url: '/favicon-white.png', media: '(prefers-color-scheme: dark)' },
+    ],
     shortcut: '/favicon.png',
     apple: '/favicon.png',
   },
@@ -62,21 +65,6 @@ export default function RootLayout({
         <meta name="twitter:title" content={siteTitle} />
         <meta name="twitter:description" content={siteDescription} />
         <meta name="twitter:image" content={featuredImage} />
-        {/* Favicons */}
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon.png"
-          media="(prefers-color-scheme: light)"
-          sizes="32x32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon-white.png"
-          media="(prefers-color-scheme: dark)"
-          sizes="32x32"
-        />
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${webConfig.gaTrackingId}`}
